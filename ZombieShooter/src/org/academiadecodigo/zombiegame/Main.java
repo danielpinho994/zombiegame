@@ -38,10 +38,10 @@ public class Main {
         kb.addEventListener(dPressed);
 
 
-        /*
+
         game.init();
-        game.start();
-        */
+        //game.start();
+
 
     }
 }

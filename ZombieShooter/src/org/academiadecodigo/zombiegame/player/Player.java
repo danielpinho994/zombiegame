@@ -19,8 +19,8 @@ public class Player implements KeyboardHandler {
 
     public Player(String name){
 
-        playerPic = new Picture(Background.getPadding(), Background.getPadding(), "src/org/academiadecodigo/zombiegame/SoldierTopDownView.png");
-        playerPic.draw();
+        //playerPic = new Picture(Background.getPadding(), Background.getPadding(), "src/org/academiadecodigo/zombiegame/SoldierTopDownView.png");
+        //playerPic.draw();
 
         this.name = name;
 

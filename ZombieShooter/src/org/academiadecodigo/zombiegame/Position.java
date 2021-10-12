@@ -7,7 +7,7 @@ import org.academiadecodigo.zombiegame.gameobjects.Zombie;
 public class Position {
 
     private int col;
-
+    private int row;
 
 
     public int getCol() {
@@ -18,7 +18,10 @@ public class Position {
         return row;
     }
 
-    private int row;
+    public Position (){
+        col = (int) Math.floor(Math.random() * Background.getCols());
+        row = (int) Math.floor(Math.random() * Background.getRows());
+    }
 
     public Position(int col, int row) {
 
@@ -28,7 +31,7 @@ public class Position {
 
     public void move(Shape shape) {
         
-        shape.translate(10,0);
+        //shape.translate(10,0);
     }
 
     /*
