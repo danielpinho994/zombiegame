@@ -27,6 +27,7 @@ public class Player implements KeyboardHandler {
 
     public Player(String name){
 
+        this.pos = new Position(400/2, 400/2);
         playerPic = new Rectangle(400 / 2, 400 / 2, 3 * 5, 3 * 5); //width/2 e 3cols * cellsize
         playerPic.draw();
         playerPic.setColor(Color.BLUE);
@@ -78,8 +79,12 @@ public class Player implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+            if (lastDirection == null) {
+                weapon.shoot("right", playerPic.getX(), playerPic.getY());
+                return;
+            }
             if (playerPic.getX() > Background.getPadding()) {
-                weapon.shoot(lastDirection);
+                weapon.shoot(lastDirection, playerPic.getX(), playerPic.getY());
             }
         }
 

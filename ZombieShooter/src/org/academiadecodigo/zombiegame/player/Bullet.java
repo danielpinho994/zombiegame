@@ -12,13 +12,14 @@ public class Bullet {
     private Position target;
     private Rectangle bulletPic;
 
-    public Bullet(){
-        pos = new Position(5, 5); //ALTERAAAAAAR
+    public Bullet(int col, int row){
+        pos = new Position(col, row); //ALTERAAAAAAR
         bulletPic = new Rectangle(400 / 2, 400 / 2, 3, 3);
 
     }
 
     public void move(String direction) {
+
         bulletPic.draw();
         bulletPic.setColor(Color.GREEN);
         bulletPic.fill();
