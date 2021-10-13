@@ -5,10 +5,12 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.Background;
 import org.academiadecodigo.zombiegame.MovePosition;
 import org.academiadecodigo.zombiegame.Position;
+import org.academiadecodigo.zombiegame.player.Player;
 
 public class Zombie {
 
     private Position pos;
+    private Position playerPos = Player.getPos();
     private int health;
 
     private Rectangle zombiePic;
@@ -32,7 +34,10 @@ public class Zombie {
         int currentCol = pos.getCol();
         int currentRow = pos.getRow();
 
-        pos.move();
+        int playerCol = playerPos.getCol();
+        int playerRow = playerPos.getRow();
+
+        pos.move(MovePosition.RIGHT);
 
         int colDif = pos.getCol()-currentCol;
         int rowDif = pos.getRow()-currentRow;
