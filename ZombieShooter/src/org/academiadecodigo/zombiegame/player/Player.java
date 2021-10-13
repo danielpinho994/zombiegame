@@ -17,6 +17,7 @@ public class Player implements KeyboardHandler {
     private static Position pos;
     private Rectangle playerPic;
     private MovePosition currentDirection;
+    private String lastDirection;
 
     private Weapon weapon;
 
@@ -47,6 +48,7 @@ public class Player implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
             if (playerPic.getX() > Background.getPadding()) {
                 playerPic.translate(-10, 0);
+                lastDirection = "left";
                 // FALTA MEXER POSIÇAO
             }
         }
@@ -54,6 +56,7 @@ public class Player implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
             if (playerPic.getX() < Background.getWidth()) {
                 playerPic.translate(10, 0);
+                lastDirection = "right";
                 // FALTA MEXER POSIÇAO
             }
         }
@@ -61,6 +64,7 @@ public class Player implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
             if (playerPic.getY() > Background.getPadding()) {
                 playerPic.translate(0, -10);
+                lastDirection = "up";
                 // FALTA MEXER POSIÇAO
             }
         }
@@ -68,13 +72,14 @@ public class Player implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
             if (playerPic.getY() < Background.getHeight()) {
                 playerPic.translate(0, 10);
+                lastDirection = "down";
                 // FALTA MEXER POSIÇAO
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
             if (playerPic.getX() > Background.getPadding()) {
-                weapon.shoot();
+                weapon.shoot(lastDirection);
             }
         }
 

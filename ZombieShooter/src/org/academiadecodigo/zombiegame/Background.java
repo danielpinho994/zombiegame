@@ -27,7 +27,7 @@ public class Background {
     }
 
     public Position makeGridPosition() {
-        return new Position();
+        return new Position(5, 5); // ALTERAAAAAAR
     }
 
     public static int getPadding() {

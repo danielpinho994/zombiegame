@@ -8,9 +8,9 @@ public class Weapon {
     private int magSize;
     private Bullet[] bullets;
 
-    public Weapon(){
+    public Weapon() {
 
-        magSize=10;
+        magSize = 10;
         bullets = new Bullet[magSize];
         for( int i = 0 ; i < magSize ; i++ ){
 
@@ -19,12 +19,16 @@ public class Weapon {
         }
     }
 
-    public void Reload(){
+    public void Reload() {
 
     }
-    public void shoot(){
+    public void shoot(String direction) {
+        for (Bullet b : bullets) {
+            b.move(direction);
 
-        Bullet bullet = new Bullet();
+        }
+
+
 
 
 

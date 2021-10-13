@@ -13,12 +13,30 @@ public class Bullet {
     private Rectangle bulletPic;
 
     public Bullet(){
-        pos = new Position();
-        bulletPic = new Rectangle(40 / 2, 40 / 2, 3 * 5, 3 * 5);
+        pos = new Position(5, 5); //ALTERAAAAAAR
+        bulletPic = new Rectangle(400 / 2, 400 / 2, 3, 3);
+
+    }
+
+    public void move(String direction) {
         bulletPic.draw();
         bulletPic.setColor(Color.GREEN);
         bulletPic.fill();
 
+        switch (direction) {
+            case "left":
+                bulletPic.translate(-10, 0);
+                break;
+            case "right":
+                bulletPic.translate(10, 0);
+                break;
+            case "up":
+                bulletPic.translate(0, -10);
+                break;
+            case "down":
+                bulletPic.translate(0, 10);
+                break;
+        }
     }
 
 
