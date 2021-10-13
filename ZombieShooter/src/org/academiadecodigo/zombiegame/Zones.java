@@ -30,9 +30,9 @@ public class Zones {
 
     public static int[] getZone(){
 
-        int random = (int) Math.round(Math.random()*3);
+        int random = (int) Math.floor(Math.random()*3);
         int chosenCol = zoneColNumber[random];
-        int random1 = (int) Math.round(Math.random()*3);
+        int random1 = (int) Math.floor(Math.random()*3);
         int chosenRow = zoneRowNumber[random1];
 
         if(random == random1){
@@ -43,9 +43,14 @@ public class Zones {
                 chosenCol,
                 chosenRow
         };
+
+
+
+        System.out.println(chosenZone.toString());
         return chosenZone;
 
     }
+
 
 
 

@@ -33,8 +33,8 @@ public class Position {
 
     //Zombie Position
     public Position (int[] zonePos){
-           col = zonePos[0];
-           row = zonePos[1];
+           col = zonePos[0] * Background.getCellSize() + Background.getPadding();
+           row = zonePos[1] * Background.getCellSize() + Background.getPadding();
     }
 
 

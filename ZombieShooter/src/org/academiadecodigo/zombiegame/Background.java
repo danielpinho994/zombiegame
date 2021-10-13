@@ -7,23 +7,22 @@ public class Background {
     private static int padding;
     private static int width;
     private static int height;
-
     private static int cellSize = 5;
     private static int cols;
     private static int rows;
 
     private Rectangle grid;
 
-    public Background(int padding, int width, int height) {
+    public Background(int padding, int cols, int rows) {
 
         grid = new Rectangle(padding, padding, width, height);
         grid.draw();
 
         this.padding = padding;
-        this.width = width;
-        this.height = height;
-        cols = width / cellSize;
-        rows = height / cellSize;
+        this.width = cols * getCellSize();
+        this.height = rows * getCellSize();
+        this.cols = cols;
+        this.rows = rows;
     }
 
     public Position makeGridPosition() {

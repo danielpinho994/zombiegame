@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="" />
+    <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Background.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Zones.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Zones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

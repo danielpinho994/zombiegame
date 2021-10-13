@@ -14,7 +14,7 @@ public class Game {
 
     public Game(Player player){
         this.player = player;
-        background = new Background(10, 800, 800);
+        background = new Background(10, 180, 90);
     }
 
     public void init() {
