@@ -5,38 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Background.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/SoldierTopDownView.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/zombieTopDown.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Background.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Background.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zombiegame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/zombiegame.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +31,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>

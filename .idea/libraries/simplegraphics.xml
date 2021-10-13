@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="simplegraphics">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../ac-gitlab/exercises/skeletons/simple-graphics/build/simplegraphics.jar!/" />
+      <root url="jar://$USER_HOME$/WorkSpace/SimpleGFX/simple-graphics/build/simplegraphics.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
