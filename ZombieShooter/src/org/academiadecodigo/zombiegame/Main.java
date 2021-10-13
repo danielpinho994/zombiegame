@@ -31,8 +31,8 @@ public class Main {
         dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         KeyboardEvent spacePressed= new KeyboardEvent();
-        dPressed.setKey(KeyboardEvent.KEY_SPACE);
-        dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        spacePressed.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         kb.addEventListener(wPressed);
         kb.addEventListener(sPressed);

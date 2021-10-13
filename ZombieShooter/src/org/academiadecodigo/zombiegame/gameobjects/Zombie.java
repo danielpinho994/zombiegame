@@ -29,7 +29,6 @@ public class Zombie {
 
     public void moveZombie() {
 
-        System.out.println("Move Zombie");
         if(totalMove==0){
             currentDirection = MovePosition.getRandomDirection();
             totalMove=5;
@@ -43,7 +42,6 @@ public class Zombie {
         int colDif = pos.getCol()-currentCol;
         int rowDif = pos.getRow()-currentRow;
         zombiePic.translate(colDif*Background.getCellSize(),rowDif*Background.getCellSize());
-        System.out.println(colDif*Background.getCellSize());
         zombiePic.draw();
         zombiePic.fill();
 

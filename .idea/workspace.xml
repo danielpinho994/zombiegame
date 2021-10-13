@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Background.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/SoldierTopDownView.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/out/production/ZombieShooter/org/academiadecodigo/zombiegame/zombieTopDown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Background.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Background.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/zombiegame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/zombiegame.iml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1zSpVdTsVdUsJ6quxMpAAuN5nQ1" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.academiadecodigo.zombiegame.Main" />
+      <module name="zombiegame" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.academiadecodigo.zombiegame.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="" />
+      <created>1634151369280</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634151369280</updated>
+      <workItem from="1634151373647" duration="274000" />
+      <workItem from="1634151839931" duration="4000" />
+      <workItem from="1634151875888" duration="2991000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>

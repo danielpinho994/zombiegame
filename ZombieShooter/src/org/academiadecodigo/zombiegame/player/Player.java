@@ -49,21 +49,21 @@ public class Player implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            //if (playerPic.getX() < Background.getWidth() + Background.getPadding()) {
+            if (playerPic.getX() < Background.getWidth()) {
                 playerPic.translate(10, 0);
                 // FALTA MEXER POSIÇAO
-            //}
+            }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            if (playerPic.getX() > Background.getPadding()) {
+            if (playerPic.getY() > Background.getPadding()) {
                 playerPic.translate(0, -10);
                 // FALTA MEXER POSIÇAO
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            if (playerPic.getX() < Background.getHeight() + Background.getPadding()) {
+            if (playerPic.getY() < Background.getHeight()) {
                 playerPic.translate(0, 10);
                 // FALTA MEXER POSIÇAO
             }
