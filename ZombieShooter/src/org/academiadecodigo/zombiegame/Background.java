@@ -9,8 +9,8 @@ public class Background {
     private static int height;
 
     private static int cellSize = 5;
-    private static int cols = width / cellSize;
-    private static int rows = height / cellSize;
+    private static int cols;
+    private static int rows;
 
     private Rectangle grid;
 
@@ -22,6 +22,8 @@ public class Background {
         this.padding = padding;
         this.width = width;
         this.height = height;
+        cols = width / cellSize;
+        rows = height / cellSize;
     }
 
     public Position makeGridPosition() {

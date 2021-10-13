@@ -9,6 +9,18 @@ public class Position {
     private int col;
     private int row;
 
+    public void setPos(int col , int row){
+        this.col = col;
+        this.row = row;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
 
     public int getCol() {
         return col;
@@ -29,10 +41,43 @@ public class Position {
         this.row = row;
     }
 
-    public void move(Shape shape) {
-        
-        //shape.translate(10,0);
+
+    public void move(MovePosition direction) {
+
+        switch (direction) {
+
+            case UP:
+                moveUp();
+                break;
+            case DOWN:
+                moveDown();
+                break;
+            case LEFT:
+                moveLeft();
+                break;
+            case RIGHT:
+                moveRight();
+                break;
+        }
+
     }
+
+    private void moveUp(){
+        setRow(getRow()-1);
+    }
+
+    private void moveDown(){
+        setRow(getRow()+1);
+    }
+
+    private void moveLeft(){
+        setCol(getCol()-1);
+    }
+
+    private void moveRight(){
+        setCol(getCol()+1);
+    }
+
 
     /*
     public Position(Background background) {

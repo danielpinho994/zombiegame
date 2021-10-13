@@ -6,13 +6,11 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.zombiegame.player.Player;
 
 public class Main {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws InterruptedException {
 
         Player player = new Player("Zé");
 
         Game game = new Game(player);
-
 
         Keyboard kb = new Keyboard(player);
 
@@ -32,15 +30,18 @@ public class Main {
         dPressed.setKey(KeyboardEvent.KEY_D);
         dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent spacePressed= new KeyboardEvent();
+        dPressed.setKey(KeyboardEvent.KEY_SPACE);
+        dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
         kb.addEventListener(wPressed);
         kb.addEventListener(sPressed);
         kb.addEventListener(aPressed);
         kb.addEventListener(dPressed);
-
-
+        kb.addEventListener(spacePressed);
 
         game.init();
-        //game.start();
+        game.start();
 
 
     }

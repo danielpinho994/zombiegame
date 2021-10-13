@@ -23,13 +23,21 @@ public class Game {
         zombieHoard = new Zombie[zombiesNr];
 
         for (int z = 0; z < zombieHoard.length; z++) {
-            zombieHoard[z] = GameObjectsFactory.makeZombie(background);
+            zombieHoard[z] = GameObjectsFactory.makeZombie();
         }
 
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
+        while(true){
         moveAllZombies();
+        moveAllBullets();
+        Thread.sleep(200);
+        }
+
+    }
+
+    public void moveAllBullets() {
 
     }
 
@@ -37,10 +45,9 @@ public class Game {
 
         for (Zombie z : zombieHoard) {
 
-            z.move();
+            z.moveZombie();
         }
 
     }
-
 
 }
