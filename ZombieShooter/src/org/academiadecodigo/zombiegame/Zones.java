@@ -8,8 +8,8 @@ public class Zones {
     private int nrColsZone = maxCol / 3;
     private int nrRowsZone = maxRow / 3;
 
-    private int[] zoneColNumber = new int[3];
-    private int[] zoneRowNumber = new int[3];
+    private static int[] zoneColNumber = new int[3];
+    private static int[] zoneRowNumber = new int[3];
 
     private int backgroundCols;
     private int backgroundRows;
@@ -28,7 +28,7 @@ public class Zones {
         }
     }
 
-    public int[] getZone(){
+    public static int[] getZone(){
 
         int random = (int) Math.round(Math.random()*3);
         int chosenCol = zoneColNumber[random];

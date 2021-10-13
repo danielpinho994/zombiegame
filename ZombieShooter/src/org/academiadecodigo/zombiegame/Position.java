@@ -30,11 +30,15 @@ public class Position {
         return row;
     }
 
-    public Position (){
-        col = (int) Math.floor(Math.random() * Background.getCols());
-        row = (int) Math.floor(Math.random() * Background.getRows());
+
+    //Zombie Position
+    public Position (int[] zonePos){
+           col = zonePos[0];
+           row = zonePos[1];
     }
 
+
+    //Player Position
     public Position(int col, int row) {
 
         this.col = col;
