@@ -13,7 +13,8 @@ import java.awt.*;
 
 public class Player implements KeyboardHandler {
 
-    private Position pos;
+
+    private static Position pos;
     private Rectangle playerPic;
     private MovePosition currentDirection;
 
@@ -36,7 +37,9 @@ public class Player implements KeyboardHandler {
 
     }
 
-
+    public static Position getPos() {
+        return pos;
+    }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {

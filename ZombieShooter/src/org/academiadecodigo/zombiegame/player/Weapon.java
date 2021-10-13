@@ -6,15 +6,15 @@ public class Weapon {
 
     private Position pos;
     private int magSize;
-    private Bullet[] mag;
+    private Bullet[] bullets;
 
     public Weapon(){
 
         magSize=10;
-        mag = new Bullet[magSize];
+        bullets = new Bullet[magSize];
         for( int i = 0 ; i < magSize ; i++ ){
 
-            mag[i] = new Bullet();
+            bullets[i] = new Bullet();
 
         }
     }
@@ -25,6 +25,7 @@ public class Weapon {
     public void shoot(){
 
         Bullet bullet = new Bullet();
+
 
 
 
