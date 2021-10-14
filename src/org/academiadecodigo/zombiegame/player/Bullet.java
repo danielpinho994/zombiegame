@@ -7,6 +7,8 @@ import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 
+import java.beans.beancontext.BeanContext;
+
 public class Bullet {
 
     private Picture bullet;
@@ -18,7 +20,7 @@ public class Bullet {
 
     public Bullet(int col, int row){
         pos = new Position(col, row);
-        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(), 3, 3);
+        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(), Background.getCellSize(), Background.getCellSize());
 
     }
 
@@ -36,8 +38,11 @@ public class Bullet {
                 pos.move(bulletDirection);
                 break;
             case RIGHT:
-                if (bulletPic.getX() == Background.getCols() * Background.getCellSize() + Background.getPadding()) {
+                if (pos.getCol() >= Background.getCols() - 1) {
                     bulletPic.delete();
+                    isImpacted = true;
+                    pos = null;
+                    break;
                 }
                 bulletPic.translate(Background.getCellSize(), 0);
                 pos.move(bulletDirection);
