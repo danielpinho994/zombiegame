@@ -1,5 +1,6 @@
 package org.academiadecodigo.zombiegame.player;
 
+import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 
 public class Weapon {
@@ -20,7 +21,7 @@ public class Weapon {
 
     }
 
-    public void shoot(String direction, int col, int row) {
+    public void shoot(Direction direction, int col, int row) {
         if (shotsFired < magSize) {
             bullets[shotsFired] = new Bullet(col, row);
             bullets[shotsFired].move(direction);

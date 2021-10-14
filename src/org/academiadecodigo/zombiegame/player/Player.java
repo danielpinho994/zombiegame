@@ -14,8 +14,7 @@ public class Player implements KeyboardHandler {
 
     private static Position pos;
     private Rectangle playerPic;
-    private Direction currentDirection;
-    private String lastDirection;
+    private Direction lastDirection = Direction.RIGHT;
 
     private Weapon weapon;
 
@@ -58,45 +57,39 @@ public class Player implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            if (playerPic.getX() > Background.getPadding()) {
+            if (pos.getCol() > Background.getPadding()) {
                 playerPic.translate(-Background.getCellSize(), 0);
-                lastDirection = "left";
+                lastDirection = Direction.LEFT;
                 pos.move(Direction.LEFT);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            if (playerPic.getX() < Background.getWidth()) {
+            if (pos.getCol() < Background.getCols()) {
                 playerPic.translate(Background.getCellSize(), 0);
-                lastDirection = "right";
+                lastDirection = Direction.RIGHT;
                 pos.move(Direction.RIGHT);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            if (playerPic.getY() > Background.getPadding()) {
+            if (pos.getRow() > Background.getPadding()) {
                 playerPic.translate(0, -Background.getCellSize());
-                lastDirection = "up";
+                lastDirection = Direction.UP;
                 pos.move(Direction.UP);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            if (playerPic.getY() < Background.getHeight()) {
+            if (pos.getRow() < Background.getRows()) {
                 playerPic.translate(0, Background.getCellSize());
-                lastDirection = "down";
+                lastDirection = Direction.DOWN;
                 pos.move(Direction.DOWN);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            if (lastDirection == null) {
-                weapon.shoot("right", playerPic.getX(), playerPic.getY());
-                return;
-            }
-            if (playerPic.getX() > Background.getPadding()) {
-                weapon.shoot(lastDirection, playerPic.getX(), playerPic.getY());
-            }
+                weapon.shoot(lastDirection, pos.getCol(), pos.getRow());
         }
 
     }

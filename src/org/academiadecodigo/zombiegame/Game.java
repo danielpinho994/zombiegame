@@ -12,6 +12,7 @@ public class Game {
 
     private int zombiesNr = 8;
     private Zombie[] zombieHoard;
+    private Bullet[] bulletsShot;
 
     private Player player;
 
@@ -28,6 +29,7 @@ public class Game {
         Background background = new Background();
 
         zombieHoard = new Zombie[zombiesNr];
+        bulletsShot = player.getBullets();
 
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
@@ -39,30 +41,38 @@ public class Game {
 
     public void start() throws InterruptedException {
         while(true){
+            Thread.sleep(200);
             moveAllZombies();
             moveAllBullets();
         }
 
     }
 
-    public void moveAllBullets() {
+    public void moveAllBullets(){
+        for(Bullet b : bulletsShot) {
+            if(b != null) {
+                while (!b.getImpact()) {
+                    b.moveBullet();
+                }
+            }
+        }
 
     }
 
-    public void moveAllZombies() throws InterruptedException {
-
-        while (true) {
+    public void moveAllZombies(){
 
             for (Zombie z : zombieHoard) {
-                Thread.sleep(20);
 
+                z.moveZombie();
 
+/*
 
                 collisionDetector.checkCollisionBullets(z);
                 collisionDetector.checkCollisionPlayer(z);
                 collisionDetector.checkCollisionZombie(z);
 
                 z.moveZombie();
+
                 Collidable collider = CollisionDetector.checkCollision(z);
 
                 /*
@@ -84,8 +94,6 @@ public class Game {
                 }
                 */
             }
-
-        }
     }
 
 }
