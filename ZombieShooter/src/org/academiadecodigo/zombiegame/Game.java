@@ -1,8 +1,11 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.zombiegame.field.Background;
+import org.academiadecodigo.zombiegame.field.CollisionDetector;
+import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Zombie;
+import org.academiadecodigo.zombiegame.player.Bullet;
 import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
@@ -13,6 +16,8 @@ public class Game {
     private Player player;
 
     private Background background;
+
+    private CollisionDetector collisionDetector;
 
     public Game(Player player){
         this.player = player;
@@ -27,6 +32,8 @@ public class Game {
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
         }
+
+        collisionDetector = new CollisionDetector(zombieHoard);
 
     }
 
@@ -49,7 +56,33 @@ public class Game {
             for (Zombie z : zombieHoard) {
                 Thread.sleep(20);
 
+
+
+                collisionDetector.checkCollisionBullets(z);
+                collisionDetector.checkCollisionPlayer(z);
+                collisionDetector.checkCollisionZombie(z);
+
                 z.moveZombie();
+                Collidable collider = CollisionDetector.checkCollision(z);
+
+                /*
+
+                if (collider instanceof Bullet) {
+                    z.die();
+                }
+
+                if (collider instanceof Player) {
+                    z.damage();
+                }
+
+                if (collider instanceof Zombie) {
+                    Direction zDirection = z.getLastDirection();
+                    Direction oppositeDir = zDirection.oppositeDirection();
+
+                    ((Zombie) collider).setForbiddenDirection(oppositeDir);
+
+                }
+                */
             }
 
         }

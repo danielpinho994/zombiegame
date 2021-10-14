@@ -25,6 +25,7 @@ public class Player implements KeyboardHandler {
 
     public Player(String name){
 
+        //make random position in centre zone
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 

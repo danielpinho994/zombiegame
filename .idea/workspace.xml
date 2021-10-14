@@ -5,33 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/field/Direction.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/field/Background.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/MovePosition.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/field/Position.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Zones.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/GameObjects.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/gameobjects/Zombie.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Background.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/MovePosition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Position.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Zones.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjects.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/GameObjectsFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/gameobjects/Zombie.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,8 +18,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -125,7 +103,7 @@
       <workItem from="1634199978118" duration="2545000" />
       <workItem from="1634202638255" duration="161000" />
       <workItem from="1634203705233" duration="907000" />
-      <workItem from="1634208221560" duration="1566000" />
+      <workItem from="1634208221560" duration="5061000" />
     </task>
     <servers />
   </component>

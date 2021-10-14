@@ -11,6 +11,13 @@ public class Zombie {
     private Position playerPos;
     private int health;
 
+    private Direction lastDirection;
+
+    private boolean forbiddenRight;
+    private boolean forbiddenLeft;
+    private boolean forbiddenUp;
+    private boolean forbiddenDown;
+
     private Rectangle zombiePic;
 
     public Zombie(Position pos, Position playerPos) {
@@ -35,29 +42,73 @@ public class Zombie {
         int targetRow = playerPos.getRow();
 
         if (targetCol > pos.getCol()) {
+            if (forbiddenRight) {
+                return;
+            }
+
             pos.move(Direction.RIGHT);
             zombiePic.translate(Background.getCellSize(), 0);
+
+            lastDirection = Direction.RIGHT;
             return;
         }
 
         if (targetCol < pos.getCol()) {
+            if (forbiddenLeft) {
+                return;
+            }
+
             pos.move(Direction.LEFT);
             zombiePic.translate(-Background.getCellSize(), 0);
+
+            lastDirection = Direction.LEFT;
             return;
         }
 
         if (targetRow < pos.getRow()) {
+            if (forbiddenUp) {
+                return;
+            }
+
             pos.move(Direction.UP);
             zombiePic.translate(0, -Background.getCellSize());
+
+            lastDirection = Direction.UP;
             return;
         }
 
         if (targetRow > pos.getRow()) {
+            if (forbiddenDown) {
+                return;
+            }
+
             pos.move(Direction.DOWN);
             zombiePic.translate(0, Background.getCellSize());
+
+            lastDirection = Direction.DOWN;
             return;
         }
 
+    }
+
+    public void setForbiddenRight(boolean forbiddenRight) {
+        this.forbiddenRight = forbiddenRight;
+    }
+
+    public void setForbiddenLeft(boolean forbiddenLeft) {
+        this.forbiddenLeft = forbiddenLeft;
+    }
+
+    public void setForbiddenUp(boolean forbiddenUp) {
+        this.forbiddenUp = forbiddenUp;
+    }
+
+    public void setForbiddenDown(boolean forbiddenDown) {
+        this.forbiddenDown = forbiddenDown;
+    }
+
+    public Direction getLastDirection() {
+        return lastDirection;
     }
 
 }
