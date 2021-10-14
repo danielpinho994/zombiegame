@@ -9,12 +9,13 @@ public class Bullet {
 
     private Picture bullet;
     private Position pos;
-    private Position target;
     private Rectangle bulletPic;
+    private boolean isImpacted;
+
 
     public Bullet(int col, int row){
-        pos = new Position(col, row); //ALTERAAAAAAR
-        bulletPic = new Rectangle(400 / 2, 400 / 2, 3, 3);
+        pos = new Position(col, row);
+        bulletPic = new Rectangle(col, row, 3, 3);
 
     }
 
@@ -39,6 +40,26 @@ public class Bullet {
                 break;
         }
     }
+
+    public boolean getImpact() {
+        return isImpacted;
+    }
+
+    public void setImpacted() {
+        isImpacted = true;
+    }
+
+    /**
+     *
+     Bullet[] shotBullets = player.getBullets();
+
+     for (Bullet b : shotBullets) {
+     while (b != null && !b.getImpact()) {
+     b.move();
+     }
+     }
+
+     */
 
 
 

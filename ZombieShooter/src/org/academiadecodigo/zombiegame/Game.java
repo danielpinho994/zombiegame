@@ -38,7 +38,6 @@ public class Game {
     }
 
     public void moveAllBullets() {
-
     }
 
     public void moveAllZombies() {

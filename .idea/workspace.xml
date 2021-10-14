@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="419e0bb3-b75d-438a-a863-bae0c91db4c1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/simplegraphics.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/ZombieShooter/src/org/academiadecodigo/zombiegame/player/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/Game.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Bullet.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Player.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/zombiegame/org/academiadecodigo/zombiegame/player/Weapon.class" afterDir="false" />
@@ -47,9 +48,11 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -94,7 +97,9 @@
       <workItem from="1634151839931" duration="4000" />
       <workItem from="1634151875888" duration="2991000" />
       <workItem from="1634161034209" duration="128000" />
-      <workItem from="1634161356624" duration="2878000" />
+      <workItem from="1634161356624" duration="3062000" />
+      <workItem from="1634200211075" duration="602000" />
+      <workItem from="1634201979692" duration="2720000" />
     </task>
     <servers />
   </component>

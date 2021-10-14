@@ -13,26 +13,26 @@ public class Weapon {
 
         magSize = 10;
         bullets = new Bullet[magSize];
-        /**
-        for( int i = 0 ; i < magSize ; i++ ){
-
-            bullets[i] = new Bullet();
-            shotsFired = 0;
-
-        }
-         */
+        shotsFired = 0;
     }
 
     public void Reload() {
 
     }
+
     public void shoot(String direction, int col, int row) {
-        if (shotsFired <= magSize) {
+        if (shotsFired < magSize) {
             bullets[shotsFired] = new Bullet(col, row);
             bullets[shotsFired].move(direction);
             shotsFired++;
+        } else {
+            return;
         }
 
+    }
+
+    public Bullet[] getBullets() {
+        return bullets;
     }
 
 }

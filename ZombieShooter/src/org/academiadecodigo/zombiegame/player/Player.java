@@ -27,7 +27,7 @@ public class Player implements KeyboardHandler {
 
     public Player(String name){
 
-        this.pos = new Position(400/2, 400/2);
+        pos = new Position(400/2, 400/2);
         playerPic = new Rectangle(400 / 2, 400 / 2, 3 * 5, 3 * 5); //width/2 e 3cols * cellsize
         playerPic.draw();
         playerPic.setColor(Color.BLUE);
@@ -41,6 +41,10 @@ public class Player implements KeyboardHandler {
 
     public static Position getPos() {
         return pos;
+    }
+
+    public Bullet[] getBullets() {
+        return weapon.getBullets();
     }
 
     @Override
