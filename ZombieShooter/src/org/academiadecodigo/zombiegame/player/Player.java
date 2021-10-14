@@ -4,19 +4,17 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.zombiegame.Background;
-import org.academiadecodigo.zombiegame.MovePosition;
-import org.academiadecodigo.zombiegame.Position;
-
-import java.awt.*;
+import org.academiadecodigo.zombiegame.field.Background;
+import org.academiadecodigo.zombiegame.field.Direction;
+import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.field.Zones;
 
 public class Player implements KeyboardHandler {
 
 
     private static Position pos;
     private Rectangle playerPic;
-    private MovePosition currentDirection;
+    private Direction currentDirection;
     private String lastDirection;
 
     private Weapon weapon;
@@ -27,7 +25,16 @@ public class Player implements KeyboardHandler {
 
     public Player(String name){
 
-        playerPic = new Rectangle(400 / 2, 400 / 2, 3 * 5, 3 * 5); //width/2 e 3cols * cellsize
+        Zones z = Zones.E;
+        pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
+
+        int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+        int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+        int height = 3 * Background.getCellSize();
+        int width = 3 * Background.getCellSize();
+
+        playerPic = new Rectangle(x, y, width, height); //width/2 e 3cols * cellsize
         playerPic.draw();
         playerPic.setColor(Color.BLUE);
         playerPic.fill();
@@ -38,7 +45,7 @@ public class Player implements KeyboardHandler {
 
     }
 
-    public static Position getPos() {
+    public Position getPos() {
         return pos;
     }
 
@@ -47,33 +54,33 @@ public class Player implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
             if (playerPic.getX() > Background.getPadding()) {
-                playerPic.translate(-10, 0);
+                playerPic.translate(-Background.getCellSize(), 0);
                 lastDirection = "left";
-                // FALTA MEXER POSIÇAO
+                pos.move(Direction.LEFT);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
             if (playerPic.getX() < Background.getWidth()) {
-                playerPic.translate(10, 0);
+                playerPic.translate(Background.getCellSize(), 0);
                 lastDirection = "right";
-                // FALTA MEXER POSIÇAO
+                pos.move(Direction.RIGHT);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
             if (playerPic.getY() > Background.getPadding()) {
-                playerPic.translate(0, -10);
+                playerPic.translate(0, -Background.getCellSize());
                 lastDirection = "up";
-                // FALTA MEXER POSIÇAO
+                pos.move(Direction.UP);
             }
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
             if (playerPic.getY() < Background.getHeight()) {
-                playerPic.translate(0, 10);
+                playerPic.translate(0, Background.getCellSize());
                 lastDirection = "down";
-                // FALTA MEXER POSIÇAO
+                pos.move(Direction.DOWN);
             }
         }
 

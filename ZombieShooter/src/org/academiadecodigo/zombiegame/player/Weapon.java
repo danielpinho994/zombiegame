@@ -1,6 +1,6 @@
 package org.academiadecodigo.zombiegame.player;
 
-import org.academiadecodigo.zombiegame.Position;
+import org.academiadecodigo.zombiegame.field.Position;
 
 public class Weapon {
 

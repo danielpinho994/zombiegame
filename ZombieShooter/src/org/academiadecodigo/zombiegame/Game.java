@@ -1,38 +1,39 @@
 package org.academiadecodigo.zombiegame;
 
+import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Zombie;
 import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 5;
+    private int zombiesNr = 8;
     private Zombie[] zombieHoard;
 
     private Player player;
+
     private Background background;
 
     public Game(Player player){
         this.player = player;
-        background = new Background(10, 180, 90);
+        background = new Background();
     }
 
     public void init() {
-        Background background = new Background(10, 800, 800);
+        Background background = new Background();
 
         zombieHoard = new Zombie[zombiesNr];
 
         for (int z = 0; z < zombieHoard.length; z++) {
-            zombieHoard[z] = GameObjectsFactory.makeZombie();
+            zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
         }
 
     }
 
     public void start() throws InterruptedException {
         while(true){
-        moveAllZombies();
-        moveAllBullets();
-        Thread.sleep(200);
+            moveAllZombies();
+            moveAllBullets();
         }
 
     }
@@ -41,13 +42,17 @@ public class Game {
 
     }
 
-    public void moveAllZombies() {
+    public void moveAllZombies() throws InterruptedException {
 
-        for (Zombie z : zombieHoard) {
+        while (true) {
 
-            z.moveZombie();
+            for (Zombie z : zombieHoard) {
+                Thread.sleep(20);
+
+                z.moveZombie();
+            }
+
         }
-
     }
 
 }

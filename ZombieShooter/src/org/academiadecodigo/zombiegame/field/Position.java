@@ -1,18 +1,11 @@
-package org.academiadecodigo.zombiegame;
+package org.academiadecodigo.zombiegame.field;
 
-import org.academiadecodigo.simplegraphics.graphics.Shape;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.zombiegame.gameobjects.Zombie;
+import org.academiadecodigo.zombiegame.field.Direction;
 
 public class Position {
 
     private int col;
     private int row;
-
-    public void setPos(int col , int row){
-        this.col = col;
-        this.row = row;
-    }
 
     public void setCol(int col) {
         this.col = col;
@@ -30,23 +23,21 @@ public class Position {
         return row;
     }
 
-
-    //Zombie Position
-    public Position (int[] zonePos){
-           col = zonePos[0] * Background.getCellSize() + Background.getPadding();
-           row = zonePos[1] * Background.getCellSize() + Background.getPadding();
-    }
-
-
-    //Player Position
+    //Bullet Position
     public Position(int col, int row) {
-
         this.col = col;
         this.row = row;
     }
 
+    //Player && GameObjects Position
+    public Position(int minCol, int maxCol, int minRow, int maxRow) {
 
-    public void move(MovePosition direction) {
+        this.col = minCol + (int)(Math.random() * ((maxCol - minCol) + 1));
+        this.row = minRow + (int)(Math.random() * ((maxRow - minRow) + 1));
+
+    }
+
+    public void move(Direction direction) {
 
         switch (direction) {
 
@@ -81,16 +72,5 @@ public class Position {
     private void moveRight(){
         setCol(getCol()+1);
     }
-
-
-    /*
-    public Position(Background background) {
-
-        this.background = background;
-
-        col = ()
-    }
-    */
-
 
 }

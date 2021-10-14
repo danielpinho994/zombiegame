@@ -3,7 +3,7 @@ package org.academiadecodigo.zombiegame.player;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.zombiegame.Position;
+import org.academiadecodigo.zombiegame.field.Position;
 
 public class Bullet {
 
