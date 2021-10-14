@@ -21,7 +21,6 @@ public class Game {
         Background background = new Background(10, 800, 800);
 
         zombieHoard = new Zombie[zombiesNr];
-
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombie();
         }
