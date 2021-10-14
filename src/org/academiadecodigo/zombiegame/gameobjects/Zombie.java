@@ -20,16 +20,29 @@ public class Zombie {
 
     private Rectangle zombiePic;
 
+    //number of rows and cols of rectangle
+    private int posSize = 3;
+
+    private int firstCol;
+    private int lastCol;
+    private int firstRow;
+    private int lastRow;
+
     public Zombie(Position pos, Position playerPos) {
 
         this.pos = pos;
         this.playerPos = playerPos;
 
+        firstCol = pos.getCol();
+        lastCol = pos.getCol() + posSize;
+        firstRow = pos.getRow();
+        lastRow = pos.getRow() + posSize;
+
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-        int height = 3 * Background.getCellSize();
-        int width = 3 * Background.getCellSize();
+        int height = posSize * Background.getCellSize();
+        int width = posSize * Background.getCellSize();
 
         zombiePic = new Rectangle(x, y, width, height);
         zombiePic.draw();
@@ -91,24 +104,42 @@ public class Zombie {
 
     }
 
-    public void setForbiddenRight(boolean forbiddenRight) {
-        this.forbiddenRight = forbiddenRight;
+    public void resetForbidden() {
+        forbiddenDown = false;
+        forbiddenLeft = false;
+        forbiddenUp = false;
+        forbiddenRight = false;
     }
 
-    public void setForbiddenLeft(boolean forbiddenLeft) {
-        this.forbiddenLeft = forbiddenLeft;
+    public void forbidRight() {
+        forbiddenRight = true;
     }
 
-    public void setForbiddenUp(boolean forbiddenUp) {
-        this.forbiddenUp = forbiddenUp;
+    public void forbidLeft() {
+        forbiddenLeft = true;
     }
 
-    public void setForbiddenDown(boolean forbiddenDown) {
-        this.forbiddenDown = forbiddenDown;
+    public void forbidUp() {
+        forbiddenUp = true;
     }
 
-    public Direction getLastDirection() {
-        return lastDirection;
+    public void forbidDown() {
+        forbiddenDown = true;
     }
 
+    public int getFirstCol() {
+        return firstCol;
+    }
+
+    public int getLastCol() {
+        return lastCol;
+    }
+
+    public int getFirstRow() {
+        return firstRow;
+    }
+
+    public int getLastRow() {
+        return lastRow;
+    }
 }

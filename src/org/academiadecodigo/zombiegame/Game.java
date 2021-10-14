@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 8;
+    private int zombiesNr = 2;
     private Zombie[] zombieHoard;
 
     private Player player;
@@ -25,7 +25,7 @@ public class Game {
     }
 
     public void init() {
-        Background background = new Background();
+        background = new Background();
 
         zombieHoard = new Zombie[zombiesNr];
 
@@ -51,41 +51,18 @@ public class Game {
 
     public void moveAllZombies() throws InterruptedException {
 
-        while (true) {
-
             for (Zombie z : zombieHoard) {
-                Thread.sleep(20);
+                Thread.sleep(50);
 
-
-
-                collisionDetector.checkCollisionBullets(z);
-                collisionDetector.checkCollisionPlayer(z);
+                //collisionDetector.checkCollisionBullets(z);
+                //collisionDetector.checkCollisionPlayer(z);
                 collisionDetector.checkCollisionZombie(z);
 
                 z.moveZombie();
-                Collidable collider = CollisionDetector.checkCollision(z);
 
-                /*
-
-                if (collider instanceof Bullet) {
-                    z.die();
-                }
-
-                if (collider instanceof Player) {
-                    z.damage();
-                }
-
-                if (collider instanceof Zombie) {
-                    Direction zDirection = z.getLastDirection();
-                    Direction oppositeDir = zDirection.oppositeDirection();
-
-                    ((Zombie) collider).setForbiddenDirection(oppositeDir);
-
-                }
-                */
+                z.resetForbidden();
             }
 
-        }
     }
 
 }
