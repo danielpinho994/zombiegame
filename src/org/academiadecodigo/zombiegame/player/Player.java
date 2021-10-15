@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
+import org.academiadecodigo.zombiegame.gameobjects.Zombie;
 
 public class Player implements KeyboardHandler {
 
@@ -16,7 +17,6 @@ public class Player implements KeyboardHandler {
 
     //number of rows and cols of rectangle
     private int posSize = 10;
-
     private int firstCol;
     private int lastCol;
     private int firstRow;
@@ -32,6 +32,9 @@ public class Player implements KeyboardHandler {
     private String name;
 
     private int health = 100;
+
+    private Direction firstDirection;
+    private Direction secDirection;
 
     public Player(String name){
         this.name = name;
@@ -53,7 +56,7 @@ public class Player implements KeyboardHandler {
         int height = posSize * Background.getCellSize();
         int width = posSize * Background.getCellSize();
 
-        playerPic = new Rectangle(x, y, width, height); //width/2 e 3cols * cellsize
+        playerPic = new Rectangle(x, y, width, height);
         playerPic.draw();
         playerPic.setColor(Color.BLUE);
         playerPic.fill();
@@ -119,41 +122,12 @@ public class Player implements KeyboardHandler {
         return lastRow;
     }
 
-    @Override
-    public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            collisionDetector.checkCollisionPlayer();
-            moveLeft();
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            collisionDetector.checkCollisionPlayer();
-            moveRight();
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            collisionDetector.checkCollisionPlayer();
-            moveUp();
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            collisionDetector.checkCollisionPlayer();
-            moveDown();
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            shoot();
-        }
-
+    public void shoot() {
+        weapon.shoot(lastDirection, pos);
     }
 
     public void moveLeft() {
-        if(forbiddenLeft) {
-            return;
-        }
-
-        if (playerPic.getX() > Background.getPadding()) {
+        if (firstCol > 0) {
             playerPic.translate(-Background.getCellSize(), 0);
             lastDirection = Direction.LEFT;
 
@@ -165,11 +139,7 @@ public class Player implements KeyboardHandler {
     }
 
     public void moveRight() {
-        if (forbiddenRight) {
-            return;
-        }
-
-        if (playerPic.getX() < Background.getWidth()) {
+        if (lastCol < Background.getCols()) {
             playerPic.translate(Background.getCellSize(), 0);
             lastDirection = Direction.RIGHT;
 
@@ -181,11 +151,8 @@ public class Player implements KeyboardHandler {
     }
 
     public void moveUp() {
-        if (forbiddenUp) {
-            return;
-        }
-
-        if (playerPic.getY() > Background.getPadding()) {
+        if (firstRow > 0) {
+            System.out.println(-Background.getCellSize());
             playerPic.translate(0, -Background.getCellSize());
             lastDirection = Direction.UP;
 
@@ -197,11 +164,7 @@ public class Player implements KeyboardHandler {
     }
 
     public void moveDown() {
-        if (forbiddenDown) {
-            return;
-        }
-
-        if (playerPic.getY() < Background.getHeight()) {
+        if (lastRow < Background.getRows()) {
             playerPic.translate(0, Background.getCellSize());
             lastDirection = Direction.DOWN;
 
@@ -212,14 +175,140 @@ public class Player implements KeyboardHandler {
         }
     }
 
-    public void shoot() {
-        if (playerPic.getX() > Background.getPadding()) {
-            weapon.shoot(lastDirection, pos);
+    public void move() {
+
+        resetForbidden();
+
+        collisionDetector.checkCollisionPlayer();
+
+        if (firstDirection != null) {
+
+            switch (firstDirection) {
+                case UP:
+                    if (!forbiddenUp) {
+                        moveUp();
+                    }
+                    break;
+                case LEFT:
+                    if (!forbiddenLeft) {
+                        moveLeft();
+                    }
+                    break;
+                case RIGHT:
+                    if (!forbiddenRight) {
+                        moveRight();
+                    }
+                    break;
+                case DOWN:
+                    if (!forbiddenDown) {
+                        moveDown();
+                    }
+            }
+        }
+
+        if (secDirection != null) {
+
+            switch (secDirection) {
+                case UP:
+                    if (!forbiddenUp) {
+                        moveUp();
+                    }
+                    break;
+                case LEFT:
+                    if (!forbiddenLeft) {
+                        moveLeft();
+                    }
+                    break;
+                case RIGHT:
+                    if (!forbiddenRight) {
+                        moveRight();
+                    }
+                    break;
+                case DOWN:
+                    if (!forbiddenDown) {
+                        moveDown();
+                    }
+            }
+        }
+    }
+
+    @Override
+    public void keyPressed(KeyboardEvent keyboardEvent) {
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+            if (firstDirection == null) {
+                firstDirection = Direction.UP;
+                return;
+            }
+            secDirection = Direction.UP;
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+            if (firstDirection == null) {
+                firstDirection = Direction.LEFT;
+                return;
+            }
+            secDirection = Direction.LEFT;
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+            if (firstDirection == null) {
+                firstDirection = Direction.RIGHT;
+                return;
+            }
+            secDirection = Direction.RIGHT;
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+            if (firstDirection == null) {
+                firstDirection = Direction.DOWN;
+                return;
+            }
+            secDirection = Direction.DOWN;
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+            shoot();
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+            if (firstDirection == Direction.UP) {
+                firstDirection = null;
+            }
+            if (secDirection == Direction.UP) {
+                secDirection = null;
+            }
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+            if (firstDirection == Direction.LEFT) {
+                firstDirection = null;
+            }
+            if (secDirection == Direction.LEFT) {
+                secDirection = null;
+            }
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+            if (firstDirection == Direction.RIGHT) {
+                firstDirection = null;
+            }
+            if (secDirection == Direction.RIGHT) {
+                secDirection = null;
+            }
+        }
+
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+            if (firstDirection == Direction.DOWN) {
+                firstDirection = null;
+            }
+            if (secDirection == Direction.DOWN) {
+                secDirection = null;
+            }
+        }
     }
 }

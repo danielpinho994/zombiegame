@@ -24,7 +24,7 @@ public class Zombie {
     private Rectangle zombiePic;
 
     //number of rows and cols of rectangle
-    private int posSize = 10;
+    public static final int POS_SIZE = 10;
 
     private int firstCol;
     private int lastCol;
@@ -43,15 +43,19 @@ public class Zombie {
         this.pos = pos;
 
         firstCol = pos.getCol();
-        lastCol = pos.getCol() + posSize;
+        lastCol = pos.getCol() + POS_SIZE;
         firstRow = pos.getRow();
-        lastRow = pos.getRow() + posSize;
+        lastRow = pos.getRow() + POS_SIZE;
 
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-        int height = posSize * Background.getCellSize();
-        int width = posSize * Background.getCellSize();
+        int height = POS_SIZE * Background.getCellSize();
+        int width = POS_SIZE * Background.getCellSize();
+
+        if (zombiePic != null) {
+            zombiePic.delete();
+        }
 
         zombiePic = new Rectangle(x, y, width, height);
         zombiePic.draw();

@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 10;
+    private final static int ZOMBIES_NR = 1;
     private int wallNr = 25;
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
@@ -30,7 +30,7 @@ public class Game {
         background = new Background();
         walls = new Wall[wallNr];
 
-        zombieHoard = new Zombie[zombiesNr];
+        zombieHoard = new Zombie[ZOMBIES_NR];
         bulletsShot = player.getBullets();
 
         for (int z = 0; z < zombieHoard.length; z++) {
@@ -56,7 +56,7 @@ public class Game {
             Thread.sleep(200);
             moveAllZombies();
             moveAllBullets();
-
+            player.move();
         }
 
     }

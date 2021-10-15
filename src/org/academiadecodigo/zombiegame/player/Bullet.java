@@ -17,9 +17,7 @@ public class Bullet {
     private Direction bulletDirection;
     private boolean isImpacted;
 
-
     public Bullet(Position bulletPos) {
-
         pos = bulletPos;
         bulletPic = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() , Background.getCellSize());
 

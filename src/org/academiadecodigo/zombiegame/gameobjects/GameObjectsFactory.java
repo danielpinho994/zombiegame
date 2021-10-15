@@ -40,7 +40,7 @@ public abstract class GameObjectsFactory {
     }
 
     public static Position makeNewZombiePos(Zones zone) {
-        return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
+        return new Position(zone.getFirstCol(), zone.getLastCol() - 1, zone.getFirstRow(), zone.getLastRow() - 1);
     }
 
     public static Wall makeWall() {
