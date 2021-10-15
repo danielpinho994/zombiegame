@@ -2,6 +2,7 @@ package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
+import org.academiadecodigo.zombiegame.player.Bullet;
 
 public abstract class GameObjectsFactory {
 
@@ -26,6 +27,14 @@ public abstract class GameObjectsFactory {
         Position zombiePos = new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
 
         return new Zombie(zombiePos, playerPos, zone);
+
+    }
+
+    public static Bullet makeBullets(Position playerPos) {
+
+        Position bulletPos = new Position(playerPos.getCol(), playerPos.getRow());
+
+        return new Bullet(bulletPos);
 
     }
 
