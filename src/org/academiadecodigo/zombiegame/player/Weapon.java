@@ -2,6 +2,7 @@ package org.academiadecodigo.zombiegame.player;
 
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 
 public class Weapon {
 
@@ -21,10 +22,10 @@ public class Weapon {
 
     }
 
-    public void shoot(Direction direction, int col, int row) {
+    public void shoot(Direction direction, Position playerPos) {
         if (shotsFired < magSize) {
-            bullets[shotsFired] = new Bullet(col, row);
-            bullets[shotsFired].move(direction);
+            bullets[shotsFired] = GameObjectsFactory.makeBullets(playerPos);
+            bullets[shotsFired].loadBullet(direction);
             shotsFired++;
         } else {
             return;

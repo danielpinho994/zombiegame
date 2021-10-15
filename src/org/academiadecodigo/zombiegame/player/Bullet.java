@@ -18,13 +18,14 @@ public class Bullet {
     private boolean isImpacted;
 
 
-    public Bullet(int col, int row){
-        pos = new Position(col, row);
-        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(), Background.getCellSize(), Background.getCellSize());
+    public Bullet(Position bulletPos) {
+
+        pos = bulletPos;
+        bulletPic = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() *20, Background.getCellSize()*20);
 
     }
 
-    public void move(Direction direction) {
+    public void loadBullet(Direction direction) {
 
         bulletDirection = direction;
 
@@ -32,8 +33,18 @@ public class Bullet {
         bulletPic.setColor(Color.GREEN);
         bulletPic.fill();
 
-        switch (direction) {
+    }
+
+    public void moveBullet() {
+
+        switch (bulletDirection) {
             case LEFT:
+                if (pos.getCol() <= 1) {
+                    bulletPic.delete();
+                    isImpacted = true;
+                    pos = null;
+                    break;
+                }
                 bulletPic.translate(-Background.getCellSize(), 0);
                 pos.move(bulletDirection);
                 break;
@@ -48,18 +59,27 @@ public class Bullet {
                 pos.move(bulletDirection);
                 break;
             case UP:
+                if (pos.getRow() <= 1) {
+                    bulletPic.delete();
+                    isImpacted = true;
+                    pos = null;
+                    break;
+                }
                 bulletPic.translate(0, -Background.getCellSize());
                 pos.move(bulletDirection);
                 break;
             case DOWN:
+                if (pos.getRow() >= Background.getRows() - 1) {
+                    bulletPic.delete();
+                    isImpacted = true;
+                    pos = null;
+                    break;
+                }
                 bulletPic.translate(0, Background.getCellSize());
                 pos.move(bulletDirection);
                 break;
         }
-    }
 
-    public void moveBullet() {
-        this.move(bulletDirection);
     }
 
     public boolean getImpact() {

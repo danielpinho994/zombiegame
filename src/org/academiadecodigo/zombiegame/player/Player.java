@@ -214,7 +214,7 @@ public class Player implements KeyboardHandler {
 
     public void shoot() {
         if (playerPic.getX() > Background.getPadding()) {
-            weapon.shoot(lastDirection, playerPic.getX(), playerPic.getY());
+            weapon.shoot(lastDirection, pos);
         }
     }
 

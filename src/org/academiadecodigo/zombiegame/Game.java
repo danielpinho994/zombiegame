@@ -2,7 +2,6 @@ package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.CollisionDetector;
-import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Zombie;
 import org.academiadecodigo.zombiegame.player.Bullet;
