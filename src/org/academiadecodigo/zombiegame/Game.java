@@ -3,16 +3,22 @@ package org.academiadecodigo.zombiegame;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
+import org.academiadecodigo.zombiegame.gameobjects.Wall;
 import org.academiadecodigo.zombiegame.gameobjects.Zombie;
 import org.academiadecodigo.zombiegame.player.Bullet;
 import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
+<<<<<<< HEAD
     private final static int ZOMBIES_NR = 1;
+=======
+    private int zombiesNr = 10;
+    private int wallNr = 25;
+>>>>>>> main
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
-
+    private Wall[] walls;
     private Player player;
 
     private Background background;
@@ -26,12 +32,16 @@ public class Game {
 
     public void init() {
         background = new Background();
+        walls = new Wall[wallNr];
 
         zombieHoard = new Zombie[ZOMBIES_NR];
         bulletsShot = player.getBullets();
 
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
+        }
+        for (int w = 0; w < walls.length; w++) {
+            walls[w] = GameObjectsFactory.makeWall();
         }
 
         collisionDetector = new CollisionDetector(zombieHoard, player);

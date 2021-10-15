@@ -177,6 +177,7 @@ public class Player implements KeyboardHandler {
         }
     }
 
+<<<<<<< HEAD
     public void move() {
 
         resetForbidden();
@@ -271,6 +272,11 @@ public class Player implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
             shoot();
+=======
+    public void shoot() {
+        if (playerPic.getX() > Background.getPadding()) {
+            weapon.shoot(lastDirection, pos);
+>>>>>>> main
         }
     }
 
