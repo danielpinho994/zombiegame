@@ -64,7 +64,7 @@ public class Game {
     public void moveAllBullets(){
         for(Bullet b : bulletsShot) {
             if(b != null) {
-                while (!b.getImpact()) {
+                if (!b.getImpact()) {
                     b.moveBullet();
                 }
             }

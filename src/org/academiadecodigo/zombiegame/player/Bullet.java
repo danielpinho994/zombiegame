@@ -21,7 +21,7 @@ public class Bullet {
     public Bullet(Position bulletPos) {
 
         pos = bulletPos;
-        bulletPic = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() *20, Background.getCellSize()*20);
+        bulletPic = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() , Background.getCellSize());
 
     }
 
@@ -30,7 +30,7 @@ public class Bullet {
         bulletDirection = direction;
 
         bulletPic.draw();
-        bulletPic.setColor(Color.GREEN);
+        bulletPic.setColor(Color.BLACK);
         bulletPic.fill();
 
     }
@@ -47,6 +47,8 @@ public class Bullet {
                 }
                 bulletPic.translate(-Background.getCellSize(), 0);
                 pos.move(bulletDirection);
+                //System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
+                //System.out.println("x: " + bulletPic.getX() + " : y: " + bulletPic.getY());
                 break;
             case RIGHT:
                 if (pos.getCol() >= Background.getCols() - 1) {
@@ -88,6 +90,10 @@ public class Bullet {
 
     public void setImpacted() {
         isImpacted = true;
+    }
+
+    public Position getPos() {
+        return pos;
     }
 
     /**
