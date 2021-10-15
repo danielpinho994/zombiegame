@@ -20,7 +20,8 @@ public class Bullet {
 
     public Bullet(int col, int row){
         pos = new Position(col, row);
-        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(), Background.getCellSize(), Background.getCellSize());
+        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(),
+                Background.getCellSize(), Background.getCellSize());
 
     }
 

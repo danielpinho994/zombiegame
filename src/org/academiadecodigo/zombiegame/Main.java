@@ -18,26 +18,52 @@ public class Main {
         wPressed.setKey(KeyboardEvent.KEY_W);
         wPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent sPressed= new KeyboardEvent();
-        sPressed.setKey(KeyboardEvent.KEY_S);
-        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        KeyboardEvent wReleased= new KeyboardEvent();
+        wReleased.setKey(KeyboardEvent.KEY_W);
+        wReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
         KeyboardEvent aPressed= new KeyboardEvent();
         aPressed.setKey(KeyboardEvent.KEY_A);
         aPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        KeyboardEvent aReleased= new KeyboardEvent();
+        aReleased.setKey(KeyboardEvent.KEY_A);
+        aReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent sPressed= new KeyboardEvent();
+        sPressed.setKey(KeyboardEvent.KEY_S);
+        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent sReleased= new KeyboardEvent();
+        sReleased.setKey(KeyboardEvent.KEY_S);
+        sReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
         KeyboardEvent dPressed= new KeyboardEvent();
         dPressed.setKey(KeyboardEvent.KEY_D);
         dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent dReleased = new KeyboardEvent();
+        dReleased.setKey(KeyboardEvent.KEY_D);
+        dReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
 
         KeyboardEvent spacePressed= new KeyboardEvent();
         spacePressed.setKey(KeyboardEvent.KEY_SPACE);
         spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
         kb.addEventListener(wPressed);
-        kb.addEventListener(sPressed);
+        kb.addEventListener(wReleased);
+
         kb.addEventListener(aPressed);
+        kb.addEventListener(aReleased);
+
+        kb.addEventListener(sPressed);
+        kb.addEventListener(sReleased);
+
         kb.addEventListener(dPressed);
+        kb.addEventListener(dReleased);
+
+
+
         kb.addEventListener(spacePressed);
 
         game.init();

@@ -27,6 +27,8 @@ public class CollisionDetector {
                     zombie.getFirstRow() <= z.getLastRow() && zombie.getLastRow() >= z.getFirstRow()) {
                 Position newPos = GameObjectsFactory.makeNewZombiePos(zombie.getZone());
                 zombie.setPosition(newPos);
+
+                checkZombieOverlap(zombie);
             }
         }
     }
