@@ -4,12 +4,15 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.field.Zones;
 
 public class Zombie {
 
     private Position pos;
     private Position playerPos;
+    private int hitPoints = 10;
     private int health;
+    private Zones zone;
 
     private Direction lastDirection;
 
@@ -21,17 +24,23 @@ public class Zombie {
     private Rectangle zombiePic;
 
     //number of rows and cols of rectangle
-    private int posSize = 3;
+    private int posSize = 10;
 
     private int firstCol;
     private int lastCol;
     private int firstRow;
     private int lastRow;
 
-    public Zombie(Position pos, Position playerPos) {
+    public Zombie(Position pos, Position playerPos, Zones zone) {
 
-        this.pos = pos;
         this.playerPos = playerPos;
+        this.zone = zone;
+
+        setPosition(pos);
+    }
+
+    public void setPosition(Position pos) {
+        this.pos = pos;
 
         firstCol = pos.getCol();
         lastCol = pos.getCol() + posSize;
@@ -131,8 +140,6 @@ public class Zombie {
         return;
     }
 
-
-
     public void resetForbidden() {
         forbiddenDown = false;
         forbiddenLeft = false;
@@ -156,6 +163,10 @@ public class Zombie {
         forbiddenDown = true;
     }
 
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
     public int getFirstCol() {
         return firstCol;
     }
@@ -170,5 +181,9 @@ public class Zombie {
 
     public int getLastRow() {
         return lastRow;
+    }
+
+    public Zones getZone() {
+        return zone;
     }
 }

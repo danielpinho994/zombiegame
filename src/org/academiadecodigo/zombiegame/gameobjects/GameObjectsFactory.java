@@ -10,11 +10,11 @@ public abstract class GameObjectsFactory {
     public static Zombie makeZombies(Position playerPos) {
 
         //Select zone
-        Zones z = Zones.values()[zombieCounter];
+        Zones zone = Zones.values()[zombieCounter];
         //change zone if centre
-        if (z == Zones.E) {
+        if (zone == Zones.E) {
             zombieCounter++;
-            z = Zones.values()[zombieCounter];
+            zone = Zones.values()[zombieCounter];
         }
         //Add counter for next zone
         zombieCounter++;
@@ -23,10 +23,14 @@ public abstract class GameObjectsFactory {
         }
 
         //Create zombie random position in selected zone
-        Position zombiePos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
+        Position zombiePos = new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
 
-        return new Zombie(zombiePos, playerPos);
+        return new Zombie(zombiePos, playerPos, zone);
 
+    }
+
+    public static Position makeNewZombiePos(Zones zone) {
+        return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
     }
 
 }

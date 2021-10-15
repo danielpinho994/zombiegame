@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 20;
+    private int zombiesNr = 10;
     private Zombie[] zombieHoard;
 
     private Player player;
@@ -33,7 +33,13 @@ public class Game {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
         }
 
-        collisionDetector = new CollisionDetector(zombieHoard);
+        collisionDetector = new CollisionDetector(zombieHoard, player);
+        player.setCollisionDetector(collisionDetector);
+
+        //check zombies overlap
+        for (Zombie z : zombieHoard) {
+            collisionDetector.checkZombieOverlap(z);
+        }
 
     }
 
@@ -62,7 +68,9 @@ public class Game {
 
                 z.moveZombie();
 
-                z.resetForbidden();
+
+
+                System.out.println(player.getHealth());
             }
 
     }
