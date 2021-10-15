@@ -17,19 +17,9 @@ public class Bullet {
     private Direction bulletDirection;
     private boolean isImpacted;
 
-
-<<<<<<< HEAD
-    public Bullet(int col, int row){
-        pos = new Position(col, row);
-        bulletPic = new Rectangle(col * Background.getCellSize() + Background.getPadding(), row * Background.getCellSize() + Background.getPadding(),
-                Background.getCellSize(), Background.getCellSize());
-=======
     public Bullet(Position bulletPos) {
-
         pos = bulletPos;
         bulletPic = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() *20, Background.getCellSize()*20);
->>>>>>> main
-
     }
 
     public void loadBullet(Direction direction) {
