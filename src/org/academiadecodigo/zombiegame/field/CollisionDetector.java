@@ -10,9 +10,6 @@ public class CollisionDetector {
 
         this.zombies = zombies;
 
-        /*
-
-    */
     }
 
     public void checkCollisionZombie(Zombie zombie) {
@@ -23,7 +20,10 @@ public class CollisionDetector {
                 continue;
             }
 
-            if (zombie.getFirstCol() <= z.getLastCol() && ( zombie.getFirstRow() <= z.getLastRow() || zombie.getLastRow() >= z.getFirstRow() )) {
+            //System.out.println(zombie.getFirstCol() + " " + z.getLastCol() + " " + zombie.getFirstRow() + " " + z.getLastRow() + " " + zombie.getLastRow() +
+            //        " " + z.getFirstRow());
+
+            if (zombie.getFirstCol() == z.getLastCol() && zombie.getFirstRow() <= z.getLastRow() && zombie.getLastRow() >= z.getFirstRow()) {
 
                 System.out.println(zombie.getFirstCol() + " " + z.getLastCol() + " " + zombie.getFirstRow() + " " + z.getLastRow() + " " + zombie.getLastRow() +
                         " " + z.getFirstRow());
@@ -31,20 +31,20 @@ public class CollisionDetector {
                 zombie.forbidLeft();
             }
 
-            if (zombie.getLastCol() >= z.getFirstCol() && ( zombie.getFirstRow() <= z.getLastRow() || zombie.getLastRow() >= z.getFirstRow() )) {
-                System.out.println("right");
+            if (zombie.getLastCol() == z.getFirstCol() && zombie.getFirstRow() <= z.getLastRow() && zombie.getLastRow() >= z.getFirstRow()) {
+                //System.out.println("right");
 
                 zombie.forbidRight();
             }
 
-            if (zombie.getFirstRow() <= z.getLastRow() && ( zombie.getFirstCol() <= z.getLastCol() || zombie.getLastCol() >= z.getFirstCol() )) {
-                System.out.println("up");
+            if (zombie.getFirstRow() == z.getLastRow() && zombie.getFirstCol() <= z.getLastCol() && zombie.getLastCol() >= z.getFirstCol()) {
+                //System.out.println("up");
 
                 zombie.forbidUp();
             }
 
-            if (zombie.getLastRow() >= z.getFirstRow() && ( zombie.getFirstCol() <= z.getLastCol() || zombie.getLastCol() >= z.getFirstCol() )) {
-                System.out.println("down");
+            if (zombie.getLastRow() == z.getFirstRow() && zombie.getFirstCol() <= z.getLastCol() && zombie.getLastCol() >= z.getFirstCol()) {
+                //System.out.println("down");
 
                 zombie.forbidDown();
             }

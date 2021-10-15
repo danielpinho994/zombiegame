@@ -55,54 +55,83 @@ public class Zombie {
         int targetRow = playerPos.getRow();
 
         if (targetCol > pos.getCol()) {
-            if (forbiddenRight) {
-                return;
-            }
-
-            pos.move(Direction.RIGHT);
-            zombiePic.translate(Background.getCellSize(), 0);
-
-            lastDirection = Direction.RIGHT;
-            return;
+            moveRight();
         }
 
         if (targetCol < pos.getCol()) {
-            if (forbiddenLeft) {
-                return;
-            }
-
-            pos.move(Direction.LEFT);
-            zombiePic.translate(-Background.getCellSize(), 0);
-
-            lastDirection = Direction.LEFT;
-            return;
+            moveLeft();
         }
 
         if (targetRow < pos.getRow()) {
-            if (forbiddenUp) {
-                return;
-            }
-
-            pos.move(Direction.UP);
-            zombiePic.translate(0, -Background.getCellSize());
-
-            lastDirection = Direction.UP;
-            return;
+            moveUp();
         }
 
         if (targetRow > pos.getRow()) {
-            if (forbiddenDown) {
-                return;
-            }
-
-            pos.move(Direction.DOWN);
-            zombiePic.translate(0, Background.getCellSize());
-
-            lastDirection = Direction.DOWN;
-            return;
+            moveDown();
         }
 
     }
+
+    public void moveRight() {
+        if (forbiddenRight) {
+            return;
+        }
+
+        firstCol++;
+        lastCol++;
+
+        pos.move(Direction.RIGHT);
+        zombiePic.translate(Background.getCellSize(), 0);
+
+        lastDirection = Direction.RIGHT;
+        return;
+    }
+
+    public void moveLeft() {
+        if (forbiddenLeft) {
+            return;
+        }
+
+        firstCol--;
+        lastCol--;
+
+        pos.move(Direction.LEFT);
+        zombiePic.translate(-Background.getCellSize(), 0);
+
+        lastDirection = Direction.LEFT;
+        return;
+    }
+
+    public void moveUp() {
+        if (forbiddenUp) {
+            return;
+        }
+
+        firstRow--;
+        lastRow--;
+
+        pos.move(Direction.UP);
+        zombiePic.translate(0, -Background.getCellSize());
+
+        lastDirection = Direction.UP;
+    }
+
+    public void moveDown() {
+        if (forbiddenDown) {
+            return;
+        }
+
+        firstRow++;
+        lastRow++;
+
+        pos.move(Direction.DOWN);
+        zombiePic.translate(0, Background.getCellSize());
+
+        lastDirection = Direction.DOWN;
+        return;
+    }
+
+
 
     public void resetForbidden() {
         forbiddenDown = false;

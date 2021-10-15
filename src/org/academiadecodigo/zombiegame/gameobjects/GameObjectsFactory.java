@@ -16,12 +16,16 @@ public abstract class GameObjectsFactory {
             zombieCounter++;
             z = Zones.values()[zombieCounter];
         }
-        //Add counter for next zombie
+        //Add counter for next zone
         zombieCounter++;
+        if (zombieCounter == Zones.values().length) {
+            zombieCounter = 0;
+        }
 
-        Position newPos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
+        //Create zombie random position in selected zone
+        Position zombiePos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        return new Zombie(newPos, playerPos);
+        return new Zombie(zombiePos, playerPos);
 
     }
 

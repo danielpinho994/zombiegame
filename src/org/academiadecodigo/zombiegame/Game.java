@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 2;
+    private int zombiesNr = 20;
     private Zombie[] zombieHoard;
 
     private Player player;
@@ -38,9 +38,11 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+
         while(true){
             moveAllZombies();
             moveAllBullets();
+
         }
 
     }
@@ -52,7 +54,7 @@ public class Game {
     public void moveAllZombies() throws InterruptedException {
 
             for (Zombie z : zombieHoard) {
-                Thread.sleep(50);
+                Thread.sleep(20);
 
                 //collisionDetector.checkCollisionBullets(z);
                 //collisionDetector.checkCollisionPlayer(z);
