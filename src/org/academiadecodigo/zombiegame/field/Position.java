@@ -7,14 +7,6 @@ public class Position {
     private int col;
     private int row;
 
-    public void setCol(int col) {
-        this.col = col;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
-    }
-
     public int getCol() {
         return col;
     }
@@ -42,35 +34,19 @@ public class Position {
         switch (direction) {
 
             case UP:
-                moveUp();
+                row--;
                 break;
             case DOWN:
-                moveDown();
+                row++;
                 break;
             case LEFT:
-                moveLeft();
+                col--;
                 break;
             case RIGHT:
-                moveRight();
+                col++;
                 break;
         }
 
-    }
-
-    private void moveUp(){
-        setRow(getRow()-1);
-    }
-
-    private void moveDown(){
-        setRow(getRow()+1);
-    }
-
-    private void moveLeft(){
-        setCol(getCol()-1);
-    }
-
-    private void moveRight(){
-        setCol(getCol()+1);
     }
 
 }

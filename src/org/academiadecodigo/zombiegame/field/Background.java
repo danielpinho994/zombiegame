@@ -7,8 +7,8 @@ public class Background {
     private final static int PADDING = 10;
 
     private final static int CELL_SIZE = 5;
-    private final static int COLS = 180;
-    private final static int ROWS = 90;
+    private final static int COLS = 360;
+    private final static int ROWS = 180;
 
     private final static int WIDTH = COLS * getCellSize();
     private final static int HEIGHT = ROWS * getCellSize();

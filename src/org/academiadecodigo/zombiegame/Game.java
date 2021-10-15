@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.player.Player;
 
 public class Game {
 
-    private int zombiesNr = 8;
+    private int zombiesNr = 10;
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
 
@@ -26,7 +26,7 @@ public class Game {
     }
 
     public void init() {
-        Background background = new Background();
+        background = new Background();
 
         zombieHoard = new Zombie[zombiesNr];
         bulletsShot = player.getBullets();
@@ -35,15 +35,23 @@ public class Game {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
         }
 
-        collisionDetector = new CollisionDetector(zombieHoard);
+        collisionDetector = new CollisionDetector(zombieHoard, player);
+        player.setCollisionDetector(collisionDetector);
+
+        //check zombies overlap
+        for (Zombie z : zombieHoard) {
+            collisionDetector.checkZombieOverlap(z);
+        }
 
     }
 
     public void start() throws InterruptedException {
+
         while(true){
             Thread.sleep(200);
             moveAllZombies();
             moveAllBullets();
+
         }
 
     }
@@ -63,37 +71,12 @@ public class Game {
 
             for (Zombie z : zombieHoard) {
 
-                z.moveZombie();
-
-/*
-
-                collisionDetector.checkCollisionBullets(z);
-                collisionDetector.checkCollisionPlayer(z);
                 collisionDetector.checkCollisionZombie(z);
 
                 z.moveZombie();
 
-                Collidable collider = CollisionDetector.checkCollision(z);
-
-                /*
-
-                if (collider instanceof Bullet) {
-                    z.die();
-                }
-
-                if (collider instanceof Player) {
-                    z.damage();
-                }
-
-                if (collider instanceof Zombie) {
-                    Direction zDirection = z.getLastDirection();
-                    Direction oppositeDir = zDirection.oppositeDirection();
-
-                    ((Zombie) collider).setForbiddenDirection(oppositeDir);
-
-                }
-                */
             }
+
     }
 
 }

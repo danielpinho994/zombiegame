@@ -4,12 +4,15 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.field.Zones;
 
 public class Zombie {
 
     private Position pos;
     private Position playerPos;
+    private int hitPoints = 10;
     private int health;
+    private Zones zone;
 
     private Direction lastDirection;
 
@@ -20,16 +23,35 @@ public class Zombie {
 
     private Rectangle zombiePic;
 
-    public Zombie(Position pos, Position playerPos) {
+    //number of rows and cols of rectangle
+    private int posSize = 10;
 
-        this.pos = pos;
+    private int firstCol;
+    private int lastCol;
+    private int firstRow;
+    private int lastRow;
+
+    public Zombie(Position pos, Position playerPos, Zones zone) {
+
         this.playerPos = playerPos;
+        this.zone = zone;
+
+        setPosition(pos);
+    }
+
+    public void setPosition(Position pos) {
+        this.pos = pos;
+
+        firstCol = pos.getCol();
+        lastCol = pos.getCol() + posSize;
+        firstRow = pos.getRow();
+        lastRow = pos.getRow() + posSize;
 
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-        int height = 3 * Background.getCellSize();
-        int width = 3 * Background.getCellSize();
+        int height = posSize * Background.getCellSize();
+        int width = posSize * Background.getCellSize();
 
         zombiePic = new Rectangle(x, y, width, height);
         zombiePic.draw();
@@ -42,73 +64,126 @@ public class Zombie {
         int targetRow = playerPos.getRow();
 
         if (targetCol > pos.getCol()) {
-            if (forbiddenRight) {
-                return;
-            }
-
-            pos.move(Direction.RIGHT);
-            zombiePic.translate(Background.getCellSize(), 0);
-
-            lastDirection = Direction.RIGHT;
-            return;
+            moveRight();
         }
 
         if (targetCol < pos.getCol()) {
-            if (forbiddenLeft) {
-                return;
-            }
-
-            pos.move(Direction.LEFT);
-            zombiePic.translate(-Background.getCellSize(), 0);
-
-            lastDirection = Direction.LEFT;
-            return;
+            moveLeft();
         }
 
         if (targetRow < pos.getRow()) {
-            if (forbiddenUp) {
-                return;
-            }
-
-            pos.move(Direction.UP);
-            zombiePic.translate(0, -Background.getCellSize());
-
-            lastDirection = Direction.UP;
-            return;
+            moveUp();
         }
 
         if (targetRow > pos.getRow()) {
-            if (forbiddenDown) {
-                return;
-            }
-
-            pos.move(Direction.DOWN);
-            zombiePic.translate(0, Background.getCellSize());
-
-            lastDirection = Direction.DOWN;
-            return;
+            moveDown();
         }
 
     }
 
-    public void setForbiddenRight(boolean forbiddenRight) {
-        this.forbiddenRight = forbiddenRight;
+    public void moveRight() {
+        if (forbiddenRight) {
+            return;
+        }
+
+        firstCol++;
+        lastCol++;
+
+        pos.move(Direction.RIGHT);
+        zombiePic.translate(Background.getCellSize(), 0);
+
+        lastDirection = Direction.RIGHT;
+        return;
     }
 
-    public void setForbiddenLeft(boolean forbiddenLeft) {
-        this.forbiddenLeft = forbiddenLeft;
+    public void moveLeft() {
+        if (forbiddenLeft) {
+            return;
+        }
+
+        firstCol--;
+        lastCol--;
+
+        pos.move(Direction.LEFT);
+        zombiePic.translate(-Background.getCellSize(), 0);
+
+        lastDirection = Direction.LEFT;
+        return;
     }
 
-    public void setForbiddenUp(boolean forbiddenUp) {
-        this.forbiddenUp = forbiddenUp;
+    public void moveUp() {
+        if (forbiddenUp) {
+            return;
+        }
+
+        firstRow--;
+        lastRow--;
+
+        pos.move(Direction.UP);
+        zombiePic.translate(0, -Background.getCellSize());
+
+        lastDirection = Direction.UP;
     }
 
-    public void setForbiddenDown(boolean forbiddenDown) {
-        this.forbiddenDown = forbiddenDown;
+    public void moveDown() {
+        if (forbiddenDown) {
+            return;
+        }
+
+        firstRow++;
+        lastRow++;
+
+        pos.move(Direction.DOWN);
+        zombiePic.translate(0, Background.getCellSize());
+
+        lastDirection = Direction.DOWN;
+        return;
     }
 
-    public Direction getLastDirection() {
-        return lastDirection;
+    public void resetForbidden() {
+        forbiddenDown = false;
+        forbiddenLeft = false;
+        forbiddenUp = false;
+        forbiddenRight = false;
     }
 
+    public void forbidRight() {
+        forbiddenRight = true;
+    }
+
+    public void forbidLeft() {
+        forbiddenLeft = true;
+    }
+
+    public void forbidUp() {
+        forbiddenUp = true;
+    }
+
+    public void forbidDown() {
+        forbiddenDown = true;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public int getFirstCol() {
+        return firstCol;
+    }
+
+    public int getLastCol() {
+        return lastCol;
+    }
+
+    public int getFirstRow() {
+        return firstRow;
+    }
+
+    public int getLastRow() {
+        return lastRow;
+    }
+
+    public Zones getZone() {
+        return zone;
+    }
 }
