@@ -47,6 +47,7 @@ public class CollisionDetector {
                     zombie.getFirstRow() <= obj.getLastRow() && zombie.getLastRow() >= obj.getFirstRow()) {
 
                 Position newPos = GameObjectsFactory.resetZombieSpawn(zombie.getSpawnZone());
+                System.out.println("fuckkkk");
 
                 zombie.setPosition(newPos, zombie.getPicturePath());
 

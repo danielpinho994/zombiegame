@@ -34,6 +34,10 @@ public class GameObject {
 
     protected void setPosition(Position pos, String picturePath) {
 
+        if (picture != null) {
+            picture.delete();
+        }
+
         this.pos = pos;
 
         firstCol = pos.getCol();
