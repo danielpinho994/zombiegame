@@ -12,7 +12,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 public class Game {
 
     private final static int ZOMBIES_NR = 20;
-    private int wallNr = 25;
+    private int wallNr = 20;
 
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
@@ -54,6 +54,7 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+        player.setPlayerReady();
 
         player.setKeys();
 
@@ -61,6 +62,7 @@ public class Game {
             Thread.sleep(17);
             if(player.getHealth()<=0){
                 GameOver gameOver = new GameOver();
+                break;
             }
 
             for (int i = 0; i < 4; i++) { //speed
@@ -91,5 +93,4 @@ public class Game {
                 z.moveZombie();
             }
     }
-
 }

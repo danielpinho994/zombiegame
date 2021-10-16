@@ -67,7 +67,7 @@ public class CollisionDetector {
                 bullet.destroyBullet();
 
                 if (obj instanceof Zombie) {
-                    //ZOMBIE DIIIIIIEEEEEEEE
+                    ((Zombie) obj).hit();
                 }
             }
         }
