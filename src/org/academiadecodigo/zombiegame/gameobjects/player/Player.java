@@ -1,42 +1,28 @@
-package org.academiadecodigo.zombiegame.player;
+package org.academiadecodigo.zombiegame.gameobjects.player;
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
-import org.academiadecodigo.zombiegame.gameobjects.Zombie;
+import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
+import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
+import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
-public class Player implements KeyboardHandler {
-
-    private static Position pos;
-    private Rectangle playerPic;
-    private Direction lastDirection = Direction.RIGHT;
-
-    private CollisionDetector collisionDetector;
-
-    //number of rows and cols of rectangle
-    private int posSize = 10;
-    private int firstCol;
-    private int lastCol;
-    private int firstRow;
-    private int lastRow;
-
-    private boolean forbiddenRight;
-    private boolean forbiddenLeft;
-    private boolean forbiddenUp;
-    private boolean forbiddenDown;
-
-    private Weapon weapon;
+public class Player extends Movable implements KeyboardHandler {
 
     private String name;
 
+    private Weapon weapon;
     private int health = 100;
+
+    protected CollisionDetector collisionDetector;
 
     private Direction firstDirection;
     private Direction secDirection;
+    private Direction lastDirection = Direction.RIGHT;
 
     public Player(String name){
+        super(5);
+
         this.name = name;
 
         this.weapon = new Weapon();
@@ -45,21 +31,7 @@ public class Player implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        firstCol = pos.getCol();
-        lastCol = pos.getCol() + posSize;
-        firstRow = pos.getRow();
-        lastRow = pos.getRow() + posSize;
-
-        int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
-        int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
-
-        int height = posSize * Background.getCellSize();
-        int width = posSize * Background.getCellSize();
-
-        playerPic = new Rectangle(x, y, width, height);
-        playerPic.draw();
-        playerPic.setColor(Color.BLUE);
-        playerPic.fill();
+        super.positionAndPicture("picture path");
 
     }
 
@@ -75,107 +47,58 @@ public class Player implements KeyboardHandler {
         return health;
     }
 
-    public Position getPos() {
-        return pos;
-    }
-
     public Bullet[] getBullets() {
         return weapon.getBullets();
-    }
-
-    public void resetForbidden() {
-        forbiddenDown = false;
-        forbiddenLeft = false;
-        forbiddenUp = false;
-        forbiddenRight = false;
-    }
-
-    public void forbidRight() {
-        forbiddenRight = true;
-    }
-
-    public void forbidLeft() {
-        forbiddenLeft = true;
-    }
-
-    public void forbidUp() {
-        forbiddenUp = true;
-    }
-
-    public void forbidDown() {
-        forbiddenDown = true;
-    }
-
-    public int getFirstCol() {
-        return firstCol;
-    }
-
-    public int getLastCol() {
-        return lastCol;
-    }
-
-    public int getFirstRow() {
-        return firstRow;
-    }
-
-    public int getLastRow() {
-        return lastRow;
     }
 
     public void shoot() {
         weapon.shoot(lastDirection, pos);
     }
 
+    @Override
     public void moveLeft() {
         if (firstCol > 0) {
-            playerPic.translate(-Background.getCellSize(), 0);
-            lastDirection = Direction.LEFT;
+            picture.translate(-Background.getCellSize(), 0);
 
-            firstCol--;
-            lastCol--;
-
-            pos.move(Direction.LEFT);
+            super.moveLeft();
         }
     }
 
+    @Override
     public void moveRight() {
         if (lastCol < Background.getCols()) {
-            playerPic.translate(Background.getCellSize(), 0);
-            lastDirection = Direction.RIGHT;
+            picture.translate(Background.getCellSize(), 0);
 
-            firstCol++;
-            lastCol++;
-
-            pos.move(Direction.RIGHT);
+            super.moveRight();
         }
     }
 
+    @Override
     public void moveUp() {
         if (firstRow > 0) {
             System.out.println(-Background.getCellSize());
-            playerPic.translate(0, -Background.getCellSize());
-            lastDirection = Direction.UP;
+            picture.translate(0, -Background.getCellSize());
 
-            firstRow--;
-            lastRow--;
-
-            pos.move(Direction.UP);
+            super.moveUp();
         }
     }
 
+    @Override
     public void moveDown() {
         if (lastRow < Background.getRows()) {
-            playerPic.translate(0, Background.getCellSize());
-            lastDirection = Direction.DOWN;
+            picture.translate(0, Background.getCellSize());
 
-            firstRow++;
-            lastRow++;
-
-            pos.move(Direction.DOWN);
+            super.moveDown();
         }
     }
 
     public void move() {
+
+        if (secDirection != null) {
+            lastDirection = secDirection;
+        } else if (firstDirection != null) {
+            lastDirection = firstDirection;
+        }
 
         resetForbidden();
 

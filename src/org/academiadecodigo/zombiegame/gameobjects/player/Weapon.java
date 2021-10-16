@@ -1,4 +1,4 @@
-package org.academiadecodigo.zombiegame.player;
+package org.academiadecodigo.zombiegame.gameobjects.player;
 
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
@@ -27,10 +27,7 @@ public class Weapon {
             bullets[shotsFired] = GameObjectsFactory.makeBullets(playerPos);
             bullets[shotsFired].loadBullet(direction);
             shotsFired++;
-        } else {
-            return;
         }
-
     }
 
     public Bullet[] getBullets() {

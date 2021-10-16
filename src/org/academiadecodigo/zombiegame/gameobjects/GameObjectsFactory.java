@@ -2,7 +2,7 @@ package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
-import org.academiadecodigo.zombiegame.player.Bullet;
+import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
 
 public abstract class GameObjectsFactory {
 
@@ -39,7 +39,7 @@ public abstract class GameObjectsFactory {
 
     }
 
-    public static Position makeNewZombiePos(Zones zone) {
+    public static Position resetSpawnPos(Zones zone) {
         return new Position(zone.getFirstCol(), zone.getLastCol() - 1, zone.getFirstRow(), zone.getLastRow() - 1);
     }
 

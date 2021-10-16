@@ -1,8 +1,7 @@
-package org.academiadecodigo.zombiegame.field;
+package org.academiadecodigo.zombiegame.gameobjects;
 
-import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
-import org.academiadecodigo.zombiegame.gameobjects.Zombie;
-import org.academiadecodigo.zombiegame.player.Player;
+import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class CollisionDetector {
 
@@ -17,6 +16,7 @@ public class CollisionDetector {
     }
 
     public void checkZombieOverlap(Zombie zombie) {
+
         for (Zombie z : zombies) {
 
             if (zombie.equals(z)) {
@@ -25,7 +25,7 @@ public class CollisionDetector {
 
             if (zombie.getFirstCol() <= z.getLastCol() && zombie.getLastCol() >= z.getFirstCol() &&
                     zombie.getFirstRow() <= z.getLastRow() && zombie.getLastRow() >= z.getFirstRow()) {
-                Position newPos = GameObjectsFactory.makeNewZombiePos(zombie.getZone());
+                Position newPos = GameObjectsFactory.resetSpawnPos(zombie.getZone());
                 zombie.setPosition(newPos);
 
                 checkZombieOverlap(zombie);

@@ -1,9 +1,16 @@
 package org.academiadecodigo.zombiegame.field;
 
-import org.academiadecodigo.zombiegame.field.Direction;
-import org.academiadecodigo.zombiegame.gameobjects.Zombie;
+import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
 
 public class Position {
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
+    public void setRow(int row) {
+        this.row = row;
+    }
 
     private int col;
     private int row;
@@ -28,13 +35,7 @@ public class Position {
         this.col = minCol + (int)(Math.random() * ((maxCol - minCol) + 1));
         this.row = minRow + (int)(Math.random() * ((maxRow - minRow) + 1));
 
-        if (col >= Background.getCols() - Zombie.POS_SIZE) {
-            col = Background.getCols() - Zombie.POS_SIZE;
-        }
 
-        if (row >= Background.getRows() - Zombie.POS_SIZE) {
-            row = Background.getRows() - Zombie.POS_SIZE;
-        }
 
     }
 

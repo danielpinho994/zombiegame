@@ -1,17 +1,18 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.zombiegame.field.Background;
-import org.academiadecodigo.zombiegame.field.CollisionDetector;
+import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Wall;
 import org.academiadecodigo.zombiegame.gameobjects.Zombie;
-import org.academiadecodigo.zombiegame.player.Bullet;
-import org.academiadecodigo.zombiegame.player.Player;
+import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
+import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
     private final static int ZOMBIES_NR = 1;
     private int wallNr = 25;
+
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
     private Wall[] walls;
@@ -65,23 +66,18 @@ public class Game {
         for(Bullet b : bulletsShot) {
             if(b != null) {
                 if (!b.getImpact()) {
+                    //collisionDetector.checkCollisionZombie(b);
                     b.moveBullet();
                 }
             }
         }
-
     }
 
     public void moveAllZombies(){
-
             for (Zombie z : zombieHoard) {
-
                 collisionDetector.checkCollisionZombie(z);
-
                 z.moveZombie();
-
             }
-
     }
 
 }
