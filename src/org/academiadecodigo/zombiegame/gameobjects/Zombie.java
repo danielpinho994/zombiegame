@@ -10,7 +10,10 @@ public class Zombie extends Movable{
 
     private String picturePath = " ";
 
-    private int hitPoints = 10;
+
+    private int hitPoints = 3;
+
+    private int health = 1;
 
     public Zombie(Position pos, Position playerPos, Zones spawnZone) {
         super(30, 30, spawnZone);
@@ -45,5 +48,13 @@ public class Zombie extends Movable{
 
     public int getHitPoints() {
         return hitPoints;
+    }
+    public void hit() {
+        this.health -= 1;
+        if(health==0){
+            this.picture.delete();
+            Position newPos = new Position(0,0);
+            this.setPosition(newPos, null);
+        }
     }
 }
