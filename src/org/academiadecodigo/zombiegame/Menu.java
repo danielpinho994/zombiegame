@@ -1,16 +1,17 @@
-package org.academiadecodigo.zombiegame.field;
+package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import org.academiadecodigo.zombiegame.Game;
-import org.academiadecodigo.zombiegame.gameobjects.player.Player;
+import org.academiadecodigo.zombiegame.field.Background;
+import org.academiadecodigo.zombiegame.field.Direction;
 
 public class Menu implements KeyboardHandler {
 
     private Game game;
-    private Player player;
     private Rectangle menuBackground;
     private Rectangle startButton;
     private Rectangle scoreButton;
@@ -20,12 +21,23 @@ public class Menu implements KeyboardHandler {
 
     private boolean isClosed;
 
-    public Menu(Player player) {
-        this.player = player;
+    public Menu() throws InterruptedException {
 
-        game = new Game(player);
+        game = new Game();
 
         start();
+
+        setKeys();
+
+        while (!isClosed) {
+            System.out.println("Kill the zombies");
+        }
+
+        clearMenu();
+
+        game.init();
+        game.start();
+
     }
 
     public void start() {
@@ -35,18 +47,40 @@ public class Menu implements KeyboardHandler {
         menuBackground.setColor(Color.BLACK);
         menuBackground.fill();
 
-        startButton = new Rectangle(Background.getPadding() * 2 , Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
+        startButton = new Rectangle(Background.getPadding() * 2, Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
         startButton.draw();
         startButton.setColor(Color.RED);
         startButton.fill();
 
-        scoreButton = new Rectangle(Background.getPadding() * 4 , Background.getPadding() * 4, Background.getWidth() / 15, Background.getHeight() / 15);
+        scoreButton = new Rectangle(Background.getPadding() * 4, Background.getPadding() * 4, Background.getWidth() / 15, Background.getHeight() / 15);
         scoreButton.draw();
         scoreButton.setColor(Color.RED);
         scoreButton.fill();
 
-        buttonFrame = new Rectangle(Background.getPadding() * 2 , Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
+        buttonFrame = new Rectangle(Background.getPadding() * 2, Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
         buttonFrame.draw();
+
+    }
+
+    public void setKeys() {
+
+        Keyboard kb = new Keyboard(this);
+
+        KeyboardEvent wPressed = new KeyboardEvent();
+        wPressed.setKey(KeyboardEvent.KEY_W);
+        wPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent sPressed = new KeyboardEvent();
+        sPressed.setKey(KeyboardEvent.KEY_S);
+        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent spacePressed = new KeyboardEvent();
+        spacePressed.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        kb.addEventListener(wPressed);
+        kb.addEventListener(sPressed);
+        kb.addEventListener(spacePressed);
 
     }
 
@@ -72,18 +106,11 @@ public class Menu implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE && !isClosed) {
-            System.out.println("space");
             if (lastDirection == Direction.UP) {
+                System.out.println("space");
+
                 ready = true;
-                //clearMenu();
-                game.init();
-/**
-                try {
-                    game.start();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
- */
+                isClosed = true;
             }
         }
     }
@@ -104,5 +131,4 @@ public class Menu implements KeyboardHandler {
     public boolean getReady() {
         return ready;
     }
-
 }

@@ -1,15 +1,15 @@
 package org.academiadecodigo.zombiegame.gameobjects.player;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Player extends Movable implements KeyboardHandler {
 
-    private String name;
     private boolean playerReady;
 
     private Weapon weapon;
@@ -21,10 +21,8 @@ public class Player extends Movable implements KeyboardHandler {
     private Direction secDirection;
     private Direction lastDirection = Direction.RIGHT;
 
-    public Player(String name){
-        super(5);
-
-        this.name = name;
+    public Player() {
+        super(30, 30, Zones.E);
 
         this.weapon = new Weapon();
 
@@ -32,7 +30,7 @@ public class Player extends Movable implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        super.positionAndPicture("picture path");
+        super.setPosition(pos, "assets/SoldierTopDownView.png");
 
     }
 
@@ -56,70 +54,43 @@ public class Player extends Movable implements KeyboardHandler {
         weapon.shoot(lastDirection, pos);
     }
 
-    @Override
-    public void moveLeft() {
-        if (firstCol > 0) {
-            super.moveLeft();
-        }
-    }
-
-    @Override
-    public void moveRight() {
-        if (lastCol < Background.getCols()) {
-            super.moveRight();
-        }
-    }
-
-    @Override
-    public void moveUp() {
-        if (firstRow > 0) {
-            super.moveUp();
-        }
-    }
-
-    @Override
-    public void moveDown() {
-        if (lastRow < Background.getRows()) {
-            super.moveDown();
-        }
-    }
-
     public void move() {
 
-        System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
-        System.out.println("x: " + picture.getX() + " : y: " + picture.getY());
-
-        if (secDirection != null) {
-            lastDirection = secDirection;
-        } else if (firstDirection != null) {
+        if (firstDirection != null) {
             lastDirection = firstDirection;
+        } else if (secDirection != null) {
+            lastDirection = secDirection;
         }
 
         resetForbidden();
 
-        collisionDetector.checkCollisionPlayer();
+        collisionDetector.checkPlayerCollision();
 
         if (firstDirection != null) {
 
             switch (firstDirection) {
+
                 case UP:
-                    if (!forbiddenUp) {
-                        moveUp();
+                    if (firstRow > 0 && !forbiddenUp) {
+                        super.moveObject(Direction.UP);
                     }
                     break;
+
                 case LEFT:
-                    if (!forbiddenLeft) {
-                        moveLeft();
+                    if (firstCol > 0 && !forbiddenLeft) {
+                        super.moveObject(Direction.LEFT);
                     }
                     break;
+
                 case RIGHT:
-                    if (!forbiddenRight) {
-                        moveRight();
+                    if (lastCol < Background.getCols() && !forbiddenRight) {
+                        super.moveObject(Direction.RIGHT);
                     }
                     break;
+
                 case DOWN:
-                    if (!forbiddenDown) {
-                        moveDown();
+                    if (lastRow < Background.getRows() && !forbiddenDown) {
+                        super.moveObject(Direction.DOWN);
                     }
             }
         }
@@ -128,34 +99,91 @@ public class Player extends Movable implements KeyboardHandler {
 
             switch (secDirection) {
                 case UP:
-                    if (!forbiddenUp) {
-                        moveUp();
+                    if (firstRow > 0 && !forbiddenUp) {
+                        super.moveObject(Direction.UP);
                     }
                     break;
+
                 case LEFT:
-                    if (!forbiddenLeft) {
-                        moveLeft();
+                    if (firstCol > 0 && !forbiddenLeft) {
+                        super.moveObject(Direction.LEFT);
                     }
                     break;
+
                 case RIGHT:
-                    if (!forbiddenRight) {
-                        moveRight();
+                    if (lastCol < Background.getCols() && !forbiddenRight) {
+                        super.moveObject(Direction.RIGHT);
                     }
                     break;
+
                 case DOWN:
-                    if (!forbiddenDown) {
-                        moveDown();
+                    if (lastRow < Background.getRows() && !forbiddenDown) {
+                        super.moveObject(Direction.DOWN);
                     }
             }
         }
     }
 
+    public void setKeys() {
+
+        Keyboard kb = new Keyboard(this);
+
+        KeyboardEvent wPressed = new KeyboardEvent();
+        wPressed.setKey(KeyboardEvent.KEY_W);
+        wPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent wReleased = new KeyboardEvent();
+        wReleased.setKey(KeyboardEvent.KEY_W);
+        wReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent aPressed = new KeyboardEvent();
+        aPressed.setKey(KeyboardEvent.KEY_A);
+        aPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent aReleased = new KeyboardEvent();
+        aReleased.setKey(KeyboardEvent.KEY_A);
+        aReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent sPressed = new KeyboardEvent();
+        sPressed.setKey(KeyboardEvent.KEY_S);
+        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent sReleased = new KeyboardEvent();
+        sReleased.setKey(KeyboardEvent.KEY_S);
+        sReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent dPressed = new KeyboardEvent();
+        dPressed.setKey(KeyboardEvent.KEY_D);
+        dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent dReleased = new KeyboardEvent();
+        dReleased.setKey(KeyboardEvent.KEY_D);
+        dReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent spacePressed = new KeyboardEvent();
+        spacePressed.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        kb.addEventListener(wPressed);
+        kb.addEventListener(wReleased);
+
+        kb.addEventListener(aPressed);
+        kb.addEventListener(aReleased);
+
+        kb.addEventListener(sPressed);
+        kb.addEventListener(sReleased);
+
+        kb.addEventListener(dPressed);
+        kb.addEventListener(dReleased);
+
+        kb.addEventListener(spacePressed);
+    }
+
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(playerReady) {
+        if (playerReady) {
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-                System.out.println("pw");
                 if (firstDirection == null) {
                     firstDirection = Direction.UP;
                     return;
@@ -164,7 +192,6 @@ public class Player extends Movable implements KeyboardHandler {
             }
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-                System.out.println("pa");
                 if (firstDirection == null) {
                     firstDirection = Direction.LEFT;
                     return;
@@ -173,7 +200,6 @@ public class Player extends Movable implements KeyboardHandler {
             }
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-                System.out.println("pd");
                 if (firstDirection == null) {
                     firstDirection = Direction.RIGHT;
                     return;
@@ -182,7 +208,6 @@ public class Player extends Movable implements KeyboardHandler {
             }
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-                System.out.println("ps");
                 if (firstDirection == null) {
                     firstDirection = Direction.DOWN;
                     return;
@@ -191,53 +216,52 @@ public class Player extends Movable implements KeyboardHandler {
             }
 
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-                System.out.println("pspace");
                 shoot();
             }
         }
     }
 
-    @Override
-    public void keyReleased(KeyboardEvent keyboardEvent) {
-        if(playerReady) {
+        @Override
+        public void keyReleased(KeyboardEvent keyboardEvent){
+            if (playerReady) {
 
-            if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-                if (firstDirection == Direction.UP) {
-                    firstDirection = null;
+                if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+                    if (firstDirection == Direction.UP) {
+                        firstDirection = null;
+                    }
+                    if (secDirection == Direction.UP) {
+                        secDirection = null;
+                    }
                 }
-                if (secDirection == Direction.UP) {
-                    secDirection = null;
-                }
-            }
 
-            if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-                if (firstDirection == Direction.LEFT) {
-                    firstDirection = null;
+                if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+                    if (firstDirection == Direction.LEFT) {
+                        firstDirection = null;
+                    }
+                    if (secDirection == Direction.LEFT) {
+                        secDirection = null;
+                    }
                 }
-                if (secDirection == Direction.LEFT) {
-                    secDirection = null;
-                }
-            }
 
-            if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-                if (firstDirection == Direction.RIGHT) {
-                    firstDirection = null;
+                if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+                    if (firstDirection == Direction.RIGHT) {
+                        firstDirection = null;
+                    }
+                    if (secDirection == Direction.RIGHT) {
+                        secDirection = null;
+                    }
                 }
-                if (secDirection == Direction.RIGHT) {
-                    secDirection = null;
-                }
-            }
 
-            if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-                if (firstDirection == Direction.DOWN) {
-                    firstDirection = null;
-                }
-                if (secDirection == Direction.DOWN) {
-                    secDirection = null;
+                if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+                    if (firstDirection == Direction.DOWN) {
+                        firstDirection = null;
+                    }
+                    if (secDirection == Direction.DOWN) {
+                        secDirection = null;
+                    }
                 }
             }
         }
-    }
 
     public void setPlayerReady() {
         playerReady = true;
