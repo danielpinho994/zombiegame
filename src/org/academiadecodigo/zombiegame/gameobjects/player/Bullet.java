@@ -17,7 +17,7 @@ public class Bullet extends Movable {
     public Bullet(Position bulletPos) {
         super(1, 1, Zones.E); //zona é irrelevante neste gameObject
 
-        super.setPosition(bulletPos, "assets/bullet.png");
+        super.setPosition(bulletPos, "assets/Bullets/left-mid bullets.png");
 
     }
 

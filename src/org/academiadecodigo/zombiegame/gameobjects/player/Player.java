@@ -30,7 +30,7 @@ public class Player extends Movable implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        super.setPosition(pos,"assets/SoldierTopDownView.png");
+        super.setPosition(pos,"assets/Player/right-mid player.png");
 
     }
 
@@ -73,24 +73,28 @@ public class Player extends Movable implements KeyboardHandler {
                 case UP:
                     if (firstRow > 0 && !forbiddenUp) {
                         super.moveObject(Direction.UP);
+                        picturePath = "assets/Player/down-top player.png";
                     }
                     break;
 
                 case LEFT:
                     if (firstCol > 0 && !forbiddenLeft) {
                         super.moveObject(Direction.LEFT);
+                        picturePath = "assets/Player/left-mid player.png";
                     }
                     break;
 
                 case RIGHT:
                     if (lastCol < Background.getCols() && !forbiddenRight) {
                         super.moveObject(Direction.RIGHT);
+                        picturePath = "assets/Player/right-mid player.png";
                     }
                     break;
 
                 case DOWN:
                     if (lastRow < Background.getRows() && !forbiddenDown) {
                         super.moveObject(Direction.DOWN);
+                        picturePath = "assets/Player/right-mid player.png";
                     }
             }
         }
