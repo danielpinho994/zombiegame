@@ -68,59 +68,42 @@ public class Player extends Movable implements KeyboardHandler {
 
         if (firstDirection != null) {
 
-            switch (firstDirection) {
+            moveToDirection(firstDirection);
 
-                case UP:
-                    if (firstRow > 0 && !forbiddenUp) {
-                        super.moveObject(Direction.UP);
-                    }
-                    break;
-
-                case LEFT:
-                    if (firstCol > 0 && !forbiddenLeft) {
-                        super.moveObject(Direction.LEFT);
-                    }
-                    break;
-
-                case RIGHT:
-                    if (lastCol < Background.getCols() && !forbiddenRight) {
-                        super.moveObject(Direction.RIGHT);
-                    }
-                    break;
-
-                case DOWN:
-                    if (lastRow < Background.getRows() && !forbiddenDown) {
-                        super.moveObject(Direction.DOWN);
-                    }
-            }
         }
 
         if (secDirection != null) {
 
-            switch (secDirection) {
-                case UP:
-                    if (firstRow > 0 && !forbiddenUp) {
-                        super.moveObject(Direction.UP);
-                    }
-                    break;
+            moveToDirection(secDirection);
 
-                case LEFT:
-                    if (firstCol > 0 && !forbiddenLeft) {
-                        super.moveObject(Direction.LEFT);
-                    }
-                    break;
+        }
+    }
 
-                case RIGHT:
-                    if (lastCol < Background.getCols() && !forbiddenRight) {
-                        super.moveObject(Direction.RIGHT);
-                    }
-                    break;
+    private void moveToDirection(Direction direction) {
 
-                case DOWN:
-                    if (lastRow < Background.getRows() && !forbiddenDown) {
-                        super.moveObject(Direction.DOWN);
-                    }
-            }
+        switch (direction) {
+            case UP:
+                if (firstRow > 0 && !forbiddenUp) {
+                    super.moveObject(Direction.UP);
+                }
+                break;
+
+            case LEFT:
+                if (firstCol > 0 && !forbiddenLeft) {
+                    super.moveObject(Direction.LEFT);
+                }
+                break;
+
+            case RIGHT:
+                if (lastCol < Background.getCols() && !forbiddenRight) {
+                    super.moveObject(Direction.RIGHT);
+                }
+                break;
+
+            case DOWN:
+                if (lastRow < Background.getRows() && !forbiddenDown) {
+                    super.moveObject(Direction.DOWN);
+                }
         }
     }
 

@@ -23,7 +23,6 @@ public class GameOver {
         gameOverText = new Picture(gameOverTextPos.getCol()*Background.getCellSize(), gameOverTextPos.getRow()* Background.getCellSize(),"assets/GameOverZombies.jpeg");
         gameOverText.grow(-200,-100);
         gameOverText.draw();
-        System.out.println("hello 2");
     }
 
     /*private void getGameOverBackground(){
@@ -39,7 +38,6 @@ public class GameOver {
 
         gameOverTextPos.setRow(gameOverTextPos.getRow()-1);
         gameOverTextPos.setCol(gameOverTextPos.getCol()-1);
-        System.out.println("hello");
 
     }
     public void moveGameOver(){
@@ -48,7 +46,7 @@ public class GameOver {
 
             gameOverText.translate(-Background.getCellSize(), -Background.getCellSize());
             gameOverText.grow(Background.getCellSize(), Background.getCellSize());
-            System.out.println("hello 3");
+
         }
 
     }

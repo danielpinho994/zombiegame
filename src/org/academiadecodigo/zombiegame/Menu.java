@@ -14,7 +14,7 @@ public class Menu implements KeyboardHandler {
     private Game game;
     private Rectangle menuBackground;
     private Rectangle startButton;
-    private Rectangle scoreButton;
+    private Rectangle exitButton;
     private Rectangle buttonFrame;
     private boolean ready;
     private static Direction lastDirection = Direction.UP;
@@ -30,7 +30,7 @@ public class Menu implements KeyboardHandler {
         setKeys();
 
         while (!isClosed) {
-            System.out.println("Kill the zombies");
+            Thread.sleep(200);
         }
 
         clearMenu();
@@ -47,18 +47,19 @@ public class Menu implements KeyboardHandler {
         menuBackground.setColor(Color.BLACK);
         menuBackground.fill();
 
-        startButton = new Rectangle(Background.getPadding() * 2, Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
+        startButton = new Rectangle(Background.getPadding() * 4, Background.getRows() - 170, Background.getWidth() / 5, Background.getHeight() / 12);
         startButton.draw();
         startButton.setColor(Color.RED);
         startButton.fill();
 
-        scoreButton = new Rectangle(Background.getPadding() * 4, Background.getPadding() * 4, Background.getWidth() / 15, Background.getHeight() / 15);
-        scoreButton.draw();
-        scoreButton.setColor(Color.RED);
-        scoreButton.fill();
+        exitButton = new Rectangle(Background.getPadding() * 4, Background.getRows() - 80, Background.getWidth() / 5, Background.getHeight() / 12);
+        exitButton.draw();
+        exitButton.setColor(Color.RED);
+        exitButton.fill();
 
-        buttonFrame = new Rectangle(Background.getPadding() * 2, Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
+        buttonFrame = new Rectangle(Background.getPadding() * 4, Background.getRows() - 170, Background.getWidth() / 5, Background.getHeight() / 12);
         buttonFrame.draw();
+        buttonFrame.setColor(Color.WHITE);
 
     }
 
@@ -88,27 +89,27 @@ public class Menu implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !isClosed) {
-            System.out.println("w");
             if (lastDirection == Direction.UP) {
+                buttonFrame.translate(0, exitButton.getY() - startButton.getY());
                 lastDirection = Direction.DOWN;
                 return;
             }
+            buttonFrame.translate(0, startButton.getY() - exitButton.getY());
             lastDirection = Direction.UP;
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !isClosed) {
-            System.out.println("s");
             if (lastDirection == Direction.DOWN) {
+                buttonFrame.translate(0, startButton.getY() - exitButton.getY());
                 lastDirection = Direction.UP;
                 return;
             }
+            buttonFrame.translate(0, exitButton.getY() - startButton.getY());
             lastDirection = Direction.DOWN;
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE && !isClosed) {
             if (lastDirection == Direction.UP) {
-                System.out.println("space");
-
                 ready = true;
                 isClosed = true;
             }
@@ -122,7 +123,7 @@ public class Menu implements KeyboardHandler {
     private void clearMenu() {
         menuBackground.delete();
         startButton.delete();
-        scoreButton.delete();
+        exitButton.delete();
         buttonFrame.delete();
 
         isClosed = true;
