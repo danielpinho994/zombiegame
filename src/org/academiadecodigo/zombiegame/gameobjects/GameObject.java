@@ -40,28 +40,32 @@ public class GameObject {
 
         this.pos = pos;
 
-        if (lastCol >= Background.getCols()) {
-            pos.setCol(Background.getCols() - posSizeX);
-        }
-
-        if (lastRow >= Background.getRows()) {
-            pos.setRow(Background.getRows() - posSizeY);
-        }
-
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
         picture = new Picture(x, y, picturePath);
-        picture.draw();
 
-        posSizeX = (picture.getMaxX() - x) * Background.getCellSize();
-        posSizeY = (picture.getMaxY() - y) * Background.getCellSize();
+        posSizeX = picture.getWidth() / Background.getCellSize();
+        posSizeY = picture.getHeight() / Background.getCellSize();
 
         firstCol = pos.getCol();
         lastCol = pos.getCol() + posSizeX;
         firstRow = pos.getRow();
         lastRow = pos.getRow() + posSizeY;
 
+        if (lastCol >= Background.getCols()) {
+            pos.setCol(Background.getCols() - posSizeX);
+            firstCol = pos.getCol();
+            lastCol = pos.getCol() + posSizeX;
+        }
+
+        if (lastRow >= Background.getRows()) {
+            pos.setRow(Background.getRows() - posSizeY);
+            firstRow = pos.getRow();
+            lastRow = pos.getRow() + posSizeY;
+        }
+
+        picture.draw();
     }
 
     public void changePic(String picturePath) {

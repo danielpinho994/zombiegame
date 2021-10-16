@@ -128,7 +128,7 @@ public class Zombie extends Movable {
         this.health -= 1;
         if (health == 0) {
             this.picture.delete();
-            Position newPos = new Position(0, 0);
+            Position newPos = new Position(-1, -1);
             this.setPosition(newPos, null);
         }
     }
