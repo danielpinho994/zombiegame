@@ -23,11 +23,9 @@ public class Game {
 
     private CollisionDetector collisionDetector;
 
-    public Game(Player player){
-        this.player = player;
-    }
-
     public void init() {
+        player = new Player();
+
         background = new Background();
 
         walls = new Wall[wallNr];
@@ -56,6 +54,9 @@ public class Game {
     }
 
     public void start() throws InterruptedException {
+        player.setPlayerReady();
+
+        player.setKeys();
 
         while(true){
             Thread.sleep(17);
@@ -92,5 +93,4 @@ public class Game {
                 z.moveZombie();
             }
     }
-
 }
