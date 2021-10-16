@@ -15,9 +15,10 @@ public class Bullet extends Movable {
     private boolean isImpacted;
 
     public Bullet(Position bulletPos) {
-        super(1, 1, Zones.E); //zona é irrelevante neste gameObject
+        super(Zones.E); //zona é irrelevante neste gameObject
 
         super.setPosition(bulletPos, "assets/Bullets/left-mid bullets.png");
+        System.out.println("bullet : " + firstCol + " " + lastCol + " " + firstRow + " " + lastRow);
 
     }
 

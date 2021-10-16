@@ -22,7 +22,7 @@ public class Player extends Movable implements KeyboardHandler {
     private Direction lastDirection = Direction.RIGHT;
 
     public Player() {
-        super(30, 30, Zones.E);
+        super( Zones.E);
 
         this.weapon = new Weapon();
 
@@ -31,6 +31,8 @@ public class Player extends Movable implements KeyboardHandler {
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
         super.setPosition(pos,"assets/Player/right-mid player.png");
+        System.out.println("player : " + firstCol + " " + lastCol + " " + firstRow + " " + lastRow);
+
 
     }
 

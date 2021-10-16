@@ -25,9 +25,7 @@ public class GameObject {
     protected Picture picture;
     protected String picturePath;
 
-    public GameObject(int posSizeX, int posSizeY, Zones spawnZone) {
-        this.posSizeX = posSizeX;
-        this.posSizeY = posSizeY;
+    public GameObject(Zones spawnZone) {
 
         this.spawnZone = spawnZone;
     }
@@ -52,6 +50,7 @@ public class GameObject {
         lastCol = pos.getCol() + posSizeX;
         firstRow = pos.getRow();
         lastRow = pos.getRow() + posSizeY;
+
 
         if (lastCol >= Background.getCols()) {
             pos.setCol(Background.getCols() - posSizeX);
@@ -104,4 +103,5 @@ public class GameObject {
     public Zones getSpawnZone() {
         return spawnZone;
     }
+
 }

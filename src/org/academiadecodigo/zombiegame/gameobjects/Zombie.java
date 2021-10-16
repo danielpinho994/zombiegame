@@ -22,11 +22,13 @@ public class Zombie extends Movable {
     private int health = 1;
 
     public Zombie(Position pos, Position playerPos, Zones spawnZone) {
-        super(30, 30, spawnZone);
+        super(spawnZone);
 
         this.playerPos = playerPos;
 
         setPosition(pos, picturePath);
+        System.out.println("zombie : " + firstCol + " " + lastCol + " " + firstRow + " " + lastRow);
+
     }
 
     public void moveZombie() {

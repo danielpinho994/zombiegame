@@ -9,12 +9,14 @@ public class Wall extends GameObject{
     private Rectangle wall;
 
     public Wall(Position pos,   Zones zone ){
-        super(1, 1, zone);
+        super(zone);
 
         super.pos = pos;
 
         getRandomSize();
         setPosition(pos,"assets/Walls/wall-horizontal.png");
+        System.out.println("wall : " + firstCol + " " + lastCol + " " + firstRow + " " + lastRow);
+
 
     }
 

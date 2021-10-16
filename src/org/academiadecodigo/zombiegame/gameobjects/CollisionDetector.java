@@ -20,6 +20,7 @@ public class CollisionDetector {
         this.bullets = bullets;
         this.walls = walls;
 
+
         int length = zombies.length + walls.length;
         allZombiesAndWalls = new GameObject[length];
 
