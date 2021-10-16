@@ -3,10 +3,20 @@ package org.academiadecodigo.zombiegame.field;
 
 public enum Direction {
 
-    UP,
-    DOWN,
-    LEFT,
-    RIGHT;
+    UP(0, -1),
+    DOWN(0, 1),
+    LEFT(-1, 0),
+    RIGHT(1, 0);
+
+    private int xAxis;
+    private int yAxis;
+
+
+    Direction(int xAxis, int yAxis) {
+        this.xAxis = xAxis;
+        this.yAxis = yAxis;
+
+    }
 
     public boolean isOpposite(Direction direction){
 
@@ -40,6 +50,14 @@ public enum Direction {
         }
 
         return opposite;
+    }
+
+    public int getXAxis() {
+        return xAxis;
+    }
+
+    public int getYAxis() {
+        return yAxis;
     }
 
 }

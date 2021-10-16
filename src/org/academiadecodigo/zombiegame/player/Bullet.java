@@ -37,46 +37,32 @@ public class Bullet {
 
         switch (bulletDirection) {
             case LEFT:
-                if (pos.getCol() <= 1) {
-                    bulletPic.delete();
-                    isImpacted = true;
-                    pos = null;
+                if (pos.getCol() <= 0) {
+                    destroyBullet();
                     break;
                 }
-                bulletPic.translate(-Background.getCellSize(), 0);
-                pos.move(bulletDirection);
-                //System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
-                //System.out.println("x: " + bulletPic.getX() + " : y: " + bulletPic.getY());
+                directBullet(bulletDirection);
                 break;
             case RIGHT:
                 if (pos.getCol() >= Background.getCols() - 1) {
-                    bulletPic.delete();
-                    isImpacted = true;
-                    pos = null;
+                    destroyBullet();
                     break;
                 }
-                bulletPic.translate(Background.getCellSize(), 0);
-                pos.move(bulletDirection);
+                directBullet(bulletDirection);
                 break;
             case UP:
-                if (pos.getRow() <= 1) {
-                    bulletPic.delete();
-                    isImpacted = true;
-                    pos = null;
+                if (pos.getRow() <= 0) {
+                    destroyBullet();
                     break;
                 }
-                bulletPic.translate(0, -Background.getCellSize());
-                pos.move(bulletDirection);
+                directBullet(bulletDirection);
                 break;
             case DOWN:
                 if (pos.getRow() >= Background.getRows() - 1) {
-                    bulletPic.delete();
-                    isImpacted = true;
-                    pos = null;
+                    destroyBullet();
                     break;
                 }
-                bulletPic.translate(0, Background.getCellSize());
-                pos.move(bulletDirection);
+                directBullet(bulletDirection);
                 break;
         }
 
@@ -84,6 +70,18 @@ public class Bullet {
 
     public boolean getImpact() {
         return isImpacted;
+    }
+
+    private void directBullet(Direction bulletDirection) {
+
+        bulletPic.translate(Background.getCellSize() * bulletDirection.getXAxis(), Background.getCellSize() * bulletDirection.getYAxis());
+        pos.move(bulletDirection);
+    }
+
+    private void destroyBullet() {
+        bulletPic.delete();
+        isImpacted = true;
+        pos = null;
     }
 
     public void setImpacted() {
@@ -103,6 +101,9 @@ public class Bullet {
      b.move();
      }
      }
+
+     //System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
+     //System.out.println("x: " + bulletPic.getX() + " : y: " + bulletPic.getY());
 
      */
 
