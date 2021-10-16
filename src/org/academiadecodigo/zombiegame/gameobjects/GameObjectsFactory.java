@@ -9,7 +9,7 @@ public abstract class GameObjectsFactory {
     private static int zombieCounter;
     private static int wallCounter;
 
-    public static Zombie makeZombies(Position playerPos) {
+    public static Zombie makeZombie(Position playerPos) {
 
         //Select zone
         Zones zone = Zones.values()[zombieCounter];
@@ -28,14 +28,6 @@ public abstract class GameObjectsFactory {
         Position zombiePos = new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
 
         return new Zombie(zombiePos, playerPos, zone);
-
-    }
-
-    public static Bullet makeBullets(Position playerPos) {
-
-        Position bulletPos = new Position(playerPos.getCol(), playerPos.getRow());
-
-        return new Bullet(bulletPos);
 
     }
 
@@ -67,6 +59,11 @@ public abstract class GameObjectsFactory {
 
     public static Position makeNewWallPos(Zones zone) {
         return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
+    }
+
+    public static Bullet makeBullets(Position playerPos) {
+        Position bulletPos = new Position(playerPos.getCol(), playerPos.getRow());
+        return new Bullet(bulletPos);
     }
 
 }

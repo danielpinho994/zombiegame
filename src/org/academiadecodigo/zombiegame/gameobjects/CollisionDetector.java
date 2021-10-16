@@ -15,20 +15,22 @@ public class CollisionDetector {
 
     }
 
-    public void checkZombieOverlap(Zombie zombie) {
+    public void checkOverlap(GameObject gameObject) {
 
         for (Zombie z : zombies) {
 
-            if (zombie.equals(z)) {
+            if (gameObject.equals(z)) {
                 continue;
             }
 
-            if (zombie.getFirstCol() <= z.getLastCol() && zombie.getLastCol() >= z.getFirstCol() &&
-                    zombie.getFirstRow() <= z.getLastRow() && zombie.getLastRow() >= z.getFirstRow()) {
-                Position newPos = GameObjectsFactory.resetSpawnPos(zombie.getZone());
-                zombie.setPosition(newPos);
+            if (gameObject.getFirstCol() <= z.getLastCol() && gameObject.getLastCol() >= z.getFirstCol() &&
+                    gameObject.getFirstRow() <= z.getLastRow() && gameObject.getLastRow() >= z.getFirstRow()) {
 
-                checkZombieOverlap(zombie);
+                Position newPos = GameObjectsFactory.resetSpawnPos(gameObject.getSpawnZone());
+
+                gameObject.setPosition(newPos, gameObject.getPicturePath());
+
+                checkOverlap(gameObject);
             }
         }
     }

@@ -4,7 +4,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Player extends Movable implements KeyboardHandler {
@@ -21,7 +20,7 @@ public class Player extends Movable implements KeyboardHandler {
     private Direction lastDirection = Direction.RIGHT;
 
     public Player(String name){
-        super(5);
+        super(30, Zones.E);
 
         this.name = name;
 
@@ -31,7 +30,7 @@ public class Player extends Movable implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        super.positionAndPicture("picture path");
+        super.setPosition(pos,"assets/SoldierTopDownView.png");
 
     }
 

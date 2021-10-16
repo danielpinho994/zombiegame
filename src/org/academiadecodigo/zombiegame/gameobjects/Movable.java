@@ -2,16 +2,17 @@ package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
+import org.academiadecodigo.zombiegame.field.Zones;
 
-public class Movable extends GameObjects{
+public class Movable extends GameObject {
 
     protected boolean forbiddenRight;
     protected boolean forbiddenLeft;
     protected boolean forbiddenUp;
     protected boolean forbiddenDown;
 
-    public Movable(int posSize) {
-        super(posSize);
+    public Movable(int posSize, Zones spawnZone) {
+        super(posSize, posSize, spawnZone);
     }
 
     public void moveRight() {

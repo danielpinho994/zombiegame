@@ -2,50 +2,65 @@ package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.Game;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.field.Zones;
 
-public class GameObjects{
+public class GameObject {
     //number of rows and cols of rectangle
     protected Position pos;
-    protected int posSize;
+
+    protected int posSizeX;
+    protected int posSizeY;
+
     protected int firstCol;
     protected int lastCol;
     protected int firstRow;
     protected int lastRow;
 
-    protected Rectangle picture;
+    protected Zones spawnZone;
 
-    public GameObjects(int posSize) {
-        this.posSize = posSize;
+    protected Picture picture;
+    protected String picturePath;
+
+    public GameObject(int posSizeX, int posSizeY, Zones spawnZone) {
+        this.posSizeX = posSizeX;
+        this.posSizeY = posSizeY;
+
+        this.spawnZone = spawnZone;
     }
 
-    protected void positionAndPicture(String picturePath) {
+    protected void setPosition(Position pos, String picturePath) {
+
+        this.pos = pos;
 
         firstCol = pos.getCol();
-        lastCol = pos.getCol() + posSize;
+        lastCol = pos.getCol() + posSizeX;
         firstRow = pos.getRow();
-        lastRow = pos.getRow() + posSize;
+        lastRow = pos.getRow() + posSizeY;
 
         if (lastCol >= Background.getCols()) {
-            pos.setCol(Background.getCols() - posSize);
+            pos.setCol(Background.getCols() - posSizeX);
         }
 
         if (lastRow >= Background.getRows()) {
-            pos.setRow(Background.getRows() - posSize);
+            pos.setRow(Background.getRows() - posSizeY);
         }
 
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-        int height = posSize * Background.getCellSize();
-        int width = posSize * Background.getCellSize();
+        int height = posSizeY * Background.getCellSize();
+        int width = posSizeX * Background.getCellSize();
 
-        picture = new Rectangle(x, y, width, height);
+        picture = new Picture(x, y, picturePath);
         picture.draw();
-        picture.setColor(Color.BLUE);
-        picture.fill();
+    }
+
+    public String getPicturePath() {
+        return picturePath;
     }
 
     public Position getPos() {
@@ -68,4 +83,7 @@ public class GameObjects{
         return lastRow;
     }
 
+    public Zones getSpawnZone() {
+        return spawnZone;
+    }
 }

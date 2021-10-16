@@ -2,27 +2,21 @@ package org.academiadecodigo.zombiegame.gameobjects.player;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
-import org.academiadecodigo.zombiegame.gameobjects.Movable;
+import org.academiadecodigo.zombiegame.field.Zones;
+import org.academiadecodigo.zombiegame.gameobjects.GameObject;
 
-public class Bullet extends GameObjects {
+public class Bullet extends GameObject {
 
     private Direction bulletDirection;
     private boolean isImpacted;
 
     public Bullet(Position bulletPos) {
-        super(1);
+        super(1, 1, Zones.E); //zona é irrelevante neste gameObject
 
-        pos = bulletPos;
-
-        picture = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(),
-                Background.getCellSize() , Background.getCellSize());
-
-
+        super.setPosition(bulletPos, "assets/bullet.png");
 
     }
 
@@ -31,14 +25,9 @@ public class Bullet extends GameObjects {
         bulletDirection = direction;
 
         picture.draw();
-        picture.setColor(Color.BLACK);
-        picture.fill();
-
     }
 
     public void moveBullet() {
-
-
 
         switch (bulletDirection) {
             case LEFT:
