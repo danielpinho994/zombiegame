@@ -33,8 +33,6 @@ public class Position {
         this.col = minCol + (int)(Math.random() * ((maxCol - minCol) + 1));
         this.row = minRow + (int)(Math.random() * ((maxRow - minRow) + 1));
 
-
-
     }
 
     public void move(Direction direction) {

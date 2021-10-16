@@ -14,7 +14,7 @@ public class Wall extends GameObject{
         super.pos = pos;
 
         getRandomSize();
-        setPosition(pos,"picture path");
+        setPosition(pos,"assets/Walls/wall-horizontal.png");
 
     }
 

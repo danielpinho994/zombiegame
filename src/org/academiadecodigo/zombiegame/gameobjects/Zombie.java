@@ -6,13 +6,15 @@ import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
-public class Zombie extends Movable{
+public class Zombie extends Movable {
 
     private Position playerPos;
 
     private String picturePath = "assets/Zombies/right-mid zombie.png";
 
-    private Direction[] picToUse;
+    private Direction picToUseUpDown;
+    private Direction picToUseLeftRight;
+    private PictureDirections picdic;
 
 
     private int hitPoints = 3;
@@ -29,83 +31,104 @@ public class Zombie extends Movable{
 
     public void moveZombie() {
 
+        picToUseLeftRight = null;
+        picToUseUpDown = null;
+
         int targetCol = playerPos.getCol();
         int targetRow = playerPos.getRow();
 
         if (targetCol > pos.getCol() && !forbiddenRight) {
             super.moveObject(Direction.RIGHT);
-            if(picToUse==null){
-                picToUse = new Direction[2];
-                picToUse[0] = Direction.RIGHT;
-            }
-            else{
-                picToUse[1] = Direction.RIGHT;
-            }
+            picToUseLeftRight = Direction.RIGHT;
         }
 
         if (targetCol < pos.getCol() && !forbiddenLeft) {
             super.moveObject(Direction.LEFT);
-            if(picToUse==null){
-                picToUse = new Direction[2];
-                picToUse[0] = Direction.LEFT;
-            }
-            else{
-                picToUse[1] = Direction.LEFT;
-            }
+            picToUseLeftRight = Direction.LEFT;
         }
 
         if (targetRow < pos.getRow() && !forbiddenUp) {
             super.moveObject(Direction.UP);
-            if(picToUse==null){
-                picToUse = new Direction[2];
-                picToUse[0] = Direction.UP;
-            }
-            else{
-                picToUse[1] = Direction.UP;
-            }
+            picToUseUpDown = Direction.UP;
+
         }
 
         if (targetRow > pos.getRow() && !forbiddenDown) {
             super.moveObject(Direction.DOWN);
-            if(picToUse==null){
-                picToUse = new Direction[2];
-                picToUse[0] = Direction.DOWN;
-            }
-            else{
-                picToUse[1] = Direction.DOWN;
-            }
+            picToUseUpDown = Direction.DOWN;
+
         }
 
-       if(picToUse[1]==null){
+        if (picToUseUpDown == Direction.UP) {
 
-           if(picToUse[0] == Direction.DOWN){
-               setPosition(pos,"assets/Zombies/top-down zombie.png");
-               return;
-           }
-           if(picToUse[0] == Direction.UP){
-               setPosition(pos,"assets/Zombies/down-top zombie.png");
-           }
-           if(picToUse[0] == Direction.LEFT){
-               setPosition(pos,"assets/Zombies/left-mid zombie.png");
-           }
-           if(picToUse[0] == Direction.RIGHT){
-               setPosition(pos,"assets/Zombies/right-mid zombie.png");
-           }
-       }
-       if(picToUse[1]==Direction.DOWN){
+            if (picToUseLeftRight == Direction.LEFT) {
+                if (picdic != PictureDirections.UPLEFT) {
+                    picdic = PictureDirections.UPLEFT;
+                    changePic("assets/Zombies/zombie2.png");
+                }
+                return;
+            }
+            if (picToUseLeftRight == Direction.RIGHT) {
+                if (picdic != PictureDirections.UPRIGHT) {
+                    picdic = PictureDirections.UPRIGHT;
+                    changePic("assets/Zombies/zombie3.png");
+                }
+                return;
+            }
 
-       }
+            if (picdic != PictureDirections.UP) {
+                picdic = PictureDirections.UP;
+                changePic("assets/Zombies/down-top zombie.png");
+            }
+            return;
+        }
+        if (picToUseUpDown == Direction.DOWN) {
+
+            if (picToUseLeftRight == Direction.LEFT) {
+                if (picdic != PictureDirections.DOWNLEFT) {
+                    picdic = PictureDirections.DOWNLEFT;
+                    changePic("assets/Zombies/zombie1.png");
+                }
+                return;
+            }
+            if (picToUseLeftRight == Direction.RIGHT) {
+                if (picdic != PictureDirections.DOWNRIGHT) {
+                    picdic = PictureDirections.DOWNRIGHT;
+                    changePic("assets/Zombies/zombie4.png");
+                }
+                return;
+            }
+            if(picdic != PictureDirections.DOWN) {
+                changePic("assets/Zombies/top-down zombie.png");
+            }
+            return;
+        }
+        if (picToUseLeftRight == Direction.LEFT) {
+            if (picdic != PictureDirections.LEFT) {
+                picdic = PictureDirections.LEFT;
+                changePic("assets/Zombies/left-mid zombie.png");
+            }
+            return;
+        }
+        if (picToUseLeftRight == Direction.RIGHT) {
+            if (picdic != PictureDirections.RIGHT) {
+                picdic = PictureDirections.RIGHT;
+                changePic("assets/Zombies/right-mid zombie.png");
+            }
+            return;
+        }
 
     }
 
     public int getHitPoints() {
         return hitPoints;
     }
+
     public void hit() {
         this.health -= 1;
-        if(health==0){
+        if (health == 0) {
             this.picture.delete();
-            Position newPos = new Position(0,0);
+            Position newPos = new Position(-1, -1);
             this.setPosition(newPos, null);
         }
     }
