@@ -1,63 +1,103 @@
 package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.zombiegame.field.Position;
+import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
 import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class CollisionDetector {
 
+    private GameObject[] allZombiesAndWalls;
+
     private Zombie[] zombies;
     private Player player;
+    private Bullet[] bullets;
+    private Wall[] walls;
 
-    public CollisionDetector(Zombie[] zombies, Player player) {
+    public CollisionDetector(Zombie[] zombies, Player player, Bullet[] bullets, Wall[] walls) {
 
         this.zombies = zombies;
         this.player = player;
+        this.bullets = bullets;
+        this.walls = walls;
+
+        int length = zombies.length + walls.length;
+        allZombiesAndWalls = new GameObject[length];
+
+        for (int i = 0; i < zombies.length; i++) {
+            allZombiesAndWalls[i] = zombies[i];
+        }
+
+        int j = 0;
+        for (int i = zombies.length; i < zombies.length + walls.length; i++) {
+            allZombiesAndWalls[i] = walls[j];
+            j++;
+        }
 
     }
 
-    public void checkOverlap(GameObject gameObject) {
+    public void checkOverlap(Zombie zombie) {
 
-        for (Zombie z : zombies) {
+        for (GameObject obj : allZombiesAndWalls) {
 
-            if (gameObject.equals(z)) {
+            if (zombie.equals(obj)) {
                 continue;
             }
 
-            if (gameObject.getFirstCol() <= z.getLastCol() && gameObject.getLastCol() >= z.getFirstCol() &&
-                    gameObject.getFirstRow() <= z.getLastRow() && gameObject.getLastRow() >= z.getFirstRow()) {
+            if (zombie.getFirstCol() <= obj.getLastCol() && zombie.getLastCol() >= obj.getFirstCol() &&
+                    zombie.getFirstRow() <= obj.getLastRow() && zombie.getLastRow() >= obj.getFirstRow()) {
 
-                Position newPos = GameObjectsFactory.resetSpawnPos(gameObject.getSpawnZone());
+                Position newPos = GameObjectsFactory.resetZombieSpawn(zombie.getSpawnZone());
 
-                gameObject.setPosition(newPos, gameObject.getPicturePath());
+                zombie.setPosition(newPos, zombie.getPicturePath());
 
-                checkOverlap(gameObject);
+                checkOverlap(zombie);
             }
         }
     }
 
-    public void checkCollisionPlayer() {
+    public void checkBulletCollision(Bullet bullet) {
+
+        //check bullet collision with zombies and walls
+        for (GameObject obj : allZombiesAndWalls) {
+
+            if (bullet.getFirstCol() < obj.getLastCol() && bullet.getLastCol() > obj.getFirstCol() &&
+                    bullet.getFirstRow() < obj.getLastRow() && bullet.getLastRow() > obj.getFirstRow()) {
+
+                bullet.destroyBullet();
+
+                if (obj instanceof Zombie) {
+                    //ZOMBIE DIIIIIIEEEEEEEE
+                }
+            }
+        }
+
+    }
+
+    public void checkPlayerCollision() {
         player.resetForbidden();
 
-        for (Zombie z : zombies) {
-            if (z.getFirstCol() == player.getLastCol() && z.getFirstRow() <= player.getLastRow() && z.getLastRow() >= player.getFirstRow()) {
+        //check player collision with zombies and walls
+
+        for (GameObject obj : allZombiesAndWalls) {
+            if (obj.getFirstCol() == player.getLastCol() && obj.getFirstRow() <= player.getLastRow() && obj.getLastRow() >= player.getFirstRow()) {
                 player.forbidRight();
             }
 
-            if (z.getLastCol() == player.getFirstCol() && z.getFirstRow() <= player.getLastRow() && z.getLastRow() >= player.getFirstRow()) {
+            if (obj.getLastCol() == player.getFirstCol() && obj.getFirstRow() <= player.getLastRow() && obj.getLastRow() >= player.getFirstRow()) {
                 player.forbidLeft();
             }
 
-            if (z.getFirstRow() == player.getLastRow() && z.getFirstCol() <= player.getLastCol() && z.getLastCol() >= player.getFirstCol()) {
+            if (obj.getFirstRow() == player.getLastRow() && obj.getFirstCol() <= player.getLastCol() && obj.getLastCol() >= player.getFirstCol()) {
                 player.forbidDown();
             }
 
-            if (z.getLastRow() == player.getFirstRow() && z.getFirstCol() <= player.getLastCol() && z.getLastCol() >= player.getFirstCol()) {
+            if (obj.getLastRow() == player.getFirstRow() && obj.getFirstCol() <= player.getLastCol() && obj.getLastCol() >= player.getFirstCol()) {
                 player.forbidUp();
             }
         }
     }
 
-    public void checkCollisionZombie(Zombie zombie) {
+    public void checkZombieCollision(Zombie zombie) {
 
         zombie.resetForbidden();
 
@@ -82,26 +122,26 @@ public class CollisionDetector {
             zombie.forbidDown();
         }
 
-        //check zombie collision with other zombies
-        for (Zombie z : zombies){
+        //check zombie collision with zombies and walls
+        for (GameObject obj : allZombiesAndWalls){
 
-            if (zombie.equals(z)) {
+            if (zombie.equals(obj)) {
                 continue;
             }
 
-            if (zombie.getFirstCol() == z.getLastCol() && zombie.getFirstRow() < z.getLastRow() && zombie.getLastRow() > z.getFirstRow()) {
+            if (zombie.getFirstCol() == obj.getLastCol() && zombie.getFirstRow() < obj.getLastRow() && zombie.getLastRow() > obj.getFirstRow()) {
                 zombie.forbidLeft();
             }
 
-            if (zombie.getLastCol() == z.getFirstCol() && zombie.getFirstRow() < z.getLastRow() && zombie.getLastRow() > z.getFirstRow()) {
+            if (zombie.getLastCol() == obj.getFirstCol() && zombie.getFirstRow() < obj.getLastRow() && zombie.getLastRow() > obj.getFirstRow()) {
                 zombie.forbidRight();
             }
 
-            if (zombie.getFirstRow() == z.getLastRow() && zombie.getFirstCol() < z.getLastCol() && zombie.getLastCol() > z.getFirstCol()) {
+            if (zombie.getFirstRow() == obj.getLastRow() && zombie.getFirstCol() < obj.getLastCol() && zombie.getLastCol() > obj.getFirstCol()) {
                 zombie.forbidUp();
             }
 
-            if (zombie.getLastRow() == z.getFirstRow() && zombie.getFirstCol() < z.getLastCol() && zombie.getLastCol() > z.getFirstCol()) {
+            if (zombie.getLastRow() == obj.getFirstRow() && zombie.getFirstCol() < obj.getLastCol() && zombie.getLastCol() > obj.getFirstCol()) {
                 zombie.forbidDown();
             }
         }

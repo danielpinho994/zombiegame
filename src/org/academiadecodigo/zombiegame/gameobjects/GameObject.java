@@ -22,7 +22,7 @@ public class GameObject {
 
     protected Zones spawnZone;
 
-    protected Picture picture;
+    protected Rectangle picture;
     protected String picturePath;
 
     public GameObject(int posSizeX, int posSizeY, Zones spawnZone) {
@@ -55,7 +55,7 @@ public class GameObject {
         int height = posSizeY * Background.getCellSize();
         int width = posSizeX * Background.getCellSize();
 
-        picture = new Picture(x, y, picturePath);
+        picture = new Rectangle(x, y, width, height);
         picture.draw();
     }
 

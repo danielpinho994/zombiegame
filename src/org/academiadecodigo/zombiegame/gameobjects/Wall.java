@@ -28,7 +28,6 @@ public class Wall extends GameObject{
             case 0:
                 super.posSizeX = 4;
                 super.posSizeY = (int) (Math.random()*30) + 10;
-                System.out.println(posSizeX+" "+posSizeY);
                 break;
             case 1:
                 super.posSizeX = (int) (Math.random()*30) + 10;

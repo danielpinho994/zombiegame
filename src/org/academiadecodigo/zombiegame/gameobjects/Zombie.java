@@ -1,5 +1,6 @@
 package org.academiadecodigo.zombiegame.gameobjects;
 
+import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
@@ -12,7 +13,7 @@ public class Zombie extends Movable{
     private int hitPoints = 10;
 
     public Zombie(Position pos, Position playerPos, Zones spawnZone) {
-        super(30, spawnZone);
+        super(30, 30, spawnZone);
 
         this.playerPos = playerPos;
 
@@ -24,61 +25,21 @@ public class Zombie extends Movable{
         int targetCol = playerPos.getCol();
         int targetRow = playerPos.getRow();
 
-        if (targetCol > pos.getCol()) {
-            moveRight();
+        if (targetCol > pos.getCol() && !forbiddenRight) {
+            super.moveObject(Direction.RIGHT);
         }
 
-        if (targetCol < pos.getCol()) {
-            moveLeft();
+        if (targetCol < pos.getCol() && !forbiddenLeft) {
+            super.moveObject(Direction.LEFT);
         }
 
-        if (targetRow < pos.getRow()) {
-            moveUp();
+        if (targetRow < pos.getRow() && !forbiddenUp) {
+            super.moveObject(Direction.UP);
         }
 
-        if (targetRow > pos.getRow()) {
-            moveDown();
+        if (targetRow > pos.getRow() && !forbiddenDown) {
+            super.moveObject(Direction.DOWN);
         }
-
-    }
-
-    @Override
-    public void moveRight() {
-        if (forbiddenRight) {
-            return;
-        }
-
-        super.moveRight();
-
-    }
-
-    @Override
-    public void moveLeft() {
-        if (forbiddenLeft) {
-            return;
-        }
-
-        super.moveLeft();
-
-    }
-
-    @Override
-    public void moveUp() {
-        if (forbiddenUp) {
-            return;
-        }
-
-        super.moveUp();
-
-    }
-
-    @Override
-    public void moveDown() {
-        if (forbiddenDown) {
-            return;
-        }
-
-        super.moveDown();
 
     }
 

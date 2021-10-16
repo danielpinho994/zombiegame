@@ -10,7 +10,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private final static int ZOMBIES_NR = 2;
+    private final static int ZOMBIES_NR = 20;
     private int wallNr = 25;
 
     private Zombie[] zombieHoard;
@@ -24,7 +24,6 @@ public class Game {
 
     public Game(Player player){
         this.player = player;
-        background = new Background();
     }
 
     public void init() {
@@ -44,7 +43,7 @@ public class Game {
             walls[w] = GameObjectsFactory.makeWall();
         }
 
-        collisionDetector = new CollisionDetector(zombieHoard, player);
+        collisionDetector = new CollisionDetector(zombieHoard, player, bulletsShot, walls);
 
         player.setCollisionDetector(collisionDetector);
 
@@ -59,31 +58,32 @@ public class Game {
 
         while(true){
             Thread.sleep(17);
-            moveAllZombies();
 
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 4; i++) { //speed
                 moveAllBullets();
             }
 
-            for (int i = 0; i < 2; i++) {
+            for (int i = 0; i < 2; i++) { //speed
                 player.move();
             }
+
+            moveAllZombies();
         }
 
     }
 
     public void moveAllBullets(){
         for(Bullet b : bulletsShot) {
-
-            if(b != null && !b.getImpact()) {
-                    b.moveBullet();
+            if(b != null && !b.isImpacted()) {
+                collisionDetector.checkBulletCollision(b);
+                b.moveBullet();
             }
         }
     }
 
     public void moveAllZombies(){
             for (Zombie z : zombieHoard) {
-                collisionDetector.checkCollisionZombie(z);
+                collisionDetector.checkZombieCollision(z);
                 z.moveZombie();
             }
     }

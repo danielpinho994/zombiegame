@@ -31,8 +31,8 @@ public abstract class GameObjectsFactory {
 
     }
 
-    public static Position resetSpawnPos(Zones zone) {
-        return new Position(zone.getFirstCol(), zone.getLastCol() - 1, zone.getFirstRow(), zone.getLastRow() - 1);
+    public static Position resetZombieSpawn(Zones zone) {
+        return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
     }
 
     public static Wall makeWall() {
@@ -55,10 +55,6 @@ public abstract class GameObjectsFactory {
 
         return new Wall(wallPos, zone);
 
-    }
-
-    public static Position makeNewWallPos(Zones zone) {
-        return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
     }
 
     public static Bullet makeBullets(Position playerPos) {

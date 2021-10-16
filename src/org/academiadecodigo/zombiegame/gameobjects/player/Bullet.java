@@ -7,8 +7,9 @@ import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 import org.academiadecodigo.zombiegame.gameobjects.GameObject;
+import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
-public class Bullet extends GameObject {
+public class Bullet extends Movable {
 
     private Direction bulletDirection;
     private boolean isImpacted;
@@ -30,54 +31,47 @@ public class Bullet extends GameObject {
     public void moveBullet() {
 
         switch (bulletDirection) {
+
             case LEFT:
                 if (pos.getCol() <= 0) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.LEFT);
                 break;
+
             case RIGHT:
                 if (pos.getCol() >= Background.getCols() - 1) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.RIGHT);
                 break;
+
             case UP:
                 if (pos.getRow() <= 0) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.UP);
                 break;
+
             case DOWN:
                 if (pos.getRow() >= Background.getRows() - 1) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.DOWN);
         }
 
     }
 
-    public boolean getImpact() {
+    public boolean isImpacted() {
         return isImpacted;
     }
 
-    private void directBullet(Direction bulletDirection) {
-
-        picture.translate(Background.getCellSize() * bulletDirection.getXAxis(), Background.getCellSize() * bulletDirection.getYAxis());
-        pos.move(bulletDirection);
-    }
-
-    private void destroyBullet() {
+    public void destroyBullet() {
         picture.delete();
-        isImpacted = true;
-        pos = null;
-    }
-
-    public void setImpacted() {
         isImpacted = true;
     }
 
