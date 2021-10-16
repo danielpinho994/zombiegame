@@ -10,6 +10,7 @@ import org.academiadecodigo.zombiegame.gameobjects.Movable;
 public class Player extends Movable implements KeyboardHandler {
 
     private String name;
+    private boolean playerReady;
 
     private Weapon weapon;
     private int health = 100;
@@ -151,81 +152,94 @@ public class Player extends Movable implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        if(playerReady) {
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            if (firstDirection == null) {
-                firstDirection = Direction.UP;
-                return;
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+                System.out.println("pw");
+                if (firstDirection == null) {
+                    firstDirection = Direction.UP;
+                    return;
+                }
+                secDirection = Direction.UP;
             }
-            secDirection = Direction.UP;
-        }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            if (firstDirection == null) {
-                firstDirection = Direction.LEFT;
-                return;
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+                System.out.println("pa");
+                if (firstDirection == null) {
+                    firstDirection = Direction.LEFT;
+                    return;
+                }
+                secDirection = Direction.LEFT;
             }
-            secDirection = Direction.LEFT;
-        }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            if (firstDirection == null) {
-                firstDirection = Direction.RIGHT;
-                return;
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+                System.out.println("pd");
+                if (firstDirection == null) {
+                    firstDirection = Direction.RIGHT;
+                    return;
+                }
+                secDirection = Direction.RIGHT;
             }
-            secDirection = Direction.RIGHT;
-        }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            if (firstDirection == null) {
-                firstDirection = Direction.DOWN;
-                return;
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+                System.out.println("ps");
+                if (firstDirection == null) {
+                    firstDirection = Direction.DOWN;
+                    return;
+                }
+                secDirection = Direction.DOWN;
             }
-            secDirection = Direction.DOWN;
-        }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-            shoot();
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
+                System.out.println("pspace");
+                shoot();
+            }
         }
     }
 
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
+        if(playerReady) {
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            if (firstDirection == Direction.UP) {
-                firstDirection = null;
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+                if (firstDirection == Direction.UP) {
+                    firstDirection = null;
+                }
+                if (secDirection == Direction.UP) {
+                    secDirection = null;
+                }
             }
-            if (secDirection == Direction.UP) {
-                secDirection = null;
+
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+                if (firstDirection == Direction.LEFT) {
+                    firstDirection = null;
+                }
+                if (secDirection == Direction.LEFT) {
+                    secDirection = null;
+                }
+            }
+
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+                if (firstDirection == Direction.RIGHT) {
+                    firstDirection = null;
+                }
+                if (secDirection == Direction.RIGHT) {
+                    secDirection = null;
+                }
+            }
+
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+                if (firstDirection == Direction.DOWN) {
+                    firstDirection = null;
+                }
+                if (secDirection == Direction.DOWN) {
+                    secDirection = null;
+                }
             }
         }
+    }
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            if (firstDirection == Direction.LEFT) {
-                firstDirection = null;
-            }
-            if (secDirection == Direction.LEFT) {
-                secDirection = null;
-            }
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            if (firstDirection == Direction.RIGHT) {
-                firstDirection = null;
-            }
-            if (secDirection == Direction.RIGHT) {
-                secDirection = null;
-            }
-        }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            if (firstDirection == Direction.DOWN) {
-                firstDirection = null;
-            }
-            if (secDirection == Direction.DOWN) {
-                secDirection = null;
-            }
-        }
+    public void setPlayerReady() {
+        playerReady = true;
     }
 }

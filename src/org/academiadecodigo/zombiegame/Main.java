@@ -3,6 +3,7 @@ package org.academiadecodigo.zombiegame;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
+import org.academiadecodigo.zombiegame.field.Menu;
 import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Main {
@@ -10,9 +11,11 @@ public class Main {
 
         Player player = new Player("Zé");
 
-        Game game = new Game(player);
+        Menu menu = new Menu(player);
 
         Keyboard kb = new Keyboard(player);
+
+        Keyboard kbm = new Keyboard(menu);
 
         KeyboardEvent wPressed= new KeyboardEvent();
         wPressed.setKey(KeyboardEvent.KEY_W);
@@ -50,6 +53,16 @@ public class Main {
         spacePressed.setKey(KeyboardEvent.KEY_SPACE);
         spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+        kbm.addEventListener(wPressed);
+        kbm.addEventListener(sPressed);
+        kbm.addEventListener(spacePressed);
+
+        if (menu.getReady()) {
+            kbm.removeEventListener(wPressed);
+            kbm.removeEventListener(sPressed);
+            kbm.removeEventListener(spacePressed);
+        }
+
         kb.addEventListener(wPressed);
         kb.addEventListener(wReleased);
 
@@ -62,12 +75,7 @@ public class Main {
         kb.addEventListener(dPressed);
         kb.addEventListener(dReleased);
 
-
-
         kb.addEventListener(spacePressed);
-
-        game.init();
-        game.start();
 
 
     }

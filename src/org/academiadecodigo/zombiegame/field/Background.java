@@ -6,7 +6,7 @@ public class Background {
 
     private final static int PADDING = 10;
 
-    private final static int CELL_SIZE = 5;
+    private final static int CELL_SIZE = 1;
     private final static int COLS = 300;
     private final static int ROWS = 150;
 

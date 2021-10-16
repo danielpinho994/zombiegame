@@ -24,10 +24,11 @@ public class Game {
 
     public Game(Player player){
         this.player = player;
-        background = new Background();
+
     }
 
     public void init() {
+
         background = new Background();
 
         walls = new Wall[wallNr];
@@ -52,10 +53,11 @@ public class Game {
         for (Zombie z : zombieHoard) {
             collisionDetector.checkZombieOverlap(z);
         }
-
+        System.out.println("game init");
     }
 
     public void start() throws InterruptedException {
+        player.setPlayerReady();
 
         while(true){
             Thread.sleep(200);
@@ -81,5 +83,5 @@ public class Game {
                 z.moveZombie();
             }
     }
-
 }
+
