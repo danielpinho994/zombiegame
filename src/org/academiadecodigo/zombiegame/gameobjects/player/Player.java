@@ -1,14 +1,14 @@
 package org.academiadecodigo.zombiegame.gameobjects.player;
 
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Player extends Movable implements KeyboardHandler {
-
-    private String name;
 
     private Weapon weapon;
     private int health = 100;
@@ -19,10 +19,8 @@ public class Player extends Movable implements KeyboardHandler {
     private Direction secDirection;
     private Direction lastDirection = Direction.RIGHT;
 
-    public Player(String name){
+    public Player() {
         super(30, 30, Zones.E);
-
-        this.name = name;
 
         this.weapon = new Weapon();
 
@@ -30,7 +28,7 @@ public class Player extends Movable implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        super.setPosition(pos,"assets/SoldierTopDownView.png");
+        super.setPosition(pos, "assets/SoldierTopDownView.png");
 
     }
 
@@ -122,6 +120,61 @@ public class Player extends Movable implements KeyboardHandler {
                     }
             }
         }
+    }
+
+    public void setKeys() {
+
+        Keyboard kb = new Keyboard(this);
+
+        KeyboardEvent wPressed = new KeyboardEvent();
+        wPressed.setKey(KeyboardEvent.KEY_W);
+        wPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent wReleased = new KeyboardEvent();
+        wReleased.setKey(KeyboardEvent.KEY_W);
+        wReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent aPressed = new KeyboardEvent();
+        aPressed.setKey(KeyboardEvent.KEY_A);
+        aPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent aReleased = new KeyboardEvent();
+        aReleased.setKey(KeyboardEvent.KEY_A);
+        aReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent sPressed = new KeyboardEvent();
+        sPressed.setKey(KeyboardEvent.KEY_S);
+        sPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent sReleased = new KeyboardEvent();
+        sReleased.setKey(KeyboardEvent.KEY_S);
+        sReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent dPressed = new KeyboardEvent();
+        dPressed.setKey(KeyboardEvent.KEY_D);
+        dPressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        KeyboardEvent dReleased = new KeyboardEvent();
+        dReleased.setKey(KeyboardEvent.KEY_D);
+        dReleased.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
+
+        KeyboardEvent spacePressed = new KeyboardEvent();
+        spacePressed.setKey(KeyboardEvent.KEY_SPACE);
+        spacePressed.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        kb.addEventListener(wPressed);
+        kb.addEventListener(wReleased);
+
+        kb.addEventListener(aPressed);
+        kb.addEventListener(aReleased);
+
+        kb.addEventListener(sPressed);
+        kb.addEventListener(sReleased);
+
+        kb.addEventListener(dPressed);
+        kb.addEventListener(dReleased);
+
+        kb.addEventListener(spacePressed);
     }
 
     @Override
