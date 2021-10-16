@@ -29,9 +29,11 @@ public class Game {
 
     public void init() {
         background = new Background();
+
         walls = new Wall[wallNr];
 
         zombieHoard = new Zombie[ZOMBIES_NR];
+
         bulletsShot = player.getBullets();
 
         for (int z = 0; z < zombieHoard.length; z++) {
