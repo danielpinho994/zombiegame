@@ -1,9 +1,8 @@
 package org.academiadecodigo.zombiegame.gameobjects;
 
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.zombiegame.field.Background;
-import org.academiadecodigo.zombiegame.field.Position;
-import org.academiadecodigo.zombiegame.field.Zones;
+        import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+        import org.academiadecodigo.zombiegame.field.Position;
+        import org.academiadecodigo.zombiegame.field.Zones;
 
 public class Wall extends GameObject{
 
@@ -22,7 +21,6 @@ public class Wall extends GameObject{
     private void getRandomSize(){
 
         int random = (int) Math.floor(Math.random()*2);
-
         switch(random){
 
             case 0:
@@ -38,3 +36,4 @@ public class Wall extends GameObject{
         lastRow = pos.getRow() + posSizeY;
     }
 }
+

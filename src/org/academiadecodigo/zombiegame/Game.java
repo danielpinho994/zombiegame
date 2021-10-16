@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.zombiegame.field.Background;
+import org.academiadecodigo.zombiegame.field.GameOver;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Wall;
@@ -58,6 +59,9 @@ public class Game {
 
         while(true){
             Thread.sleep(17);
+            if(player.getHealth()<=0){
+                GameOver gameOver = new GameOver();
+            }
 
             for (int i = 0; i < 4; i++) { //speed
                 moveAllBullets();
