@@ -1,7 +1,5 @@
 package org.academiadecodigo.zombiegame.field;
 
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
-
 public class Position {
 
     public void setCol(int col) {

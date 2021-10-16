@@ -19,7 +19,7 @@ public class GameOver {
     public GameOver(){
 
         //getGameOverBackground();
-        gameOverTextPos = new Position(backgroundMiddleCol-80,backgroundMiddleRow-50);
+        gameOverTextPos = new Position(backgroundMiddleCol-430,backgroundMiddleRow-250);
         gameOverText = new Picture(gameOverTextPos.getCol()*Background.getCellSize(), gameOverTextPos.getRow()* Background.getCellSize(),"assets/GameOverZombies.jpeg");
         gameOverText.grow(-200,-100);
         gameOverText.draw();

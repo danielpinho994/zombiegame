@@ -2,56 +2,28 @@ package org.academiadecodigo.zombiegame.gameobjects;
 
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
+import org.academiadecodigo.zombiegame.field.Zones;
 
-public class Movable extends GameObjects{
+public class Movable extends GameObject {
 
     protected boolean forbiddenRight;
     protected boolean forbiddenLeft;
     protected boolean forbiddenUp;
     protected boolean forbiddenDown;
 
-    public Movable(int posSize) {
-        super(posSize);
+    public Movable(int posSizeX, int posSizeY, Zones spawnZone) {
+        super(posSizeX, posSizeY, spawnZone);
     }
 
-    public void moveRight() {
+    protected void moveObject(Direction direction) {
 
-        firstCol++;
-        lastCol++;
+        super.firstCol += Background.getCellSize() * direction.getXAxis();
+        super.lastCol += Background.getCellSize() * direction.getXAxis();
+        super.firstRow += Background.getCellSize() * direction.getYAxis();
+        super.lastRow += Background.getCellSize() * direction.getYAxis();
 
-        pos.move(Direction.RIGHT);
-        picture.translate(Background.getCellSize(), 0);
-
-    }
-
-    public void moveLeft() {
-
-        firstCol--;
-        lastCol--;
-
-        pos.move(Direction.LEFT);
-        picture.translate(-Background.getCellSize(), 0);
-
-    }
-
-    public void moveUp() {
-
-        firstRow--;
-        lastRow--;
-
-        pos.move(Direction.UP);
-        picture.translate(0, -Background.getCellSize());
-
-    }
-
-    public void moveDown() {
-
-        firstRow++;
-        lastRow++;
-
-        pos.move(Direction.DOWN);
-        picture.translate(0, Background.getCellSize());
-
+        picture.translate(Background.getCellSize() * direction.getXAxis(), Background.getCellSize() * direction.getYAxis());
+        pos.move(direction);
     }
 
     public void resetForbidden() {

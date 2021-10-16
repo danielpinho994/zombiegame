@@ -13,7 +13,7 @@ public class Weapon {
 
     public Weapon() {
 
-        magSize = 10;
+        magSize = 1000;
         bullets = new Bullet[magSize];
         shotsFired = 0;
     }

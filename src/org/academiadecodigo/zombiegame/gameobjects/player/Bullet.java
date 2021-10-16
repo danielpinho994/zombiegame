@@ -2,27 +2,22 @@ package org.academiadecodigo.zombiegame.gameobjects.player;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
+import org.academiadecodigo.zombiegame.field.Zones;
+import org.academiadecodigo.zombiegame.gameobjects.GameObject;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
-public class Bullet extends GameObjects {
+public class Bullet extends Movable {
 
     private Direction bulletDirection;
     private boolean isImpacted;
 
     public Bullet(Position bulletPos) {
-        super(1);
+        super(1, 1, Zones.E); //zona é irrelevante neste gameObject
 
-        pos = bulletPos;
-
-        picture = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(),
-                Background.getCellSize() , Background.getCellSize());
-
-
+        super.setPosition(bulletPos, "assets/bullet.png");
 
     }
 
@@ -31,64 +26,52 @@ public class Bullet extends GameObjects {
         bulletDirection = direction;
 
         picture.draw();
-        picture.setColor(Color.BLACK);
-        picture.fill();
-
     }
 
     public void moveBullet() {
 
-
-
         switch (bulletDirection) {
+
             case LEFT:
                 if (pos.getCol() <= 0) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.LEFT);
                 break;
+
             case RIGHT:
                 if (pos.getCol() >= Background.getCols() - 1) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.RIGHT);
                 break;
+
             case UP:
                 if (pos.getRow() <= 0) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.UP);
                 break;
+
             case DOWN:
                 if (pos.getRow() >= Background.getRows() - 1) {
                     destroyBullet();
                     break;
                 }
-                directBullet(bulletDirection);
+                super.moveObject(Direction.DOWN);
         }
 
     }
 
-    public boolean getImpact() {
+    public boolean isImpacted() {
         return isImpacted;
     }
 
-    private void directBullet(Direction bulletDirection) {
-
-        picture.translate(Background.getCellSize() * bulletDirection.getXAxis(), Background.getCellSize() * bulletDirection.getYAxis());
-        pos.move(bulletDirection);
-    }
-
-    private void destroyBullet() {
+    public void destroyBullet() {
         picture.delete();
-        isImpacted = true;
-        pos = null;
-    }
-
-    public void setImpacted() {
         isImpacted = true;
     }
 

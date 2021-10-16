@@ -11,7 +11,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private final static int ZOMBIES_NR = 1;
+    private final static int ZOMBIES_NR = 20;
     private int wallNr = 25;
 
     private Zombie[] zombieHoard;
@@ -25,7 +25,6 @@ public class Game {
 
     public Game(Player player){
         this.player = player;
-        background = new Background();
     }
 
     public void init() {
@@ -38,20 +37,20 @@ public class Game {
         bulletsShot = player.getBullets();
 
         for (int z = 0; z < zombieHoard.length; z++) {
-            zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
+            zombieHoard[z] = GameObjectsFactory.makeZombie(player.getPos());
         }
 
         for (int w = 0; w < walls.length; w++) {
             walls[w] = GameObjectsFactory.makeWall();
         }
 
-        collisionDetector = new CollisionDetector(zombieHoard, player);
+        collisionDetector = new CollisionDetector(zombieHoard, player, bulletsShot, walls);
 
         player.setCollisionDetector(collisionDetector);
 
         //check zombies overlap
         for (Zombie z : zombieHoard) {
-            collisionDetector.checkZombieOverlap(z);
+            collisionDetector.checkOverlap(z);
         }
 
     }
@@ -59,30 +58,36 @@ public class Game {
     public void start() throws InterruptedException {
 
         while(true){
-
-            Thread.sleep(200);
-            moveAllZombies();
-            moveAllBullets();
-            player.move();
+            Thread.sleep(17);
             if(player.getHealth()<=0){
                 GameOver gameOver = new GameOver();
             }
+
+            for (int i = 0; i < 4; i++) { //speed
+                moveAllBullets();
+            }
+
+            for (int i = 0; i < 2; i++) { //speed
+                player.move();
+            }
+
+            moveAllZombies();
         }
 
     }
 
     public void moveAllBullets(){
         for(Bullet b : bulletsShot) {
-
-            if(b != null && !b.getImpact()) {
-                    b.moveBullet();
+            if(b != null && !b.isImpacted()) {
+                collisionDetector.checkBulletCollision(b);
+                b.moveBullet();
             }
         }
     }
 
     public void moveAllZombies(){
             for (Zombie z : zombieHoard) {
-                collisionDetector.checkCollisionZombie(z);
+                collisionDetector.checkZombieCollision(z);
                 z.moveZombie();
             }
     }

@@ -4,7 +4,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
-import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Player extends Movable implements KeyboardHandler {
@@ -21,7 +20,7 @@ public class Player extends Movable implements KeyboardHandler {
     private Direction lastDirection = Direction.RIGHT;
 
     public Player(String name){
-        super(5);
+        super(30, 30, Zones.E);
 
         this.name = name;
 
@@ -31,7 +30,7 @@ public class Player extends Movable implements KeyboardHandler {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        super.positionAndPicture("picture path");
+        super.setPosition(pos,"assets/SoldierTopDownView.png");
 
     }
 
@@ -55,70 +54,43 @@ public class Player extends Movable implements KeyboardHandler {
         weapon.shoot(lastDirection, pos);
     }
 
-    @Override
-    public void moveLeft() {
-        if (firstCol > 0) {
-            super.moveLeft();
-        }
-    }
-
-    @Override
-    public void moveRight() {
-        if (lastCol < Background.getCols()) {
-            super.moveRight();
-        }
-    }
-
-    @Override
-    public void moveUp() {
-        if (firstRow > 0) {
-            super.moveUp();
-        }
-    }
-
-    @Override
-    public void moveDown() {
-        if (lastRow < Background.getRows()) {
-            super.moveDown();
-        }
-    }
-
     public void move() {
 
-        System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
-        System.out.println("x: " + picture.getX() + " : y: " + picture.getY());
-
-        if (secDirection != null) {
-            lastDirection = secDirection;
-        } else if (firstDirection != null) {
+        if (firstDirection != null) {
             lastDirection = firstDirection;
+        } else if (secDirection != null) {
+            lastDirection = secDirection;
         }
 
         resetForbidden();
 
-        collisionDetector.checkCollisionPlayer();
+        collisionDetector.checkPlayerCollision();
 
         if (firstDirection != null) {
 
             switch (firstDirection) {
+
                 case UP:
-                    if (!forbiddenUp) {
-                        moveUp();
+                    if (firstRow > 0 && !forbiddenUp) {
+                        super.moveObject(Direction.UP);
                     }
                     break;
+
                 case LEFT:
-                    if (!forbiddenLeft) {
-                        moveLeft();
+                    if (firstCol > 0 && !forbiddenLeft) {
+                        super.moveObject(Direction.LEFT);
                     }
                     break;
+
                 case RIGHT:
-                    if (!forbiddenRight) {
-                        moveRight();
+                    if (lastCol < Background.getCols() && !forbiddenRight) {
+                        super.moveObject(Direction.RIGHT);
                     }
                     break;
+
                 case DOWN:
-                    if (!forbiddenDown) {
-                        moveDown();
+                    if (lastRow < Background.getRows() && !forbiddenDown) {
+                        super.moveObject(Direction.DOWN);
                     }
             }
         }
@@ -127,23 +99,26 @@ public class Player extends Movable implements KeyboardHandler {
 
             switch (secDirection) {
                 case UP:
-                    if (!forbiddenUp) {
-                        moveUp();
+                    if (firstRow > 0 && !forbiddenUp) {
+                        super.moveObject(Direction.UP);
                     }
                     break;
+
                 case LEFT:
-                    if (!forbiddenLeft) {
-                        moveLeft();
+                    if (firstCol > 0 && !forbiddenLeft) {
+                        super.moveObject(Direction.LEFT);
                     }
                     break;
+
                 case RIGHT:
-                    if (!forbiddenRight) {
-                        moveRight();
+                    if (lastCol < Background.getCols() && !forbiddenRight) {
+                        super.moveObject(Direction.RIGHT);
                     }
                     break;
+
                 case DOWN:
-                    if (!forbiddenDown) {
-                        moveDown();
+                    if (lastRow < Background.getRows() && !forbiddenDown) {
+                        super.moveObject(Direction.DOWN);
                     }
             }
         }
