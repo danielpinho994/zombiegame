@@ -109,4 +109,8 @@ public class Zombie extends Movable{
             this.setPosition(newPos, null);
         }
     }
+
+    public int getHealth() {
+        return health;
+    }
 }
