@@ -7,6 +7,7 @@ import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjects;
+import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Bullet extends GameObjects {
 
@@ -17,7 +18,11 @@ public class Bullet extends GameObjects {
         super(1);
 
         pos = bulletPos;
-        picture = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(), Background.getCellSize() , Background.getCellSize());
+
+        picture = new Rectangle(bulletPos.getCol() * Background.getCellSize() + Background.getPadding(), bulletPos.getRow() * Background.getCellSize() + Background.getPadding(),
+                Background.getCellSize() , Background.getCellSize());
+
+
 
     }
 
@@ -33,55 +38,54 @@ public class Bullet extends GameObjects {
 
     public void moveBullet() {
 
+
+
         switch (bulletDirection) {
             case LEFT:
-                if (pos.getCol() <= 1) {
-                    picture.delete();
-                    isImpacted = true;
-                    pos = null;
+                if (pos.getCol() <= 0) {
+                    destroyBullet();
                     break;
                 }
-                picture.translate(-Background.getCellSize(), 0);
-                pos.move(bulletDirection);
-                //System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
-                //System.out.println("x: " + bulletPic.getX() + " : y: " + bulletPic.getY());
+                directBullet(bulletDirection);
                 break;
             case RIGHT:
                 if (pos.getCol() >= Background.getCols() - 1) {
-                    picture.delete();
-                    isImpacted = true;
-                    pos = null;
+                    destroyBullet();
                     break;
                 }
-                picture.translate(Background.getCellSize(), 0);
-                pos.move(bulletDirection);
+                directBullet(bulletDirection);
                 break;
             case UP:
-                if (pos.getRow() <= 1) {
-                    picture.delete();
-                    isImpacted = true;
-                    pos = null;
+                if (pos.getRow() <= 0) {
+                    destroyBullet();
                     break;
                 }
-                picture.translate(0, -Background.getCellSize());
-                pos.move(bulletDirection);
+                directBullet(bulletDirection);
                 break;
             case DOWN:
                 if (pos.getRow() >= Background.getRows() - 1) {
-                    picture.delete();
-                    isImpacted = true;
-                    pos = null;
+                    destroyBullet();
                     break;
                 }
-                picture.translate(0, Background.getCellSize());
-                pos.move(bulletDirection);
-                break;
+                directBullet(bulletDirection);
         }
 
     }
 
     public boolean getImpact() {
         return isImpacted;
+    }
+
+    private void directBullet(Direction bulletDirection) {
+
+        picture.translate(Background.getCellSize() * bulletDirection.getXAxis(), Background.getCellSize() * bulletDirection.getYAxis());
+        pos.move(bulletDirection);
+    }
+
+    private void destroyBullet() {
+        picture.delete();
+        isImpacted = true;
+        pos = null;
     }
 
     public void setImpacted() {
@@ -101,6 +105,9 @@ public class Bullet extends GameObjects {
      b.move();
      }
      }
+
+     //System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
+     //System.out.println("x: " + bulletPic.getX() + " : y: " + bulletPic.getY());
 
      */
 

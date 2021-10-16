@@ -39,11 +39,13 @@ public class Game {
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombies(player.getPos());
         }
+
         for (int w = 0; w < walls.length; w++) {
             walls[w] = GameObjectsFactory.makeWall();
         }
 
         collisionDetector = new CollisionDetector(zombieHoard, player);
+
         player.setCollisionDetector(collisionDetector);
 
         //check zombies overlap
@@ -66,11 +68,9 @@ public class Game {
 
     public void moveAllBullets(){
         for(Bullet b : bulletsShot) {
-            if(b != null) {
-                if (!b.getImpact()) {
-                    //collisionDetector.checkCollisionZombie(b);
+
+            if(b != null && !b.getImpact()) {
                     b.moveBullet();
-                }
             }
         }
     }

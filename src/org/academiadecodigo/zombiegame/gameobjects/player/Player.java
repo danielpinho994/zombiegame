@@ -58,8 +58,6 @@ public class Player extends Movable implements KeyboardHandler {
     @Override
     public void moveLeft() {
         if (firstCol > 0) {
-            picture.translate(-Background.getCellSize(), 0);
-
             super.moveLeft();
         }
     }
@@ -67,8 +65,6 @@ public class Player extends Movable implements KeyboardHandler {
     @Override
     public void moveRight() {
         if (lastCol < Background.getCols()) {
-            picture.translate(Background.getCellSize(), 0);
-
             super.moveRight();
         }
     }
@@ -76,9 +72,6 @@ public class Player extends Movable implements KeyboardHandler {
     @Override
     public void moveUp() {
         if (firstRow > 0) {
-            System.out.println(-Background.getCellSize());
-            picture.translate(0, -Background.getCellSize());
-
             super.moveUp();
         }
     }
@@ -86,13 +79,14 @@ public class Player extends Movable implements KeyboardHandler {
     @Override
     public void moveDown() {
         if (lastRow < Background.getRows()) {
-            picture.translate(0, Background.getCellSize());
-
             super.moveDown();
         }
     }
 
     public void move() {
+
+        System.out.println("col: " + pos.getCol() + " : row: " + pos.getRow());
+        System.out.println("x: " + picture.getX() + " : y: " + picture.getY());
 
         if (secDirection != null) {
             lastDirection = secDirection;
