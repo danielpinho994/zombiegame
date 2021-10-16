@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.zombiegame.field.Background;
+import org.academiadecodigo.zombiegame.field.GameOver;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.Wall;
@@ -58,10 +59,14 @@ public class Game {
     public void start() throws InterruptedException {
 
         while(true){
+
             Thread.sleep(200);
             moveAllZombies();
             moveAllBullets();
             player.move();
+            if(player.getHealth()<=0){
+                GameOver gameOver = new GameOver();
+            }
         }
 
     }
