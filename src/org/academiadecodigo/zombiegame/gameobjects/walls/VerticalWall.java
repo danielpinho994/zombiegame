@@ -37,13 +37,13 @@ public class VerticalWall extends Wall{
         //
 
         if (lastCol > Background.getCols()) {
-            pos.setCol(Background.getCols() - picture.getWidth() - 5);
+            pos.setCol(Background.getCols() - picture.getWidth() - 15);
 
             newPicture(pos, picturePath);
         }
 
         if (lastRow > Background.getRows()) {
-            pos.setRow(Background.getRows() - picture.getHeight() - 5);
+            pos.setRow(Background.getRows() - picture.getHeight() - 15);
 
             newPicture(pos, picturePath);
         }
