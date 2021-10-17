@@ -19,15 +19,22 @@ public class Menu implements KeyboardHandler {
     private Rectangle buttonFrame;
     private boolean ready;
     private static Direction lastDirection = Direction.UP;
+    private int gameCount;
+
+    private int newGameCounter = 0;
 
     private boolean isClosed;
 
-    private Sound swapButtonSound = new Sound("sounds/swapButtonSoundCut.wav");
-    private Sound menuBackgroundSound = new Sound("sounds/menuBackgroundSound.wav");
+    private Sound swapButtonSound = new Sound("assets/sounds/swapButtonSoundCut.wav");
+    private Sound menuBackgroundSound = new Sound("assets/sounds/menuBackgroundSound.wav");
 
     public Menu() throws InterruptedException {
 
-        game = new Game();
+        newGameCounter++;
+
+        if (newGameCounter < 2) {
+            game = new Game();
+        }
 
         start();
 
@@ -53,11 +60,7 @@ public class Menu implements KeyboardHandler {
         menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");
         menuBackground.draw();
 
-        startButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 5, Background.getHeight() / 12);
-
-        exitButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 81, Background.getWidth() / 5, Background.getHeight() / 12);
-
-        buttonFrame = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 4, Background.getHeight() / 10);
+        buttonFrame = new Rectangle(Background.getPadding() * 9 - 5, Background.getRows() - 275, Background.getWidth() / 3.6, Background.getHeight() / 10);
         buttonFrame.draw();
         buttonFrame.setColor(Color.WHITE);
 
@@ -92,11 +95,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.UP) {
-                buttonFrame.translate(0, 124);
+                buttonFrame.translate(0, 105);
                 lastDirection = Direction.DOWN;
                 return;
             }
-            buttonFrame.translate(0, -124);
+            buttonFrame.translate(0, -105);
             lastDirection = Direction.UP;
         }
 
@@ -104,11 +107,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
-                buttonFrame.translate(0, -124);
+                buttonFrame.translate(0, -105);
                 lastDirection = Direction.UP;
                 return;
             }
-            buttonFrame.translate(0, 124);
+            buttonFrame.translate(0, 105);
             lastDirection = Direction.DOWN;
         }
 
@@ -133,8 +136,6 @@ public class Menu implements KeyboardHandler {
 
     private void clearMenu() {
         menuBackground.delete();
-        startButton.delete();
-        exitButton.delete();
         buttonFrame.delete();
 
         isClosed = true;

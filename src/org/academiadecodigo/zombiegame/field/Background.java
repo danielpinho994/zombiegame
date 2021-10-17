@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame.field;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Background {
 
@@ -13,11 +14,11 @@ public class Background {
     private final static int WIDTH = COLS * getCellSize();
     private final static int HEIGHT = ROWS * getCellSize();
 
-    private Rectangle grid;
+    private Picture grid;
 
     public Background() {
 
-        grid = new Rectangle(PADDING, PADDING, WIDTH, HEIGHT);
+        grid = new Picture(PADDING, PADDING, "assets/field.jpg");
         grid.draw();
     }
 

@@ -113,16 +113,12 @@ public class CollisionDetector{
             player.sufferHit(zombie.getHitPoints());
             hpBar.looseHp(zombie.getHitPoints());
 
-            System.out.println("right hit");
-
             zombie.forbidLeft();
         }
 
         if (zombie.getLastCol() == player.getFirstCol() && zombie.getFirstRow() <= player.getLastRow() && zombie.getLastRow() >= player.getFirstRow()) {
             player.sufferHit(zombie.getHitPoints());
             hpBar.looseHp(zombie.getHitPoints());
-
-            System.out.println("left hit");
 
             zombie.forbidRight();
         }
@@ -131,16 +127,12 @@ public class CollisionDetector{
             player.sufferHit(zombie.getHitPoints());
             hpBar.looseHp(zombie.getHitPoints());
 
-            System.out.println("down hit");
-
             zombie.forbidUp();
         }
 
         if (zombie.getLastRow() == player.getFirstRow() && zombie.getFirstCol() <= player.getLastCol() && zombie.getLastCol() >= player.getFirstCol()) {
             player.sufferHit(zombie.getHitPoints());
             hpBar.looseHp(zombie.getHitPoints());
-
-            System.out.println("up hit");
 
             zombie.forbidDown();
         }

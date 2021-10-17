@@ -76,4 +76,12 @@ public class Score {
         scoreImageThousands.draw();
 
     }
+
+    public void deleteScore() {
+        scoreImage.delete();
+        scoreImageUnits.delete();
+        scoreImageDozens.delete();
+        scoreImageHundreds.delete();
+        scoreImageThousands.delete();
+    }
 }

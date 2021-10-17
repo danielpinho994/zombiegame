@@ -8,12 +8,11 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class HeavyWeightZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombie right.png";
-    private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
+    private String picturePath = "assets/zombies/zombieh/hzombie up left.png";
+    private Sound zombieKilledSound = new Sound("assets/sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
-
-    private int health = 1;
+    private int health = 2;
 
     public HeavyWeightZombie(Position pos, Position playerPos, Zones spawnZone) {
         super(pos, playerPos, spawnZone);
@@ -36,6 +35,7 @@ public class HeavyWeightZombie extends Zombie{
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol * Background.getCellSize() + Background.getPadding();
         int y = firstRow * Background.getCellSize() + Background.getPadding();
@@ -46,14 +46,16 @@ public class HeavyWeightZombie extends Zombie{
         testRectangle.draw();
         //
 
+         */
+
         if (lastCol > Background.getCols()) {
-            pos.setCol(Background.getCols() - picture.getWidth() - 5);
+            pos.setCol(Background.getCols() - picture.getWidth() - 15);
 
             newPicture(pos, picturePath);
         }
 
         if (lastRow > Background.getRows()) {
-            pos.setRow(Background.getRows() - picture.getHeight() - 5);
+            pos.setRow(Background.getRows() - picture.getHeight() - 15);
 
             newPicture(pos, picturePath);
         }
@@ -93,40 +95,40 @@ public class HeavyWeightZombie extends Zombie{
         if (picToUseUpDown == Direction.UP) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie up left.png");
                 return;
             }
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie up right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie up.png");
             return;
         }
 
         if (picToUseUpDown == Direction.DOWN) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie down left.png");
                 return;
             }
 
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie down right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie down.png");
             return;
         }
 
         if (picToUseLeftRight == Direction.LEFT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie left.png");
             return;
         }
         if (picToUseLeftRight == Direction.RIGHT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie right.png");
         }
     }
 

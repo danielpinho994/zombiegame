@@ -26,6 +26,7 @@ public class Tree extends Wall{
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol * Background.getCellSize() + Background.getPadding();
         int y = firstRow * Background.getCellSize() + Background.getPadding();
@@ -36,14 +37,16 @@ public class Tree extends Wall{
         testRectangle.draw();
         //
 
+         */
+
         if (lastCol > Background.getCols()) {
-            pos.setCol(Background.getCols() - picture.getWidth() - 5);
+            pos.setCol(Background.getCols() - picture.getWidth() - 15);
 
             newPicture(pos, picturePath);
         }
 
         if (lastRow > Background.getRows()) {
-            pos.setRow(Background.getRows() - picture.getHeight() - 5);
+            pos.setRow(Background.getRows() - picture.getHeight() - 15);
 
             newPicture(pos, picturePath);
         }

@@ -18,7 +18,7 @@ public class Player extends Movable {
 
     private Weapon weapon;
     private int health = 100;
-    private Sound bulletShotSound = new Sound("sounds/bulletShotSound.wav");
+    private Sound bulletShotSound = new Sound("assets/sounds/bulletShotSound.wav");
 
     private CollisionDetector collisionDetector;
 
@@ -48,13 +48,14 @@ public class Player extends Movable {
 
         //used to readapt colliding position size [magic numbers]
         firstCol = pos.getCol() + 15;
-        lastCol = pos.getCol() + posSizeX + 10;
-        firstRow = pos.getRow() + 20;
-        lastRow = pos.getRow() + posSizeY + 10;
+        lastCol = pos.getCol() + posSizeX;
+        firstRow = pos.getRow() + 15;
+        lastRow = pos.getRow() + posSizeY;
 
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol / Background.getCellSize();
         int y = firstRow / Background.getCellSize();
@@ -64,6 +65,8 @@ public class Player extends Movable {
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
+
+         */
     }
 
     public void setCollisionDetector(CollisionDetector collisionDetector) {
