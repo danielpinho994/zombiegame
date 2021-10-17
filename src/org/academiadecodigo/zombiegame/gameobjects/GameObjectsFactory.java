@@ -4,6 +4,8 @@ import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
+import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
+import org.academiadecodigo.zombiegame.gameobjects.zombies.Zombie;
 
 public abstract class GameObjectsFactory {
 

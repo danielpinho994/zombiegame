@@ -5,8 +5,8 @@ import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.GameOver;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
-import org.academiadecodigo.zombiegame.gameobjects.Wall;
-import org.academiadecodigo.zombiegame.gameobjects.Zombie;
+import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
+import org.academiadecodigo.zombiegame.gameobjects.zombies.Zombie;
 import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
 import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 

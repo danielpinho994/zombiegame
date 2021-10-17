@@ -1,11 +1,12 @@
-package org.academiadecodigo.zombiegame.gameobjects;
+package org.academiadecodigo.zombiegame.gameobjects.walls;
 
         import org.academiadecodigo.simplegraphics.graphics.Rectangle;
         import org.academiadecodigo.zombiegame.field.Background;
         import org.academiadecodigo.zombiegame.field.Position;
         import org.academiadecodigo.zombiegame.field.Zones;
+        import org.academiadecodigo.zombiegame.gameobjects.GameObject;
 
-public class Wall extends GameObject{
+public class Wall extends GameObject {
 
     private Rectangle wall;
 

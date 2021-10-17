@@ -3,8 +3,8 @@ package org.academiadecodigo.zombiegame.gameobjects;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
 import org.academiadecodigo.zombiegame.gameobjects.player.Player;
-
-import java.util.Set;
+import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
+import org.academiadecodigo.zombiegame.gameobjects.zombies.Zombie;
 
 public class CollisionDetector{
 

@@ -1,4 +1,4 @@
-package org.academiadecodigo.zombiegame.gameobjects;
+package org.academiadecodigo.zombiegame.gameobjects.zombies;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -6,6 +6,7 @@ import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
+import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Zombie extends Movable {
 
