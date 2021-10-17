@@ -18,11 +18,10 @@ public class HorizontalWall extends Wall {
         super.newPicture(pos, picturePath);
 
         //used to readapt colliding position size [magic numbers]
-        firstCol = pos.getCol() + 12;
-        lastCol = pos.getCol() + posSizeX + 7;
-        firstRow = pos.getRow() + 12;
-        lastRow = pos.getRow() + posSizeY + 7;
-
+        firstCol = pos.getCol();
+        lastCol = pos.getCol() + posSizeX + 8;
+        firstRow = pos.getRow();
+        lastRow = pos.getRow() + posSizeY + 8;
 
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
@@ -38,13 +37,13 @@ public class HorizontalWall extends Wall {
         //
 
         if (lastCol > Background.getCols()) {
-            pos.setCol(Background.getCols() - picture.getWidth() - 5);
+            pos.setCol(Background.getCols() - picture.getWidth() - 15);
 
             newPicture(pos, picturePath);
         }
 
         if (lastRow > Background.getRows()) {
-            pos.setRow(Background.getRows() - picture.getHeight() - 5);
+            pos.setRow(Background.getRows() - picture.getHeight() - 15);
 
             newPicture(pos, picturePath);
         }

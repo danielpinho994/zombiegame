@@ -8,7 +8,7 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class NormalZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombie right.png";
+    private String picturePath = "assets/zombies/normal/zombie right.png";
     private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
@@ -29,10 +29,10 @@ public class NormalZombie extends Zombie{
 
         //used to readapt colliding position size [magic numbers]
 
-        firstCol = pos.getCol() + 15;
-        lastCol = pos.getCol() + posSizeX - 3;
-        firstRow = pos.getRow() + 20;
-        lastRow = pos.getRow() + posSizeY;
+        firstCol = pos.getCol() + 6;
+        lastCol = pos.getCol() + posSizeX - 5;
+        firstRow = pos.getRow() + 10;
+        lastRow = pos.getRow() + posSizeY - 2;
 
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
@@ -48,13 +48,13 @@ public class NormalZombie extends Zombie{
         //
 
         if (lastCol > Background.getCols()) {
-            pos.setCol(Background.getCols() - picture.getWidth() - 5);
+            pos.setCol(Background.getCols() - picture.getWidth() - 15);
 
             newPicture(pos, picturePath);
         }
 
         if (lastRow > Background.getRows()) {
-            pos.setRow(Background.getRows() - picture.getHeight() - 5);
+            pos.setRow(Background.getRows() - picture.getHeight() - 15);
 
             newPicture(pos, picturePath);
         }
