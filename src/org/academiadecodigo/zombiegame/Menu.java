@@ -21,6 +21,8 @@ public class Menu implements KeyboardHandler {
 
     private boolean isClosed;
 
+    private Sound swapButtonSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/Wooden Button Click Sound Effect.mp3");
+
     public Menu() throws InterruptedException {
 
         game = new Game();
@@ -89,7 +91,19 @@ public class Menu implements KeyboardHandler {
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !isClosed) {
+            swapButtonSound.play(true);
+             try {
+             Thread.sleep(200);
+             } catch (InterruptedException e) {
+             e.printStackTrace();
+             }
             if (lastDirection == Direction.UP) {
+                /**
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }*/
                 buttonFrame.translate(0, exitButton.getY() - startButton.getY());
                 lastDirection = Direction.DOWN;
                 return;
@@ -99,6 +113,7 @@ public class Menu implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !isClosed) {
+            swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
                 buttonFrame.translate(0, startButton.getY() - exitButton.getY());
                 lastDirection = Direction.UP;
