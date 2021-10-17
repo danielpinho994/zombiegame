@@ -19,6 +19,7 @@ public class Menu implements KeyboardHandler {
     private Rectangle buttonFrame;
     private boolean ready;
     private static Direction lastDirection = Direction.UP;
+    private int gameCount;
 
     private boolean isClosed;
 
@@ -52,10 +53,6 @@ public class Menu implements KeyboardHandler {
 
         menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");
         menuBackground.draw();
-
-        startButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 5, Background.getHeight() / 12);
-
-        exitButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 81, Background.getWidth() / 5, Background.getHeight() / 12);
 
         buttonFrame = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 4, Background.getHeight() / 10);
         buttonFrame.draw();

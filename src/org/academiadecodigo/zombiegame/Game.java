@@ -118,7 +118,6 @@ public class Game {
                         z.remove();
                     }
                 }
-                player.remove();
                 zombieHoard = null;
                 bulletsShot = null;
                 collisionDetector = null;
