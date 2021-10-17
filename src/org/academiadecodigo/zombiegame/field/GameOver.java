@@ -19,8 +19,8 @@ public class GameOver {
     public GameOver(){
 
         //getGameOverBackground();
-        gameOverTextPos = new Position(backgroundMiddleCol-430,backgroundMiddleRow-250);
-        gameOverText = new Picture(gameOverTextPos.getCol()*Background.getCellSize(), gameOverTextPos.getRow()* Background.getCellSize(),"assets/GameOverZombies.jpeg");
+        gameOverTextPos = new Position(backgroundMiddleCol-330,backgroundMiddleRow-200);
+        gameOverText = new Picture(gameOverTextPos.getCol()*Background.getCellSize(), gameOverTextPos.getRow()* Background.getCellSize(),"assets/GameOverZombies-removebg-preview.png");
         gameOverText.grow(-200,-100);
         gameOverText.draw();
     }

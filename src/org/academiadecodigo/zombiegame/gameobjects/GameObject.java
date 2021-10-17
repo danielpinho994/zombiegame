@@ -22,50 +22,23 @@ public class GameObject {
 
     protected Zones spawnZone;
 
-    protected Rectangle picture;
-    protected String picturePath;
+    protected Picture picture;
 
-    public GameObject(int posSizeX, int posSizeY, Zones spawnZone) {
-        this.posSizeX = posSizeX;
-        this.posSizeY = posSizeY;
+    public GameObject(Zones spawnZone) {
 
         this.spawnZone = spawnZone;
     }
 
-    protected void setPosition(Position pos, String picturePath) {
-
-        if (picture != null) {
-            picture.delete();
-        }
-
-        this.pos = pos;
-
-        firstCol = pos.getCol();
-        lastCol = pos.getCol() + posSizeX;
-        firstRow = pos.getRow();
-        lastRow = pos.getRow() + posSizeY;
-
-        if (lastCol >= Background.getCols()) {
-            pos.setCol(Background.getCols() - posSizeX);
-        }
-
-        if (lastRow >= Background.getRows()) {
-            pos.setRow(Background.getRows() - posSizeY);
-        }
-
+    public void changePic(String picturePath) {
         int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-        int height = posSizeY * Background.getCellSize();
-        int width = posSizeX * Background.getCellSize();
-
-        picture = new Rectangle(x, y, width, height);
+        picture.delete();
+        picture = new Picture(x, y, picturePath);
         picture.draw();
     }
 
-    public String getPicturePath() {
-        return picturePath;
-    }
+
 
     public Position getPos() {
         return pos;
@@ -79,6 +52,56 @@ public class GameObject {
         return lastCol;
     }
 
+    protected void newPicture(Position pos, String picturePath) {
+
+        if (picture != null) {
+            picture.delete();
+        }
+
+        this.pos = pos;
+
+        int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+        int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+        picture = new Picture(x, y, picturePath);
+
+        posSizeX = picture.getWidth() * Background.getCellSize();
+        posSizeY = picture.getHeight() * Background.getCellSize();
+
+        /*
+        firstCol = pos.getCol() + 15;
+        lastCol = pos.getCol() + posSizeX - 3;
+        firstRow = pos.getRow() + 20;
+        lastRow = pos.getRow() + posSizeY;
+
+        //test size
+        x = firstCol / Background.getCellSize();
+        y = firstRow / Background.getCellSize();
+        int width = lastCol / Background.getCellSize() - x;
+        int height =  lastRow / Background.getCellSize() - y;
+
+        Rectangle testRectangle = new Rectangle(x, y, width, height);
+        testRectangle.draw();
+        testRectangle.fill();
+        //
+
+         */
+
+        if (lastCol >= Background.getCols()) {
+            pos.setCol(Background.getCols() - posSizeX);
+            firstCol = pos.getCol();
+            lastCol = pos.getCol() + posSizeX;
+        }
+
+        if (lastRow >= Background.getRows()) {
+            pos.setRow(Background.getRows() - posSizeY);
+            firstRow = pos.getRow();
+            lastRow = pos.getRow() + posSizeY;
+        }
+
+        picture.draw();
+    }
+
     public int getFirstRow() {
         return firstRow;
     }
@@ -90,4 +113,5 @@ public class GameObject {
     public Zones getSpawnZone() {
         return spawnZone;
     }
+
 }

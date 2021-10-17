@@ -11,8 +11,8 @@ public class Movable extends GameObject {
     protected boolean forbiddenUp;
     protected boolean forbiddenDown;
 
-    public Movable(int posSizeX, int posSizeY, Zones spawnZone) {
-        super(posSizeX, posSizeY, spawnZone);
+    public Movable( Zones spawnZone) {
+        super(spawnZone);
     }
 
     protected void moveObject(Direction direction) {
