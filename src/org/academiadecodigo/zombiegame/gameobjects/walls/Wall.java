@@ -8,11 +8,14 @@ package org.academiadecodigo.zombiegame.gameobjects.walls;
 
 public abstract class Wall extends GameObject {
 
-    public Wall(Position pos,   Zones zone ){
+    public Wall(Position pos, Zones zone) {
         super(zone);
 
         super.pos = pos;
 
+    }
+
+    public void remove() {
     }
 }
 

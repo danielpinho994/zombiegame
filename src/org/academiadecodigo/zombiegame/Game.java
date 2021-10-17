@@ -1,7 +1,6 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.GameOver;
 import org.academiadecodigo.zombiegame.field.HealthBar;
@@ -23,6 +22,7 @@ public class Game {
     private Bullet[] bulletsShot;
     private Wall[] walls;
     private Player player;
+    private GameOver gameOver;
     private Sound backgroundMusic = new Sound("sounds/backgroundMusic.wav");
     private HealthBar hpBar;
     private Menu menu;
@@ -42,6 +42,11 @@ public class Game {
 
     public void init() {
 
+        if (zombies_nr == 2) { //só para o início
+            scoreBoard.drawScore();
+        }
+
+        player.newPicture(player.getPos(), "assets/player/playerright.png");
         Rectangle roundPic = new Rectangle();
         roundPic.draw();
 
@@ -93,6 +98,8 @@ public class Game {
                     Thread.sleep(200);
                 }
                 menu = new Menu();
+                backgroundMusic.stop();
+                gameOver = new GameOver();
                 break;
             }
 
@@ -113,7 +120,14 @@ public class Game {
     public void newRound() {
 
         background = null;
-        walls = null;
+        for (Wall w : walls) {
+            w.remove();
+        }
+        for (Bullet b : bulletsShot) {
+            if (b != null) {
+                b.destroyBullet();
+            }
+        }
         zombieHoard = null;
         bulletsShot = null;
         collisionDetector = null;
