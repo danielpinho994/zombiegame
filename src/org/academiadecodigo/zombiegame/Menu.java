@@ -60,7 +60,7 @@ public class Menu implements KeyboardHandler {
         menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");
         menuBackground.draw();
 
-        buttonFrame = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 4, Background.getHeight() / 10);
+        buttonFrame = new Rectangle(Background.getPadding() * 9 - 5, Background.getRows() - 275, Background.getWidth() / 3.6, Background.getHeight() / 10);
         buttonFrame.draw();
         buttonFrame.setColor(Color.WHITE);
 
@@ -95,11 +95,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.UP) {
-                buttonFrame.translate(0, 124);
+                buttonFrame.translate(0, 105);
                 lastDirection = Direction.DOWN;
                 return;
             }
-            buttonFrame.translate(0, -124);
+            buttonFrame.translate(0, -105);
             lastDirection = Direction.UP;
         }
 
@@ -107,11 +107,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
-                buttonFrame.translate(0, -124);
+                buttonFrame.translate(0, -105);
                 lastDirection = Direction.UP;
                 return;
             }
-            buttonFrame.translate(0, 124);
+            buttonFrame.translate(0, 105);
             lastDirection = Direction.DOWN;
         }
 
@@ -136,8 +136,6 @@ public class Menu implements KeyboardHandler {
 
     private void clearMenu() {
         menuBackground.delete();
-        startButton.delete();
-        exitButton.delete();
         buttonFrame.delete();
 
         isClosed = true;
