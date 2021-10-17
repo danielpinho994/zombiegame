@@ -11,7 +11,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private static int zombies_nr = 30;
+    private static int zombies_nr = 9;
     private int wallNr = 10;
 
     private Zombie[] zombieHoard;
@@ -120,10 +120,12 @@ public class Game {
                         b.destroyBullet();
                     }
                 }
-                for(Zombie z : zombieHoard){
-                    z.getPos().setRow(0);
-                    z.getPos().setCol(0);
-                    z.remove();
+                for(Zombie z : zombieHoard) {
+                    if (z != null) {
+                        z.getPos().setRow(0);
+                        z.getPos().setCol(0);
+                        z.remove();
+                    }
                 }
 
                 player.remove();
