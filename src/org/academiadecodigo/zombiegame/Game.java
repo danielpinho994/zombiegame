@@ -99,13 +99,31 @@ public class Game {
             if (player.getHealth() <= 0) {
                 playerDyingSound.play(true);
                 GameOver gameOver = new GameOver();
-                for(int i = 0 ; i<100 ; i++){
-                    Thread.sleep(200);
+                background = null;
+                menu = null;
+                scoreBoard = null;
+                for (Wall w : walls) {
+                    w.remove();
                 }
-                menu = new Menu();
+                for (Bullet b : bulletsShot) {
+                    if (b != null) {
+                        b.getPos().setCol(0);
+                        b.getPos().setRow(0);
+                        b.destroyBullet();
+                    }
+                }
+                for(Zombie z : zombieHoard){
+                    z.getPos().setRow(0);
+                    z.getPos().setCol(0);
+                    z.remove();
+                }
+                player.remove();
+                zombieHoard = null;
+                bulletsShot = null;
+                collisionDetector = null;
+                gameOver = null;
                 backgroundMusic.stop();
-                gameOver = new GameOver();
-                break;
+                menu = new Menu();
             }
 
             for (int i = 0; i < 4; i++) { //speed
@@ -169,7 +187,9 @@ public class Game {
             }
 
             collisionDetector.checkZombieCollision(z);
+
             z.moveZombie();
+
         }
         if (zombiesDead != zombiesKilled) {
             zombiesKilled += (zombiesDead - zombiesKilled);
