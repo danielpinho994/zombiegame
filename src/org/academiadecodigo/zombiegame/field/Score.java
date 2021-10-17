@@ -68,7 +68,7 @@ public class Score {
         zombieRoundCounter = 0;
     }
 
-    private void drawScore() {
+    public void drawScore() {
         scoreImage.draw();
         scoreImageUnits.draw();
         scoreImageDozens.draw();

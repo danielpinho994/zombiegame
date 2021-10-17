@@ -33,8 +33,6 @@ public class Player extends Movable {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        newPicture(pos, "assets/player/playerright.png");
-
         keys = new movementKeys(this);
 
     }

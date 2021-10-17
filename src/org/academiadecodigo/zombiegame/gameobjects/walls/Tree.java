@@ -49,4 +49,15 @@ public class Tree extends Wall{
         }
     }
 
+
+    public void remove() {
+        firstCol = 0;
+        lastCol = 0;
+        firstRow = 0;
+        lastRow = 0;
+
+        picture.delete();
+
+    }
+
 }
