@@ -3,6 +3,7 @@ package org.academiadecodigo.zombiegame;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.GameOver;
+import org.academiadecodigo.zombiegame.field.HealthBar;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
@@ -13,13 +14,15 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 public class Game {
 
     private final static int ZOMBIES_NR = 9;
-    private int wallNr = 3;
+    private int wallNr = 10;
 
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
     private Wall[] walls;
     private Player player;
     private Sound backgroundMusic = new Sound("sounds/backgroundMusic.wav");
+    private HealthBar hpBar;
+    private Menu menu;
 
     private Background background;
 
@@ -48,15 +51,16 @@ public class Game {
 
         bulletsShot = player.getBullets();
 
-        for (int z = 0; z < zombieHoard.length; z++) {
+        for (int z = 0; z < ZOMBIES_NR; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombie(player.getPos());
         }
 
-        for (int w = 0; w < walls.length; w++) {
+        for (int w = 0; w < wallNr; w++) {
             walls[w] = GameObjectsFactory.makeWall();
         }
 
-        collisionDetector = new CollisionDetector(zombieHoard, player, bulletsShot, walls);
+        hpBar = new HealthBar();
+        collisionDetector = new CollisionDetector(zombieHoard, player, bulletsShot, walls, hpBar);
 
         player.setCollisionDetector(collisionDetector);
 
@@ -87,7 +91,10 @@ public class Game {
 
             if (player.getHealth() <= 0) {
                 GameOver gameOver = new GameOver();
-                break;
+                for(int i = 0 ; i<100 ; i++){
+                    Thread.sleep(200);
+                }
+                menu = new Menu();
             }
 
             for (int i = 0; i < 4; i++) { //speed

@@ -153,7 +153,7 @@ public class NormalZombie extends Zombie{
             lastRow = 1;
             firstCol = 1;
             lastCol = 1;
-            this.newPicture(newPos, "assets/player/playerup.png");
+            this.picture = null;
         }
     }
 }

@@ -34,22 +34,6 @@ public class GameOver {
 
     }*/
 
-    private void setGameOverPos(){
-
-        gameOverTextPos.setRow(gameOverTextPos.getRow()-1);
-        gameOverTextPos.setCol(gameOverTextPos.getCol()-1);
-
-    }
-    public void moveGameOver(){
-
-        while((gameOverText.getX()>=10) && (gameOverText.getY()>=10)) {
-
-            gameOverText.translate(-Background.getCellSize(), -Background.getCellSize());
-            gameOverText.grow(Background.getCellSize(), Background.getCellSize());
-
-        }
-
-    }
 
 
 }

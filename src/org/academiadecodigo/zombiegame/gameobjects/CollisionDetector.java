@@ -1,5 +1,6 @@
 package org.academiadecodigo.zombiegame.gameobjects;
 
+import org.academiadecodigo.zombiegame.field.HealthBar;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
 import org.academiadecodigo.zombiegame.gameobjects.player.Player;
@@ -14,13 +15,15 @@ public class CollisionDetector{
     private Player player;
     private Bullet[] bullets;
     private Wall[] walls;
+    private HealthBar hpBar;
 
-    public CollisionDetector(Zombie[] zombies, Player player, Bullet[] bullets, Wall[] walls) {
+    public CollisionDetector(Zombie[] zombies, Player player, Bullet[] bullets, Wall[] walls, HealthBar hpBar) {
 
         this.zombies = zombies;
         this.player = player;
         this.bullets = bullets;
         this.walls = walls;
+        this.hpBar = hpBar;
 
         int length = zombies.length + walls.length;
         allZombiesAndWalls = new GameObject[length];
@@ -108,6 +111,7 @@ public class CollisionDetector{
         //Check zombie collision with player
         if (zombie.getFirstCol() == player.getLastCol() && zombie.getFirstRow() <= player.getLastRow() && zombie.getLastRow() >= player.getFirstRow()) {
             player.sufferHit(zombie.getHitPoints());
+            hpBar.looseHp(zombie.getHitPoints());
 
             System.out.println("right hit");
 
@@ -116,6 +120,7 @@ public class CollisionDetector{
 
         if (zombie.getLastCol() == player.getFirstCol() && zombie.getFirstRow() <= player.getLastRow() && zombie.getLastRow() >= player.getFirstRow()) {
             player.sufferHit(zombie.getHitPoints());
+            hpBar.looseHp(zombie.getHitPoints());
 
             System.out.println("left hit");
 
@@ -124,6 +129,7 @@ public class CollisionDetector{
 
         if (zombie.getFirstRow() == player.getLastRow() && zombie.getFirstCol() <= player.getLastCol() && zombie.getLastCol() >= player.getFirstCol()) {
             player.sufferHit(zombie.getHitPoints());
+            hpBar.looseHp(zombie.getHitPoints());
 
             System.out.println("down hit");
 
@@ -132,6 +138,7 @@ public class CollisionDetector{
 
         if (zombie.getLastRow() == player.getFirstRow() && zombie.getFirstCol() <= player.getLastCol() && zombie.getLastCol() >= player.getFirstCol()) {
             player.sufferHit(zombie.getHitPoints());
+            hpBar.looseHp(zombie.getHitPoints());
 
             System.out.println("up hit");
 
