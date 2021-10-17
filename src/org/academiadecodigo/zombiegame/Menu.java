@@ -6,13 +6,14 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 
 public class Menu implements KeyboardHandler {
 
     private Game game;
-    private Rectangle menuBackground;
+    private Picture menuBackground;
     private Rectangle startButton;
     private Rectangle scoreButton;
     private Rectangle buttonFrame;
@@ -30,7 +31,7 @@ public class Menu implements KeyboardHandler {
         setKeys();
 
         while (!isClosed) {
-            System.out.println("Kill the zombies");
+            Thread.sleep(100);
         }
 
         clearMenu();
@@ -42,10 +43,8 @@ public class Menu implements KeyboardHandler {
 
     public void start() {
 
-        menuBackground = new Rectangle(Background.getPadding(), Background.getPadding(), Background.getWidth(), Background.getHeight());
+        menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");
         menuBackground.draw();
-        menuBackground.setColor(Color.BLACK);
-        menuBackground.fill();
 
         startButton = new Rectangle(Background.getPadding() * 2, Background.getPadding() * 2, Background.getWidth() / 15, Background.getHeight() / 15);
         startButton.draw();

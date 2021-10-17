@@ -242,18 +242,22 @@ public class Player extends Movable{
             if (player.isPlayerReady()) {
 
                 if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
+                    lastDirection = Direction.UP;
                     w = true;
                 }
 
                 if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
+                    lastDirection = Direction.DOWN;
                     s = true;
                 }
 
                 if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
+                    lastDirection = Direction.LEFT;
                     a = true;
                 }
 
                 if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
+                    lastDirection = Direction.RIGHT;
                     d = true;
                 }
             }
