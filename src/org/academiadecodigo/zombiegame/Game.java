@@ -95,7 +95,6 @@ public class Game {
 
             for (int i = 0; i < 2; i++) { //speed
                 player.move();
-                //System.out.println("player : " + player.getFirstCol() + " " + player.getLastCol() + " " + player.getFirstRow() + " " + player.getLastRow());
             }
 
             moveAllZombies();

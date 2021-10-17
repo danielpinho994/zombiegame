@@ -88,7 +88,7 @@ public class CollisionDetector{
             }
 
             if (obj.getLastCol() == player.getFirstCol() && obj.getFirstRow() <= player.getLastRow() && obj.getLastRow() >= player.getFirstRow()) {
-                player.forbidRight();
+                player.forbidLeft();
             }
 
             if (obj.getFirstRow() == player.getLastRow() && obj.getFirstCol() <= player.getLastCol() && obj.getLastCol() >= player.getFirstCol()) {

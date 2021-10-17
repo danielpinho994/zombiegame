@@ -54,6 +54,9 @@ public class Player extends Movable {
         firstRow = pos.getRow() + 20;
         lastRow = pos.getRow() + posSizeY + 10;
 
+        posSizeX = lastCol - firstCol;
+        posSizeY = lastRow - firstRow;
+
         //test size
         int x = firstCol / Background.getCellSize();
         int y = firstRow / Background.getCellSize();
@@ -63,18 +66,6 @@ public class Player extends Movable {
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
-
-        if (lastCol >= Background.getCols()) {
-            pos.setCol(Background.getCols() - posSizeX);
-            firstCol = pos.getCol();
-            lastCol = pos.getCol() + posSizeX;
-        }
-
-        if (lastRow >= Background.getRows()) {
-            pos.setRow(Background.getRows() - posSizeY);
-            firstRow = pos.getRow();
-            lastRow = pos.getRow() + posSizeY;
-        }
     }
 
     public void setCollisionDetector(CollisionDetector collisionDetector) {

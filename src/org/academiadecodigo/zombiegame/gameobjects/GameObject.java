@@ -8,7 +8,7 @@ import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
-public class GameObject {
+public abstract class GameObject {
     //number of rows and cols of rectangle
     protected Position pos;
 
@@ -29,29 +29,6 @@ public class GameObject {
         this.spawnZone = spawnZone;
     }
 
-    public void changePic(String picturePath) {
-        int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
-        int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
-
-        picture.delete();
-        picture = new Picture(x, y, picturePath);
-        picture.draw();
-    }
-
-
-
-    public Position getPos() {
-        return pos;
-    }
-
-    public int getFirstCol() {
-        return firstCol;
-    }
-
-    public int getLastCol() {
-        return lastCol;
-    }
-
     protected void newPicture(Position pos, String picturePath) {
 
         if (picture != null) {
@@ -64,11 +41,10 @@ public class GameObject {
         int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
         picture = new Picture(x, y, picturePath);
+        picture.draw();
 
         posSizeX = picture.getWidth() * Background.getCellSize();
         posSizeY = picture.getHeight() * Background.getCellSize();
-
-        picture.draw();
     }
 
     public int getFirstRow() {
@@ -82,5 +58,18 @@ public class GameObject {
     public Zones getSpawnZone() {
         return spawnZone;
     }
+
+    public Position getPos() {
+        return pos;
+    }
+
+    public int getFirstCol() {
+        return firstCol;
+    }
+
+    public int getLastCol() {
+        return lastCol;
+    }
+
 
 }
