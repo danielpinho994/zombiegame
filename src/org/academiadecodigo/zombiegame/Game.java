@@ -156,7 +156,9 @@ public class Game {
             }
 
             collisionDetector.checkZombieCollision(z);
+
             z.moveZombie();
+
         }
         if (zombiesDead != zombiesKilled) {
             zombiesKilled += (zombiesDead - zombiesKilled);
