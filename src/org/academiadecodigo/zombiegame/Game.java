@@ -1,11 +1,7 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
-import org.academiadecodigo.zombiegame.field.Background;
-import org.academiadecodigo.zombiegame.field.GameOver;
-import org.academiadecodigo.zombiegame.field.HealthBar;
-import org.academiadecodigo.zombiegame.field.Score;
-import org.academiadecodigo.zombiegame.field.Zones;
+import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
@@ -28,6 +24,8 @@ public class Game {
     private Menu menu;
     private Sound playerDyingSound = new Sound("sounds/playerDyingSound.wav");
     private Score scoreBoard;
+    private Round round;
+    private int roundNumber = 1;
     private int zombiesKilled = 0;
     private int gameWon = 0;
 
@@ -38,9 +36,10 @@ public class Game {
     public Game() {
         this.player = new Player();
         scoreBoard = new Score();
+        round = new Round();
     }
 
-    public void init() {
+    public void init() throws InterruptedException {
 
         if (zombies_nr == 2) { //só para o início
             scoreBoard.drawScore();
@@ -57,6 +56,12 @@ public class Game {
         }
 
         background = new Background();
+
+        round.setRound(roundNumber);
+
+        Thread.sleep(1000);
+
+        round.deleteRound();
 
         walls = new Wall[wallNr];
 
@@ -117,7 +122,7 @@ public class Game {
 
     }
 
-    public void newRound() {
+    public void newRound() throws InterruptedException {
 
         background = null;
         for (Wall w : walls) {
@@ -134,6 +139,14 @@ public class Game {
         player.newPicture(GameObjectsFactory.resetSpawn(Zones.E), "assets/player/playerright.png");
         zombies_nr++;
 
+
+        round.setRound(roundNumber);
+
+        Thread.sleep(1000);
+
+        round.deleteRound();
+
+
         init();
     }
 
@@ -146,7 +159,7 @@ public class Game {
         }
     }
 
-    public void moveAllZombies() {
+    public void moveAllZombies() throws InterruptedException {
         int zombiesDead = 0;
         for (Zombie z : zombieHoard) {
 
@@ -165,6 +178,8 @@ public class Game {
         if (zombiesDead == zombies_nr) {
             zombiesKilled = 0;
             scoreBoard.setZero();
+            roundNumber++;
+
             newRound();
         }
     }
