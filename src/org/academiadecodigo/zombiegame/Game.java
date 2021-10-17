@@ -101,7 +101,6 @@ public class Game {
                 GameOver gameOver = new GameOver();
                 background = null;
                 menu = null;
-                scoreBoard = null;
                 for (Wall w : walls) {
                     w.remove();
                 }
@@ -112,17 +111,19 @@ public class Game {
                         b.destroyBullet();
                     }
                 }
-                for(Zombie z : zombieHoard){
-                    z.getPos().setRow(0);
-                    z.getPos().setCol(0);
-                    z.remove();
+                for(Zombie z : zombieHoard) {
+                    if (z != null) {
+                        z.getPos().setRow(0);
+                        z.getPos().setCol(0);
+                        z.remove();
+                    }
                 }
                 player.remove();
                 zombieHoard = null;
                 bulletsShot = null;
                 collisionDetector = null;
-                gameOver = null;
                 backgroundMusic.stop();
+                scoreBoard.deleteScore();
                 menu = new Menu();
             }
 
