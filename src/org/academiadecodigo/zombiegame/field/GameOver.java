@@ -1,15 +1,8 @@
 package org.academiadecodigo.zombiegame.field;
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import sun.swing.BakedArrayList;
-
-import java.sql.SQLOutput;
 
 public class GameOver {
 
-    private Rectangle gameOverScreen;
     private Position gameOverTextPos;
     private Picture gameOverText;
     private int backgroundMiddleCol = Background.getCols()/2;
@@ -28,16 +21,4 @@ public class GameOver {
         }
         gameOverText.delete();
     }
-
-    /*private void getGameOverBackground(){
-
-        gameOverScreen = new Rectangle(Background.getPadding(),Background.getPadding(),Background.getWidth()+Background.getPadding(),Background.getHeight()+Background.getPadding());
-        gameOverScreen.setColor(Color.DARK_GRAY);
-        gameOverScreen.draw();
-        gameOverScreen.fill();
-
-    }*/
-
-
-
 }
