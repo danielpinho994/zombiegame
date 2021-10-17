@@ -12,8 +12,8 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private final static int ZOMBIES_NR = 1;
-    private int wallNr = 20;
+    private final static int ZOMBIES_NR = 5;
+    private int wallNr = 1;
 
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
@@ -67,22 +67,22 @@ public class Game {
     }
 
     public void newRound() {
+        /*
         background = null;
         walls = null;
         zombieHoard = null;
         bulletsShot = null;
         collisionDetector = null;
 
-        init();
+        init()*/
     }
 
     public void start() throws InterruptedException {
         player.setPlayerReady();
 
-        player.setKeys();
-
         while (true) {
             Thread.sleep(17);
+
             if (player.getHealth() <= 0) {
                 GameOver gameOver = new GameOver();
                 break;
@@ -94,9 +94,11 @@ public class Game {
 
             for (int i = 0; i < 2; i++) { //speed
                 player.move();
+                //System.out.println("player : " + player.getFirstCol() + " " + player.getLastCol() + " " + player.getFirstRow() + " " + player.getLastRow());
             }
 
             moveAllZombies();
+
         }
 
     }
@@ -113,11 +115,14 @@ public class Game {
     public void moveAllZombies() {
         int zombiesDead = 0;
         for (Zombie z : zombieHoard) {
-            collisionDetector.checkZombieCollision(z);
-            z.moveZombie();
+
             if (z.getHealth() == 0) {
                 zombiesDead++;
+                continue;
             }
+
+            collisionDetector.checkZombieCollision(z);
+            z.moveZombie();
         }
         if (zombiesDead == ZOMBIES_NR) {
             newRound();
