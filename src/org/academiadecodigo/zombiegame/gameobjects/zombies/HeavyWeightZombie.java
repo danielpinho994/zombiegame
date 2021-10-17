@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame.gameobjects.zombies;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.zombiegame.Sound;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
@@ -8,6 +9,7 @@ import org.academiadecodigo.zombiegame.field.Zones;
 
 public class HeavyWeightZombie extends Zombie{
     private String picturePath = "assets/zombies/zombieright.png";
+    private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
 
@@ -154,6 +156,7 @@ public class HeavyWeightZombie extends Zombie{
             firstCol = 1;
             lastCol = 1;
             this.newPicture(newPos, "assets/player/playerup.png");
+            zombieKilledSound.play(true);
         }
     }
 }

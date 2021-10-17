@@ -33,7 +33,7 @@ public class Menu implements KeyboardHandler {
 
         setKeys();
 
-        menuBackgroundSound.play(true);
+        menuBackgroundSound.setLoop(-1);
 
         while (!isClosed) {
             Thread.sleep(200);
@@ -42,10 +42,6 @@ public class Menu implements KeyboardHandler {
         menuBackgroundSound.stop();
 
         clearMenu();
-
-        while (!isClosed) {
-            Thread.sleep(200);
-        }
 
         game.init();
         game.start();
@@ -96,11 +92,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.UP) {
-                buttonFrame.translate(0, exitButton.getY() - startButton.getY());
+                buttonFrame.translate(0, 124);
                 lastDirection = Direction.DOWN;
                 return;
             }
-            buttonFrame.translate(0, startButton.getY() - exitButton.getY());
+            buttonFrame.translate(0, -124);
             lastDirection = Direction.UP;
         }
 
@@ -108,11 +104,11 @@ public class Menu implements KeyboardHandler {
             swapButtonSound.stop();
             swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
-                buttonFrame.translate(0, startButton.getY() - exitButton.getY());
+                buttonFrame.translate(0, -124);
                 lastDirection = Direction.UP;
                 return;
             }
-            buttonFrame.translate(0, exitButton.getY() - startButton.getY());
+            buttonFrame.translate(0, 124);
             lastDirection = Direction.DOWN;
         }
 

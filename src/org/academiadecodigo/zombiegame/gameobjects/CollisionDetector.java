@@ -53,7 +53,7 @@ public class CollisionDetector{
             if (zombie.getFirstCol() <= obj.getLastCol() && zombie.getLastCol() >= obj.getFirstCol() &&
                     zombie.getFirstRow() <= obj.getLastRow() && zombie.getLastRow() >= obj.getFirstRow()) {
 
-                Position newPos = GameObjectsFactory.resetZombieSpawn(zombie.getSpawnZone());
+                Position newPos = GameObjectsFactory.resetSpawn(zombie.getSpawnZone());
 
                 zombie.newPicture(newPos, zombie.getPicturePath());
 

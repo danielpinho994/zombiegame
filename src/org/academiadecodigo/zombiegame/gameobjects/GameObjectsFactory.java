@@ -46,7 +46,7 @@ public abstract class GameObjectsFactory {
 
     }
 
-    public static Position resetZombieSpawn(Zones zone) {
+    public static Position resetSpawn(Zones zone) {
         return new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
     }
 

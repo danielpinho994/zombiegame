@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame.gameobjects.zombies;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.zombiegame.Sound;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
@@ -8,6 +9,7 @@ import org.academiadecodigo.zombiegame.field.Zones;
 
 public class NormalZombie extends Zombie{
     private String picturePath = "assets/zombies/zombieright.png";
+    private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
 
@@ -148,12 +150,12 @@ public class NormalZombie extends Zombie{
         health -= 1;
         if (health == 0) {
             this.picture.delete();
-            Position newPos = new Position(0, 0);
             firstRow = 1;
             lastRow = 1;
             firstCol = 1;
             lastCol = 1;
             this.picture = null;
+            zombieKilledSound.play(true);
         }
     }
 }

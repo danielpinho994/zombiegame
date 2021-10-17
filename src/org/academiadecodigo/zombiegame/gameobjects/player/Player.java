@@ -5,6 +5,7 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.zombiegame.Sound;
 import org.academiadecodigo.zombiegame.field.*;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.Movable;
@@ -17,6 +18,7 @@ public class Player extends Movable {
 
     private Weapon weapon;
     private int health = 100;
+    private Sound bulletShotSound = new Sound("sounds/bulletShotSound.wav");
 
     private CollisionDetector collisionDetector;
 
@@ -263,7 +265,9 @@ public class Player extends Movable {
 
 
                 if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
-                player.shoot();
+                    bulletShotSound.stop();
+                    player.shoot();
+                    bulletShotSound.play(true);
                 }
             }
 
