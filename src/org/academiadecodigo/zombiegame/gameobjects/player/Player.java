@@ -292,4 +292,7 @@ public class Player extends Movable {
             }
         }
         }
+    public void remove() {
+        picture.delete();
     }
+}
