@@ -55,6 +55,10 @@ public class Menu implements KeyboardHandler {
 
     }
 
+    public void startNewGame() {
+
+    }
+
     public void start() {
 
         menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");

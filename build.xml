@@ -1,11 +1,14 @@
 <?xml version="1.0" ?>
 <project name="zombiegame" default="jarfile">
+    <presetdef name="javac">
+        <javac includeantruntime="false" />
+    </presetdef>
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">
         <property name="project.name" value="zombiegame" />
         <property name="src.dir" value="src" />
-        <property name="main.class" value="org.academiadecodigo.bootcamp.zombiegame" />
+        <property name="main.class" value="org.academiadecodigo.zombiegame" />
         <property name="build.dir" value="build" />
         <property name="classes.dir" value="${build.dir}/classes" />
         <property name="lib.dir" value="lib" />
