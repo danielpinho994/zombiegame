@@ -19,7 +19,7 @@ public class Game {
     private Bullet[] bulletsShot;
     private Wall[] walls;
     private Player player;
-    private Sound backgroundMusic = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/backgroundMusic.wav");
+    private Sound backgroundMusic = new Sound("sounds/backgroundMusic.wav");
 
     private Background background;
 

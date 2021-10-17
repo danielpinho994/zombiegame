@@ -22,8 +22,8 @@ public class Menu implements KeyboardHandler {
 
     private boolean isClosed;
 
-    private Sound swapButtonSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/swapButtonSoundCut.wav");
-    private Sound menuBackgroundSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/menuBackgroundSound.wav");
+    private Sound swapButtonSound = new Sound("sounds/swapButtonSoundCut.wav");
+    private Sound menuBackgroundSound = new Sound("sounds/menuBackgroundSound.wav");
 
     public Menu() throws InterruptedException {
 
