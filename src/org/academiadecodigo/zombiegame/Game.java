@@ -12,8 +12,8 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private final static int ZOMBIES_NR = 5;
-    private int wallNr = 1;
+    private final static int ZOMBIES_NR = 9;
+    private int wallNr = 3;
 
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;
@@ -96,7 +96,6 @@ public class Game {
 
             for (int i = 0; i < 2; i++) { //speed
                 player.move();
-                //System.out.println("player : " + player.getFirstCol() + " " + player.getLastCol() + " " + player.getFirstRow() + " " + player.getLastRow());
             }
 
             moveAllZombies();
