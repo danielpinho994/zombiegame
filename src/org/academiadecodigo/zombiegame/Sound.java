@@ -24,7 +24,6 @@ public class Sound {
             clip.setFramePosition(0);
         }
         clip.start();
-        System.out.println("hello");
     }
 
     public void stop() {
@@ -63,7 +62,6 @@ public class Sound {
         try {
 
             if (soundURL == null) {
-                path = path.substring(1);
                 File file = new File(path);
                 soundURL = file.toURI().toURL(); //if executing on intellij
             }
