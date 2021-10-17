@@ -1,8 +1,11 @@
 package org.academiadecodigo.zombiegame;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.GameOver;
+import org.academiadecodigo.zombiegame.field.Score;
+import org.academiadecodigo.zombiegame.field.Zones;
 import org.academiadecodigo.zombiegame.gameobjects.CollisionDetector;
 import org.academiadecodigo.zombiegame.gameobjects.GameObjectsFactory;
 import org.academiadecodigo.zombiegame.gameobjects.walls.Wall;
@@ -12,7 +15,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private final static int ZOMBIES_NR = 5;
+    private static int zombies_nr = 2;
     private int wallNr = 1;
 
     private Zombie[] zombieHoard;
@@ -20,6 +23,10 @@ public class Game {
     private Wall[] walls;
     private Player player;
     private Sound backgroundMusic = new Sound("sounds/backgroundMusic.wav");
+    private Sound playerDyingSound = new Sound("sounds/playerDyingSound.wav");
+    private Score scoreBoard;
+    private int zombiesKilled = 0;
+    private int gameWon = 0;
 
     private Background background;
 
@@ -27,6 +34,7 @@ public class Game {
 
     public Game() {
         this.player = new Player();
+        scoreBoard = new Score();
     }
 
     public void init() {
@@ -44,9 +52,10 @@ public class Game {
 
         walls = new Wall[wallNr];
 
-        zombieHoard = new Zombie[ZOMBIES_NR];
+        zombieHoard = new Zombie[zombies_nr];
 
         bulletsShot = player.getBullets();
+
 
         for (int z = 0; z < zombieHoard.length; z++) {
             zombieHoard[z] = GameObjectsFactory.makeZombie(player.getPos());
@@ -67,25 +76,15 @@ public class Game {
 
     }
 
-    public void newRound() {
-        /*
-        background = null;
-        walls = null;
-        zombieHoard = null;
-        bulletsShot = null;
-        collisionDetector = null;
-
-        init()*/
-    }
-
     public void start() throws InterruptedException {
         player.setPlayerReady();
         backgroundMusic.play(true);
 
-        while (true) {
+        while (gameWon != 1) {
             Thread.sleep(17);
 
             if (player.getHealth() <= 0) {
+                playerDyingSound.play(true);
                 GameOver gameOver = new GameOver();
                 break;
             }
@@ -103,6 +102,19 @@ public class Game {
 
         }
 
+    }
+
+    public void newRound() {
+
+        background = null;
+        walls = null;
+        zombieHoard = null;
+        bulletsShot = null;
+        collisionDetector = null;
+        player.newPicture(GameObjectsFactory.resetSpawn(Zones.E), "assets/player/playerright.png");
+        zombies_nr++;
+
+        init();
     }
 
     public void moveAllBullets() {
@@ -126,7 +138,13 @@ public class Game {
             collisionDetector.checkZombieCollision(z);
             z.moveZombie();
         }
-        if (zombiesDead == ZOMBIES_NR) {
+        if (zombiesDead != zombiesKilled) {
+            zombiesKilled += (zombiesDead - zombiesKilled);
+            gameWon = scoreBoard.setScore(zombiesKilled);
+        }
+        if (zombiesDead == zombies_nr) {
+            zombiesKilled = 0;
+            scoreBoard.setZero();
             newRound();
         }
     }
