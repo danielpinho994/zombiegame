@@ -27,4 +27,14 @@ public abstract class Zombie extends Movable {
     public abstract int getHealth();
 
     public abstract String getPicturePath();
+
+    public void remove() {
+        firstCol = 0;
+        lastCol = 0;
+        firstRow = 0;
+        lastRow = 0;
+
+        picture.delete();
+
+    }
 }
