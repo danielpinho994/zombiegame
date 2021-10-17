@@ -15,8 +15,8 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private static int zombies_nr = 2;
-    private int wallNr = 1;
+    private static int zombies_nr = 9;
+    private int wallNr = 10;
 
     private Zombie[] zombieHoard;
     private Bullet[] bulletsShot;

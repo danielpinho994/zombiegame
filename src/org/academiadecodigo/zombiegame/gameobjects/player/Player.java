@@ -48,9 +48,9 @@ public class Player extends Movable {
 
         //used to readapt colliding position size [magic numbers]
         firstCol = pos.getCol() + 15;
-        lastCol = pos.getCol() + posSizeX + 10;
-        firstRow = pos.getRow() + 20;
-        lastRow = pos.getRow() + posSizeY + 10;
+        lastCol = pos.getCol() + posSizeX;
+        firstRow = pos.getRow() + 15;
+        lastRow = pos.getRow() + posSizeY;
 
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;

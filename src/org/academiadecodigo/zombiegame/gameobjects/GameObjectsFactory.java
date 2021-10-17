@@ -37,7 +37,7 @@ public abstract class GameObjectsFactory {
         Position zombiePos = new Position(zone.getFirstCol(), zone.getLastCol(), zone.getFirstRow(), zone.getLastRow());
 
         if (zombieCounter % 3 == 0) {
-            return new LightweightZombie(zombiePos, playerPos, zone);
+            return new HeavyWeightZombie(zombiePos, playerPos, zone);
         }
         if (zombieCounter % 3 == 1) {
             return new NormalZombie(zombiePos, playerPos, zone);

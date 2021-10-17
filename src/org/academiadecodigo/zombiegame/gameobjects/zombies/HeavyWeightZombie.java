@@ -8,7 +8,7 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class HeavyWeightZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombie right.png";
+    private String picturePath = "assets/zombies/zombieh/hzombie up left.png";
     private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
@@ -93,40 +93,40 @@ public class HeavyWeightZombie extends Zombie{
         if (picToUseUpDown == Direction.UP) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie up left.png");
                 return;
             }
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie up right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie up.png");
             return;
         }
 
         if (picToUseUpDown == Direction.DOWN) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie down left.png");
                 return;
             }
 
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/zombieh/hzombie down right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie down.png");
             return;
         }
 
         if (picToUseLeftRight == Direction.LEFT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie left.png");
             return;
         }
         if (picToUseLeftRight == Direction.RIGHT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/zombieh/hzombie right.png");
         }
     }
 
