@@ -1,6 +1,7 @@
 package org.academiadecodigo.zombiegame.gameobjects.player;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 import org.academiadecodigo.zombiegame.field.Background;
 import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
@@ -9,30 +10,82 @@ import org.academiadecodigo.zombiegame.gameobjects.Movable;
 
 public class Bullet extends Movable {
 
-    private Direction bulletDirection;
+    private Direction bulletDirection = Direction.RIGHT;
     private boolean isImpacted;
 
-    public Bullet(Position bulletPos) {
+    public Bullet(Position bulletPos, Direction direction) {
         super(Zones.E); //zona é irrelevante neste gameObject
 
-        newPicture(bulletPos, "assets/bullets/left-mid bullets.png");
+        bulletDirection = direction;
+
+        newPicture(bulletPos, "assets/bullets/bulletright.png");
 
     }
 
     @Override
     public void newPicture(Position pos, String picturePath) {
 
-        super.newPicture(pos, picturePath);
+        if (picture != null) {
+            picture.delete();
+        }
+
+        this.pos = pos;
+
+        int x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+        int y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+        picture = new Picture(x, y, picturePath);
+
+        if (bulletDirection == Direction.RIGHT) {
+            pos.setCol(pos.getCol() + 50);
+            pos.setRow(pos.getRow() + 42);
+
+            x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+            y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+            picture = new Picture(x, y, "assets/bullets/bulletright.png");
+        }
+
+        if (bulletDirection == Direction.LEFT) {
+            pos.setRow(pos.getRow() + 5);
+
+            x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+            y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+            picture = new Picture(x, y, "assets/bullets/bulletleft.png");
+        }
+
+        if (bulletDirection == Direction.UP) {
+            pos.setCol(pos.getCol() + 45);
+
+            x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+            y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+            picture = new Picture(x, y, "assets/bullets/bulletup.png");
+        }
+
+        if (bulletDirection == Direction.DOWN) {
+            pos.setCol(pos.getCol() + 3);
+            pos.setRow(pos.getRow() + 42);
+
+            x = pos.getCol() * Background.getCellSize() + Background.getPadding();
+            y = pos.getRow() * Background.getCellSize() + Background.getPadding();
+
+            picture = new Picture(x, y, picturePath);
+            picture = new Picture(x, y, "assets/bullets/bulletdown.png");
+        }
+
+        posSizeX = picture.getWidth() * Background.getCellSize();
+        posSizeY = picture.getHeight() * Background.getCellSize();
+
+        picture.draw();
 
         //used to readapt colliding position size [magic numbers]
-        firstCol = pos.getCol() + 5;
+        firstCol = pos.getCol() - 5;
         lastCol = pos.getCol() + posSizeX + 10;
-        firstRow = pos.getRow() + 5;
+        firstRow = pos.getRow() - 5;
         lastRow = pos.getRow() + posSizeY + 10;
 
         //test size
-        int x = firstCol / Background.getCellSize();
-        int y = firstRow / Background.getCellSize();
         int width = lastCol / Background.getCellSize() - x;
         int height =  lastRow / Background.getCellSize() - y;
 
@@ -51,13 +104,6 @@ public class Bullet extends Movable {
             firstRow = pos.getRow();
             lastRow = pos.getRow() + posSizeY;
         }
-    }
-
-    public void loadBullet(Direction direction) {
-
-        bulletDirection = direction;
-
-        picture.draw();
     }
 
     public void moveBullet() {

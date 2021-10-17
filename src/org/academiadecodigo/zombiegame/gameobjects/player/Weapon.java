@@ -24,8 +24,7 @@ public class Weapon {
 
     public void shoot(Direction direction, Position playerPos) {
         if (shotsFired < magSize) {
-            bullets[shotsFired] = GameObjectsFactory.makeBullets(playerPos);
-            bullets[shotsFired].loadBullet(direction);
+            bullets[shotsFired] = GameObjectsFactory.makeBullets(playerPos, direction);
             shotsFired++;
         }
     }

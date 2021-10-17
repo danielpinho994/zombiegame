@@ -31,7 +31,7 @@ public class Player extends Movable {
         Zones z = Zones.E;
         pos = new Position(z.getFirstCol(), z.getLastCol(), z.getFirstRow(), z.getLastRow());
 
-        newPicture(pos, "assets/player/playerup.png");
+        newPicture(pos, "assets/player/playerright.png");
 
         keys = new movementKeys(this);
 
@@ -160,23 +160,31 @@ public class Player extends Movable {
             if (w && firstRow > 0 && !forbiddenUp) {
                 moveObject(Direction.UP);
                 picture.load("assets/player/playerup.png");
+
+                lastDirection = Direction.UP;
                 return;
             }
 
             if (s && lastRow < Background.getRows() && !forbiddenDown) {
                 moveObject(Direction.DOWN);
                 picture.load("assets/player/playerdown.png");
+
+                lastDirection = Direction.DOWN;
                 return;
             }
 
             if (a && firstCol > 0 && !forbiddenLeft) {
                 moveObject(Direction.LEFT);
                 picture.load("assets/player/playerleft.png");
+
+                lastDirection = Direction.LEFT;
                 return;
             }
 
             if (d && lastCol < Background.getCols() && !forbiddenRight) {
                 moveObject(Direction.RIGHT);
+
+                lastDirection = Direction.RIGHT;
                 picture.load("assets/player/playerright.png");
             }
 

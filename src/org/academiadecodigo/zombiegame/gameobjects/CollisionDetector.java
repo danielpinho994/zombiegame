@@ -83,13 +83,12 @@ public class CollisionDetector{
         //check player collision with zombies and walls
 
         for (GameObject obj : allZombiesAndWalls) {
-            if (player.getFirstCol() == obj.getLastCol() && player.getFirstRow() <= obj.getLastRow() &&
-                    player.getLastRow() >= obj.getFirstRow()) {
-                player.forbidLeft();
+            if (obj.getFirstCol() == player.getLastCol() && obj.getFirstRow() <= player.getLastRow() && obj.getLastRow() >= player.getFirstRow()) {
+                player.forbidRight();
             }
 
             if (obj.getLastCol() == player.getFirstCol() && obj.getFirstRow() <= player.getLastRow() && obj.getLastRow() >= player.getFirstRow()) {
-                player.forbidLeft();
+                player.forbidRight();
             }
 
             if (obj.getFirstRow() == player.getLastRow() && obj.getFirstCol() <= player.getLastCol() && obj.getLastCol() >= player.getFirstCol()) {

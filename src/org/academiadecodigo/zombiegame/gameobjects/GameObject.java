@@ -68,37 +68,6 @@ public class GameObject {
         posSizeX = picture.getWidth() * Background.getCellSize();
         posSizeY = picture.getHeight() * Background.getCellSize();
 
-        /*
-        firstCol = pos.getCol() + 15;
-        lastCol = pos.getCol() + posSizeX - 3;
-        firstRow = pos.getRow() + 20;
-        lastRow = pos.getRow() + posSizeY;
-
-        //test size
-        x = firstCol / Background.getCellSize();
-        y = firstRow / Background.getCellSize();
-        int width = lastCol / Background.getCellSize() - x;
-        int height =  lastRow / Background.getCellSize() - y;
-
-        Rectangle testRectangle = new Rectangle(x, y, width, height);
-        testRectangle.draw();
-        testRectangle.fill();
-        //
-
-         */
-
-        if (lastCol >= Background.getCols()) {
-            pos.setCol(Background.getCols() - posSizeX);
-            firstCol = pos.getCol();
-            lastCol = pos.getCol() + posSizeX;
-        }
-
-        if (lastRow >= Background.getRows()) {
-            pos.setRow(Background.getRows() - posSizeY);
-            firstRow = pos.getRow();
-            lastRow = pos.getRow() + posSizeY;
-        }
-
         picture.draw();
     }
 

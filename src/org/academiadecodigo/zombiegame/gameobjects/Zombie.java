@@ -15,7 +15,6 @@ public class Zombie extends Movable {
 
     private Direction picToUseUpDown;
     private Direction picToUseLeftRight;
-    private PictureDirections picdic;
 
     private int hitPoints = 3;
 

@@ -89,13 +89,17 @@ public class Menu implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !isClosed) {
+            /*
             swapButtonSound.play(true);
              try {
              Thread.sleep(200);
              } catch (InterruptedException e) {
              e.printStackTrace();
              }
+
+             */
             if (lastDirection == Direction.UP) {
                 /**
                 try {
@@ -112,7 +116,8 @@ public class Menu implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !isClosed) {
-            swapButtonSound.play(true);
+
+            //swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
                 buttonFrame.translate(0, startButton.getY() - exitButton.getY());
                 lastDirection = Direction.UP;

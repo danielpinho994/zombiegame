@@ -1,5 +1,6 @@
 package org.academiadecodigo.zombiegame.gameobjects;
 
+import org.academiadecodigo.zombiegame.field.Direction;
 import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 import org.academiadecodigo.zombiegame.gameobjects.player.Bullet;
@@ -57,9 +58,9 @@ public abstract class GameObjectsFactory {
 
     }
 
-    public static Bullet makeBullets(Position playerPos) {
+    public static Bullet makeBullets(Position playerPos, Direction direction) {
         Position bulletPos = new Position(playerPos.getCol(), playerPos.getRow());
-        return new Bullet(bulletPos);
+        return new Bullet(bulletPos, direction);
     }
 
 }
