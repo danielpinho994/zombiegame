@@ -9,11 +9,10 @@ import org.academiadecodigo.zombiegame.field.Zones;
 
 public class HeavyWeightZombie extends Zombie{
     private String picturePath = "assets/zombies/zombieh/hzombie up left.png";
-    private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
+    private Sound zombieKilledSound = new Sound("assets/sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
-
-    private int health = 1;
+    private int health = 2;
 
     public HeavyWeightZombie(Position pos, Position playerPos, Zones spawnZone) {
         super(pos, playerPos, spawnZone);
@@ -36,6 +35,7 @@ public class HeavyWeightZombie extends Zombie{
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol * Background.getCellSize() + Background.getPadding();
         int y = firstRow * Background.getCellSize() + Background.getPadding();
@@ -45,6 +45,8 @@ public class HeavyWeightZombie extends Zombie{
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
+
+         */
 
         if (lastCol > Background.getCols()) {
             pos.setCol(Background.getCols() - picture.getWidth() - 15);

@@ -20,14 +20,20 @@ public class Menu implements KeyboardHandler {
     private boolean ready;
     private static Direction lastDirection = Direction.UP;
 
+    private int newGameCounter = 0;
+
     private boolean isClosed;
 
-    private Sound swapButtonSound = new Sound("sounds/swapButtonSoundCut.wav");
-    private Sound menuBackgroundSound = new Sound("sounds/menuBackgroundSound.wav");
+    private Sound swapButtonSound = new Sound("assets/sounds/swapButtonSoundCut.wav");
+    private Sound menuBackgroundSound = new Sound("assets/sounds/menuBackgroundSound.wav");
 
     public Menu() throws InterruptedException {
 
-        game = new Game();
+        newGameCounter++;
+
+        if (newGameCounter < 2) {
+            game = new Game();
+        }
 
         start();
 

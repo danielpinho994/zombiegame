@@ -34,7 +34,5 @@ public abstract class Zombie extends Movable {
         firstRow = 0;
         lastRow = 0;
 
-        picture.delete();
-
     }
 }

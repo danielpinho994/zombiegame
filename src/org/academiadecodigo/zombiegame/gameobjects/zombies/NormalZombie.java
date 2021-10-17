@@ -9,12 +9,11 @@ import org.academiadecodigo.zombiegame.field.Zones;
 
 public class NormalZombie extends Zombie{
     private String picturePath = "assets/zombies/normal/zombie right.png";
-    private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
+    private Sound zombieKilledSound = new Sound("assets/sounds/zombieKilledSound.wav");
 
-    private int hitPoints = 3;
+    private int hitPoints = 2;
 
-    private int health = 1;
-
+    private int health = 2;
 
     public NormalZombie(Position pos, Position playerPos, Zones spawnZone) {
         super(pos, playerPos, spawnZone);
@@ -37,6 +36,7 @@ public class NormalZombie extends Zombie{
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol * Background.getCellSize() + Background.getPadding();
         int y = firstRow * Background.getCellSize() + Background.getPadding();
@@ -46,6 +46,8 @@ public class NormalZombie extends Zombie{
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
+
+         */
 
         if (lastCol > Background.getCols()) {
             pos.setCol(Background.getCols() - picture.getWidth() - 15);

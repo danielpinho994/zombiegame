@@ -11,7 +11,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private static int zombies_nr = 9;
+    private static int zombies_nr = 30;
     private int wallNr = 10;
 
     private Zombie[] zombieHoard;
@@ -19,10 +19,10 @@ public class Game {
     private Wall[] walls;
     private Player player;
     private GameOver gameOver;
-    private Sound backgroundMusic = new Sound("sounds/backgroundMusic.wav");
+    private Sound backgroundMusic = new Sound("assets/sounds/backgroundMusic.wav");
     private HealthBar hpBar;
     private Menu menu;
-    private Sound playerDyingSound = new Sound("sounds/playerDyingSound.wav");
+    private Sound playerDyingSound = new Sound("assets/sounds/playerDyingSound.wav");
     private Score scoreBoard;
     private Round round;
     private int roundNumber = 1;
@@ -34,7 +34,13 @@ public class Game {
     private CollisionDetector collisionDetector;
 
     public Game() {
-        this.player = new Player();
+        background = new Background();
+
+        if (roundNumber == 1) {
+            player = new Player();
+            player.newPicture(player.getPos(), "assets/player/playerright.png");
+        }
+
         scoreBoard = new Score();
         round = new Round();
     }
@@ -45,7 +51,6 @@ public class Game {
             scoreBoard.drawScore();
         }
 
-        player.newPicture(player.getPos(), "assets/player/playerright.png");
         Rectangle roundPic = new Rectangle();
         roundPic.draw();
 
@@ -55,13 +60,14 @@ public class Game {
             }
         }
 
-        background = new Background();
 
         round.setRound(roundNumber);
 
         Thread.sleep(1000);
 
         round.deleteRound();
+
+
 
         walls = new Wall[wallNr];
 
@@ -97,11 +103,13 @@ public class Game {
             Thread.sleep(17);
 
             if (player.getHealth() <= 0) {
+
                 playerDyingSound.play(true);
                 GameOver gameOver = new GameOver();
                 background = null;
                 menu = null;
                 scoreBoard = null;
+
                 for (Wall w : walls) {
                     w.remove();
                 }
@@ -117,12 +125,14 @@ public class Game {
                     z.getPos().setCol(0);
                     z.remove();
                 }
+
                 player.remove();
+
                 zombieHoard = null;
                 bulletsShot = null;
                 collisionDetector = null;
-                gameOver = null;
                 backgroundMusic.stop();
+
                 menu = new Menu();
             }
 
@@ -151,19 +161,18 @@ public class Game {
                 b.destroyBullet();
             }
         }
+
         zombieHoard = null;
         bulletsShot = null;
         collisionDetector = null;
         player.newPicture(GameObjectsFactory.resetSpawn(Zones.E), "assets/player/playerright.png");
         zombies_nr++;
 
-
         round.setRound(roundNumber);
 
         Thread.sleep(1000);
 
         round.deleteRound();
-
 
         init();
     }

@@ -88,6 +88,7 @@ public class Bullet extends Movable {
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int width = lastCol / Background.getCellSize() - x;
         int height =  lastRow / Background.getCellSize() - y;
@@ -95,6 +96,8 @@ public class Bullet extends Movable {
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
+
+         */
     }
 
     public void moveBullet() {

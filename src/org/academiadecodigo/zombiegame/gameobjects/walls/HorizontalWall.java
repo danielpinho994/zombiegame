@@ -26,6 +26,7 @@ public class HorizontalWall extends Wall {
         posSizeX = lastCol - firstCol;
         posSizeY = lastRow - firstRow;
 
+        /*
         //test size
         int x = firstCol * Background.getCellSize() + Background.getPadding();
         int y = firstRow * Background.getCellSize() + Background.getPadding();
@@ -35,6 +36,8 @@ public class HorizontalWall extends Wall {
         Rectangle testRectangle = new Rectangle(x, y, width, height);
         testRectangle.draw();
         //
+
+         */
 
         if (lastCol > Background.getCols()) {
             pos.setCol(Background.getCols() - picture.getWidth() - 15);
