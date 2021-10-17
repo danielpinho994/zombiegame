@@ -21,6 +21,7 @@ public class NormalZombie extends Zombie{
 
         newPicture(pos, picturePath);
     }
+
     @Override
     public void newPicture(Position pos, String picturePath) {
 
