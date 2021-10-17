@@ -8,7 +8,7 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class LightweightZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombieright.png";
+    private String picturePath = "assets/zombies/zombie right.png";
     private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;

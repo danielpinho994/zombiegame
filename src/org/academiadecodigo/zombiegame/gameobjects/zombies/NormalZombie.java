@@ -8,7 +8,7 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class NormalZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombieright.png";
+    private String picturePath = "assets/zombies/zombie right.png";
     private Sound zombieKilledSound = new Sound("sounds/zombieKilledSound.wav");
 
     private int hitPoints = 3;
@@ -94,40 +94,40 @@ public class NormalZombie extends Zombie{
         if (picToUseUpDown == Direction.UP) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/normal/zombie up left.png");
                 return;
             }
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/normal/zombie up right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/normal/zombie up.png");
             return;
         }
 
         if (picToUseUpDown == Direction.DOWN) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/normal/zombie down left.png");
                 return;
             }
 
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load(picturePath);
+                picture.load("assets/zombies/normal/zombie down right.png");
                 return;
             }
 
-            picture.load(picturePath);
+            picture.load("assets/zombies/normal/zombie down.png");
             return;
         }
 
         if (picToUseLeftRight == Direction.LEFT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/normal/zombie left.png");
             return;
         }
         if (picToUseLeftRight == Direction.RIGHT) {
-            picture.load(picturePath);
+            picture.load("assets/zombies/normal/zombie right.png");
         }
     }
 
