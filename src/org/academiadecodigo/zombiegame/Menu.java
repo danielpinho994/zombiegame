@@ -22,7 +22,8 @@ public class Menu implements KeyboardHandler {
 
     private boolean isClosed;
 
-    private Sound swapButtonSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/Wooden Button Click Sound Effect.mp3");
+    private Sound swapButtonSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/swapButtonSoundCut.wav");
+    private Sound menuBackgroundSound = new Sound("/Users/codecadet/Workspace/Projects/game/zombiegame/sounds/menuBackgroundSound.wav");
 
     public Menu() throws InterruptedException {
 
@@ -32,11 +33,19 @@ public class Menu implements KeyboardHandler {
 
         setKeys();
 
+        menuBackgroundSound.play(true);
+
         while (!isClosed) {
             Thread.sleep(200);
         }
 
+        menuBackgroundSound.stop();
+
         clearMenu();
+
+        while (!isClosed) {
+            Thread.sleep(200);
+        }
 
         game.init();
         game.start();
@@ -48,17 +57,11 @@ public class Menu implements KeyboardHandler {
         menuBackground = new Picture(Background.getPadding(), Background.getPadding(), "assets/menu.jpg");
         menuBackground.draw();
 
-        startButton = new Rectangle(Background.getPadding() * 4, Background.getRows() - 170, Background.getWidth() / 5, Background.getHeight() / 12);
-        startButton.draw();
-        startButton.setColor(Color.RED);
-        startButton.fill();
+        startButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 5, Background.getHeight() / 12);
 
-        exitButton = new Rectangle(Background.getPadding() * 4, Background.getRows() - 80, Background.getWidth() / 5, Background.getHeight() / 12);
-        exitButton.draw();
-        exitButton.setColor(Color.RED);
-        exitButton.fill();
+        exitButton = new Rectangle(Background.getPadding() * 8, Background.getRows() - 81, Background.getWidth() / 5, Background.getHeight() / 12);
 
-        buttonFrame = new Rectangle(Background.getPadding() * 4, Background.getRows() - 170, Background.getWidth() / 5, Background.getHeight() / 12);
+        buttonFrame = new Rectangle(Background.getPadding() * 8, Background.getRows() - 205, Background.getWidth() / 4, Background.getHeight() / 10);
         buttonFrame.draw();
         buttonFrame.setColor(Color.WHITE);
 
@@ -89,24 +92,10 @@ public class Menu implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !isClosed) {
-            /*
+            swapButtonSound.stop();
             swapButtonSound.play(true);
-             try {
-             Thread.sleep(200);
-             } catch (InterruptedException e) {
-             e.printStackTrace();
-             }
-
-             */
             if (lastDirection == Direction.UP) {
-                /**
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }*/
                 buttonFrame.translate(0, exitButton.getY() - startButton.getY());
                 lastDirection = Direction.DOWN;
                 return;
@@ -116,8 +105,8 @@ public class Menu implements KeyboardHandler {
         }
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !isClosed) {
-
-            //swapButtonSound.play(true);
+            swapButtonSound.stop();
+            swapButtonSound.play(true);
             if (lastDirection == Direction.DOWN) {
                 buttonFrame.translate(0, startButton.getY() - exitButton.getY());
                 lastDirection = Direction.UP;
@@ -131,6 +120,13 @@ public class Menu implements KeyboardHandler {
             if (lastDirection == Direction.UP) {
                 ready = true;
                 isClosed = true;
+            }
+        }
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE && !isClosed) {
+            if (lastDirection == Direction.DOWN) {
+                ready = false;
+                isClosed = false;
+                System.exit(0);
             }
         }
     }
