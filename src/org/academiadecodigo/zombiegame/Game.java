@@ -11,7 +11,7 @@ import org.academiadecodigo.zombiegame.gameobjects.player.Player;
 
 public class Game {
 
-    private static int zombies_nr = 4;
+    private static int zombies_nr = 10;
     private int wallNr = 13;
 
     private Zombie[] zombieHoard;
@@ -19,10 +19,10 @@ public class Game {
     private Wall[] walls;
     private Player player;
     private GameOver gameOver;
-    private Sound backgroundMusic = new Sound("assets/sounds/backgroundMusic.wav");
+    private Sound backgroundMusic = new Sound("assets/backgroundMusic.wav");
     private HealthBar hpBar;
     private Menu menu;
-    private Sound playerDyingSound = new Sound("assets/sounds/playerDyingSound.wav");
+    private Sound playerDyingSound = new Sound("assets/playerDyingSound.wav");
     private Score scoreBoard;
     private Round round;
     private int roundNumber = 1;
@@ -38,7 +38,7 @@ public class Game {
 
         if (roundNumber == 1) {
             player = new Player();
-            player.newPicture(player.getPos(), "assets/player/playerright.png");
+            player.newPicture(player.getPos(), "assets/playerright.png");
         }
 
         scoreBoard = new Score();
@@ -155,6 +155,7 @@ public class Game {
     public void newRound() throws InterruptedException {
 
         background = null;
+        player.resetLife();
         for (Wall w : walls) {
             w.remove();
         }
@@ -163,11 +164,10 @@ public class Game {
                 b.destroyBullet();
             }
         }
-
         zombieHoard = null;
         bulletsShot = null;
         collisionDetector = null;
-        player.newPicture(GameObjectsFactory.resetSpawn(Zones.E), "assets/player/playerright.png");
+        player.newPicture(GameObjectsFactory.resetSpawn(Zones.E), "assets/playerright.png");
         zombies_nr++;
 
         round.setRound(roundNumber);

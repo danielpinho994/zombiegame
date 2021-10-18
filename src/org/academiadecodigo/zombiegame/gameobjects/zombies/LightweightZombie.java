@@ -8,8 +8,8 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class LightweightZombie extends Zombie{
-    private String picturePath = "assets/zombies/zombiel/lzombie right.png";
-    private Sound zombieKilledSound = new Sound("assets/sounds/zombieKilledSound.wav");
+    private String picturePath = "assets/lzombie right.png";
+    private Sound zombieKilledSound = new Sound("assets/zombieKilledSound.wav");
 
     private int hitPoints = 1;
 
@@ -97,40 +97,40 @@ public class LightweightZombie extends Zombie{
         if (picToUseUpDown == Direction.UP) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load("assets/zombies/zombiel/lzombie up left.png");
+                picture.load("assets/lzombie up left.png");
                 return;
             }
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load("assets/zombies/zombiel/lzombie up right.png");
+                picture.load("assets/lzombie up right.png");
                 return;
             }
 
-            picture.load("assets/zombies/zombiel/lzombie up.png");
+            picture.load("assets/lzombie up.png");
             return;
         }
 
         if (picToUseUpDown == Direction.DOWN) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load("assets/zombies/zombiel/lzombie down left.png");
+                picture.load("assets/lzombie down left.png");
                 return;
             }
 
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load("assets/zombies/zombiel/lzombie down right.png");
+                picture.load("assets/lzombie down right.png");
                 return;
             }
 
-            picture.load("assets/zombies/zombiel/lzombie down.png");
+            picture.load("assets/lzombie down.png");
             return;
         }
 
         if (picToUseLeftRight == Direction.LEFT) {
-            picture.load("assets/zombies/zombiel/lzombie left.png");
+            picture.load("assets/lzombie left.png");
             return;
         }
         if (picToUseLeftRight == Direction.RIGHT) {
-            picture.load("assets/zombies/zombiel/lzombie right.png");
+            picture.load("assets/lzombie right.png");
         }
     }
 

@@ -9,7 +9,7 @@ public class VerticalWall extends Wall{
     public VerticalWall(Position pos, Zones zone) {
         super(pos, zone);
 
-        newPicture(pos,"assets/walls/verticalwall.png");
+        newPicture(pos,"assets/verticalwall.png");
     }
 
     @Override

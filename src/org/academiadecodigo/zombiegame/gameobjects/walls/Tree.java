@@ -9,7 +9,7 @@ public class Tree extends Wall{
     public Tree(Position pos, Zones zone) {
         super(pos, zone);
 
-        newPicture(pos,"assets/walls/tree.png");
+        newPicture(pos,"assets/tree.png");
     }
 
     @Override

@@ -18,7 +18,7 @@ public class Bullet extends Movable {
 
         bulletDirection = direction;
 
-        newPicture(bulletPos, "assets/bullets/bulletright.png");
+        newPicture(bulletPos, "assets/bulletright.png");
 
     }
 
@@ -42,7 +42,7 @@ public class Bullet extends Movable {
             x = pos.getCol() * Background.getCellSize() + Background.getPadding();
             y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-            picture = new Picture(x, y, "assets/bullets/bulletright.png");
+            picture = new Picture(x, y, "assets/bulletright.png");
         }
 
         if (bulletDirection == Direction.LEFT) {
@@ -51,7 +51,7 @@ public class Bullet extends Movable {
             x = pos.getCol() * Background.getCellSize() + Background.getPadding();
             y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-            picture = new Picture(x, y, "assets/bullets/bulletleft.png");
+            picture = new Picture(x, y, "assets/bulletleft.png");
         }
 
         if (bulletDirection == Direction.UP) {
@@ -60,7 +60,7 @@ public class Bullet extends Movable {
             x = pos.getCol() * Background.getCellSize() + Background.getPadding();
             y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
-            picture = new Picture(x, y, "assets/bullets/bulletup.png");
+            picture = new Picture(x, y, "assets/bulletup.png");
         }
 
         if (bulletDirection == Direction.DOWN) {
@@ -71,7 +71,7 @@ public class Bullet extends Movable {
             y = pos.getRow() * Background.getCellSize() + Background.getPadding();
 
             picture = new Picture(x, y, picturePath);
-            picture = new Picture(x, y, "assets/bullets/bulletdown.png");
+            picture = new Picture(x, y, "assets/bulletdown.png");
         }
 
         posSizeX = picture.getWidth() * Background.getCellSize();

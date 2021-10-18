@@ -18,7 +18,7 @@ public class Player extends Movable {
 
     private Weapon weapon;
     private int health = 100;
-    private Sound bulletShotSound = new Sound("assets/sounds/bulletShotSound.wav");
+    private Sound bulletShotSound = new Sound("assets/bulletShotSound.wav");
 
     private CollisionDetector collisionDetector;
 
@@ -126,34 +126,34 @@ public class Player extends Movable {
             if (w && firstRow > 0 && !forbiddenUp && a && firstCol > 0 && !forbiddenLeft) {
                 moveObject(Direction.UP);
                 moveObject(Direction.LEFT);
-                picture.load("assets/player/playerupleft.png");
+                picture.load("assets/playerupleft.png");
                 return;
             }
 
             if (w && firstRow > 0 && d && !forbiddenUp && d && lastCol < Background.getCols() && !forbiddenRight) {
                 moveObject(Direction.UP);
                 moveObject(Direction.RIGHT);
-                picture.load("assets/player/playerupright.png");
+                picture.load("assets/playerupright.png");
                 return;
             }
 
             if (s && lastRow < Background.getRows() && !forbiddenDown && a && firstCol > 0 && !forbiddenLeft) {
                 moveObject(Direction.DOWN);
                 moveObject(Direction.LEFT);
-                picture.load("assets/player/playerdownleft.png");
+                picture.load("assets/playerdownleft.png");
                 return;
             }
 
             if (s && lastRow < Background.getRows() && !forbiddenDown && d && lastCol < Background.getCols() && !forbiddenRight) {
                 moveObject(Direction.DOWN);
                 moveObject(Direction.RIGHT);
-                picture.load("assets/player/playerdownright.png");
+                picture.load("assets/playerdownright.png");
                 return;
             }
 
             if (w && firstRow > 0 && !forbiddenUp) {
                 moveObject(Direction.UP);
-                picture.load("assets/player/playerup.png");
+                picture.load("assets/playerup.png");
 
                 lastDirection = Direction.UP;
                 return;
@@ -161,7 +161,7 @@ public class Player extends Movable {
 
             if (s && lastRow < Background.getRows() && !forbiddenDown) {
                 moveObject(Direction.DOWN);
-                picture.load("assets/player/playerdown.png");
+                picture.load("assets/playerdown.png");
 
                 lastDirection = Direction.DOWN;
                 return;
@@ -169,7 +169,7 @@ public class Player extends Movable {
 
             if (a && firstCol > 0 && !forbiddenLeft) {
                 moveObject(Direction.LEFT);
-                picture.load("assets/player/playerleft.png");
+                picture.load("assets/playerleft.png");
 
                 lastDirection = Direction.LEFT;
                 return;
@@ -179,7 +179,7 @@ public class Player extends Movable {
                 moveObject(Direction.RIGHT);
 
                 lastDirection = Direction.RIGHT;
-                picture.load("assets/player/playerright.png");
+                picture.load("assets/playerright.png");
             }
 
         }
@@ -297,5 +297,9 @@ public class Player extends Movable {
         }
     public void remove() {
         picture.delete();
+    }
+
+    public void resetLife() {
+        health = 100;
     }
 }

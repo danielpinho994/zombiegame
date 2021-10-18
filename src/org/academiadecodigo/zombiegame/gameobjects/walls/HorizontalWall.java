@@ -9,7 +9,7 @@ public class HorizontalWall extends Wall {
     public HorizontalWall(Position pos, Zones zone) {
         super(pos, zone);
 
-        newPicture(pos, "assets/walls/horizontalwall.png");
+        newPicture(pos, "assets/horizontalwall.png");
     }
 
     @Override

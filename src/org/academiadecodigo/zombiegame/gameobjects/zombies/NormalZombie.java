@@ -8,8 +8,8 @@ import org.academiadecodigo.zombiegame.field.Position;
 import org.academiadecodigo.zombiegame.field.Zones;
 
 public class NormalZombie extends Zombie{
-    private String picturePath = "assets/zombies/normal/zombie right.png";
-    private Sound zombieKilledSound = new Sound("assets/sounds/zombieKilledSound.wav");
+    private String picturePath = "assets/zombie right.png";
+    private Sound zombieKilledSound = new Sound("assets/zombieKilledSound.wav");
 
     private int hitPoints = 2;
 
@@ -96,40 +96,40 @@ public class NormalZombie extends Zombie{
         if (picToUseUpDown == Direction.UP) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load("assets/zombies/normal/zombie up left.png");
+                picture.load("assets/zombie up left.png");
                 return;
             }
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load("assets/zombies/normal/zombie up right.png");
+                picture.load("assets/zombie up right.png");
                 return;
             }
 
-            picture.load("assets/zombies/normal/zombie up.png");
+            picture.load("assets/zombie up.png");
             return;
         }
 
         if (picToUseUpDown == Direction.DOWN) {
 
             if (picToUseLeftRight == Direction.LEFT) {
-                picture.load("assets/zombies/normal/zombie down left.png");
+                picture.load("assets/zombie down left.png");
                 return;
             }
 
             if (picToUseLeftRight == Direction.RIGHT) {
-                picture.load("assets/zombies/normal/zombie down right.png");
+                picture.load("assets/zombie down right.png");
                 return;
             }
 
-            picture.load("assets/zombies/normal/zombie down.png");
+            picture.load("assets/zombie down.png");
             return;
         }
 
         if (picToUseLeftRight == Direction.LEFT) {
-            picture.load("assets/zombies/normal/zombie left.png");
+            picture.load("assets/zombie left.png");
             return;
         }
         if (picToUseLeftRight == Direction.RIGHT) {
-            picture.load("assets/zombies/normal/zombie right.png");
+            picture.load("assets/zombie right.png");
         }
     }
 

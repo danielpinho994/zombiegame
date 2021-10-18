@@ -7,20 +7,20 @@ public class Round {
     private Picture roundImage;
     private Picture roundImageUnits;
     private Picture roundImageDozens;
-    private String[] roundValues = {"assets/rounds/0_round.png",
-                                    "assets/rounds/1_round.png",
-                                    "assets/rounds/2_round.png",
-                                    "assets/rounds/3_round.png",
-                                    "assets/rounds/4_round.png",
-                                    "assets/rounds/5_round.png",
-                                    "assets/rounds/6_round.png",
-                                    "assets/rounds/7_round.png",
-                                    "assets/rounds/8_round.png",
-                                    "assets/rounds/9_round.png"};
+    private String[] roundValues = {"assets/0_round.png",
+                                    "assets/1_round.png",
+                                    "assets/2_round.png",
+                                    "assets/3_round.png",
+                                    "assets/4_round.png",
+                                    "assets/5_round.png",
+                                    "assets/6_round.png",
+                                    "assets/7_round.png",
+                                    "assets/8_round.png",
+                                    "assets/9_round.png"};
 
     public Round() {
 
-        roundImage = new Picture(Background.getPadding() + 500, Background.getPadding() + 200, "assets/rounds/round.png");
+        roundImage = new Picture(Background.getPadding() + 500, Background.getPadding() + 200, "assets/round.png");
 
     }
 

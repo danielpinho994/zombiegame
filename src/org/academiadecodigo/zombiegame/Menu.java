@@ -25,8 +25,8 @@ public class Menu implements KeyboardHandler {
 
     private boolean isClosed;
 
-    private Sound swapButtonSound = new Sound("assets/sounds/swapButtonSoundCut.wav");
-    private Sound menuBackgroundSound = new Sound("assets/sounds/menuBackgroundSound.wav");
+    private Sound swapButtonSound = new Sound("assets/swapButtonSoundCut.wav");
+    private Sound menuBackgroundSound = new Sound("assets/menuBackgroundSound.wav");
 
     public Menu() throws InterruptedException {
 
