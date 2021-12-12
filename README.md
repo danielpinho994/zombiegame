@@ -8,7 +8,7 @@ The challenge was to create a game in java using a graphics library made by the 
 
 ## The idea
 
-A static map where 3 kinds of objects are spawned - the player, zombies and walls. The player spawns in the middle and rest spawns around him. The zombies are constantly chasing down the player, whom has to run around and fire his shotgun to survive.
+A static map where 3 kinds of objects are spawned - the player, zombies and walls. The player spawns in the middle and the rest spawns around him. The zombies are constantly chasing down the player, whom has to run around and fire his shotgun to survive.
 
 ## How it works
 
