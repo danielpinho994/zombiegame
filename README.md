@@ -1,6 +1,6 @@
 # Zombie Game
 
-A zombie shooter game with top-down view made during our first programming course - Bootcamp Academia de Código.
+A zombie shooter game with top-down view made during our first programming course - #64 Bootcamp Academia de Código.
 
 ## The challenge
 
